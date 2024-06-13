@@ -1,11 +1,13 @@
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import MobileMenu from './mobile-menu'
 import headshotAvatar from '@/public/images/headshot-avatar.webp'
+import HeaderTitle from '../header-title'
 
 export default function Header() {
   return (
-    <header className="absolute w-full z-30">
+    <header className="w-full z-30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-24">
           {/* Site branding */}
@@ -14,25 +16,26 @@ export default function Header() {
             <Link href="/" className="block">
               <Image src={headshotAvatar} alt="Headshot: Keith Nickas" className="head-shot" />
             </Link>
+            
           </div>
-
+          <HeaderTitle />
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
-              {/* <li>
+              <li>
                 <Link
                   href="/cv"
-                  className="font-medium text-teal-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="btn-sm font-medium text-white hover:border-teal-600 flex items-center transition duration-150 ease-in-out hover:btn-lift"
                 >
                   Resumé
                 </Link>
-              </li> */}
-              {/* <li>
-                <Link href="/signup" className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3">
-                  Sign up
+              </li>
+              <li>
+                <Link href="/contact" className="btn-sm text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+                  Contact
                 </Link>
-              </li> */}
+              </li>
             </ul>
           </nav>
 
