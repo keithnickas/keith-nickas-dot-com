@@ -87,7 +87,7 @@ export default function FlightResults() {
             <span className="font-bold italic">Enhancements:</span>
             <br />
             Add an option for displaying fare tier “tab” upfront. Two styles were
-            developed based on input from stakeholders:
+            developed based on input from stakeholders.
           </p>
           <ol className="list-decimal pl-8">
             <li>
