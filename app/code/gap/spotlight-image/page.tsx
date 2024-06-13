@@ -13,7 +13,7 @@ const code = JSON.stringify(
   {
     _meta: {
       name: "2024_SPR1_F1_HP_ATG_Spotlight",
-      schema: "https://cms.gap.com/schema/content/v1/spotlight.json",
+      schema: "https://**.**.**/schema/content/v1/spotlight.json",
       deliveryId: "8eac1720-074f-491d-b9a0-092270950f59",
     },
     general: {
@@ -64,7 +64,7 @@ const code = JSON.stringify(
           image: {
             _meta: {
               schema:
-                "http://bigcontent.io/cms/schema/v1/core#/definitions/image-link",
+                "http://**.**/cms/schema/v1/core#/definitions/image-link",
             },
             id: "812405e0-cebc-4de8-a591-cb9c753d7b1b",
             name: "Summer_24_Drop2_F1_HP_Girl_Spotlight_XL",
@@ -91,12 +91,12 @@ const code = JSON.stringify(
           image: {
             _meta: {
               schema:
-                "http://bigcontent.io/cms/schema/v1/core#/definitions/image-link",
+                "http://**.**/cms/schema/v1/core#/definitions/image-link",
             },
             id: "4ea026e2-a241-4c78-b668-9ca9924fbebd",
             name: "Summer_24_Drop2_F1_HP_Girl_Spotlight_S",
             endpoint: "athletaprod",
-            defaultHost: "cdn.media.amplience.net",
+            defaultHost: "cdn.**.**.net",
           },
           altText: "",
           variations: [
