@@ -1,32 +1,9 @@
 "use client";
 
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 const Calendly = dynamic(() => import('./calendly'), { ssr: false });
 
-interface SendMeetRequestFormData {
-  email: string;
-  name: string;
-  message: string;
-}
-
 export default function Newsletter() {
-  //   const sendMeetRequest = async (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
-  //   const {email, name, message} = event as unknown as SendMeetRequestFormData;
-  //   const res = await fetch("/api/contact", {
-  //     body: JSON.stringify({
-  //       name,
-  //       email,
-  //       message,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "POST",
-  //   });
-  //   const result = await res.json();
-  //   alert(`${result}`);
-  // }
-
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">

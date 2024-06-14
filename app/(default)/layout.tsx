@@ -1,36 +1,38 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
+import { useEffect } from "react";
+import Script from "next/script";
 
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import Footer from '@/components/ui/footer'
+import Footer from "@/components/ui/footer";
 
 export default function DefaultLayout({
   children,
 }: {
-  children: React.ReactNode
-}) {  
-
+  children: React.ReactNode;
+}) {
   useEffect(() => {
     AOS.init({
       once: true,
-      disable: 'phone',
+      disable: "phone",
       duration: 600,
-      easing: 'ease-out-sine',
-    })
-  })
+      easing: "ease-out-sine",
+    });
+  });
 
   return (
     <>
-      <main className="grow">
-
-        {children}
-
-      </main>
+      <main className="grow">{children}</main>
 
       <Footer />
+
+      <Script
+        type="text/javascript"
+        src="https://assets.calendly.com/assets/external/widget.js"
+        async
+      />
     </>
-  )
+  );
 }

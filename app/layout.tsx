@@ -1,4 +1,5 @@
 import "./css/style.css";
+import Script from "next/script";
 import { Inter, Architects_Daughter, Josefin_Slab } from "next/font/google";
 
 import Header from "@/components/ui/header";
@@ -45,7 +46,11 @@ export default function RootLayout({
           {children}
         </div>
         <AnimatedBackground />
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <Script
+          type="text/javascript"
+          src="https://www.google.com/recaptcha/api.js"
+          async
+        />
       </body>
     </html>
   );
