@@ -19,7 +19,7 @@ export default function Code() {
         <li><Link href="/code/gap/">Gap</Link></li>
         <li><Link href="/code/deem/">Deem</Link></li>
       </ul>
-      <p className="text-white lg:text-lg pb-6">
+      <p className="text-white lg:text-lg pb-24">
           Additional content coming.
         </p>
       <Contact />

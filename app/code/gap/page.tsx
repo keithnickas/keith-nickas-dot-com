@@ -1,11 +1,12 @@
 import Contact from "@/components/contact";
 import Link from "next/link";
+import { GapInc, ListIcon } from "@/components/icons";
 
 export default function Gap() {
   return (
     <>
       <div className="max-w-7xl min-h-screen py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
-        <h1 className="h1 font-extrabold text-white lg:text-4xl pb-6">Gap</h1>
+        <div style={{width: 150, height: 100}}><GapInc fill="#fff" /></div>
         <p className="text-white lg:text-lg pb-6">
           Additional content coming.
         </p>

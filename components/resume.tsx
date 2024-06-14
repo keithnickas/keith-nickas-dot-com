@@ -5,7 +5,6 @@ import classNames from "classnames";
 import Image from "next/image";
 
 import { GapInc, ListIcon } from "@/components/icons";
-import insortProductImage from "@/public/images/gap/cms-in-sort-product-card.png";
 
 const ResumeComponent = () => {
   const [activeElement, setActiveElement] = useState("");
