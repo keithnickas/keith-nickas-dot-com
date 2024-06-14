@@ -4,6 +4,7 @@ import { Inter, Architects_Daughter, Josefin_Slab } from "next/font/google";
 
 import Header from "@/components/ui/header";
 import { AnimatedBackground } from "@/components/animated-background";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,14 @@ export default function RootLayout({
       >
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
+          <Breadcrumbs
+            homeElement={"Home"}
+            separator={<span> &gt; </span>}
+            activeClasses="text-white"
+            containerClasses="flex"
+            listClasses="hover:underline mx-2 font-bold"
+            capitalizeLinks
+          />
           {children}
         </div>
         <AnimatedBackground />
