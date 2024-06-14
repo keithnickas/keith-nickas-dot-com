@@ -18,6 +18,7 @@ export interface SliderConfigProps {
   useBoxShadow?: boolean;
   alignContent?: AlignContent;
   disableAnimation?: boolean;
+  title?: string;
 }
 
 export type SliderProps = {
@@ -47,6 +48,7 @@ export default function Slider({
     disableAnimation,
     duration,
     height,
+    title,
     width,
     useBoxShadow,
   } = config || {};
@@ -139,6 +141,7 @@ export default function Slider({
       .slider-${id} .slide-track-${id}:hover {
         animation-play-state: paused;
       }
+
       ${
         !!disableAnimation
           ? `.slider-${id} .slide-track-${id} { 
@@ -157,11 +160,12 @@ export default function Slider({
   `;
 
   return (
-    <>
-      <div className={`slider-${id}`}>
+    <div className={`${title ? `bg-white pb-6` : ""}`}>
+      {title ? <div className="text-black py-6 text-center"><h3 className="h3">{title}</h3></div> : null}
+      <div className={`slider-${id}`}>  
         <div className={`slide-track-${id}`}>{slides}</div>
       </div>
       <style id={`${id}-slider-styles`}>{styles}</style>
-    </>
+    </div>
   );
 }

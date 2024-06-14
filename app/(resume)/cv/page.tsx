@@ -15,13 +15,15 @@ import deemFlightResults from "@/public/images/deem/deem_flight-results.webp";
 export default function Resume() {
   return (
     <>
+      <ResumeComponent />
       <Slider
         name="gap"
         config={{
           count: 2,
-          useBoxShadow: true,
+          useBoxShadow: false,
           duration: "0s",
           disableAnimation: true,
+          title: "Design Samples"
         }}
       >
         <div className="slide px-4">
@@ -44,7 +46,6 @@ export default function Resume() {
           <div className="bg-gray-400 w-20 text-black h-full w-full">Block</div>
         </div> */}
       </Slider>
-      <ResumeComponent />
       <ResumeHighlights />
       <Contact />
     </>
