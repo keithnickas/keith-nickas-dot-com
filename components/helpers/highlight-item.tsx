@@ -1,38 +1,46 @@
 import Image, { StaticImageData } from "next/image";
+import hash from "object-hash";
+import { Highlight } from "../types/resume-types";
+import { workItemLogo } from "./resume/work-item-logo";
+import React from "react";
 
-interface CVListItem {
-  description: string;
-}
-
-interface CVItemsProps {
-  imageContent: {
-    url: StaticImageData;
-    position?: "left" | "right";
-    alt?: string;
-    width?: number;
-    height?: number;
-    inverse?: boolean;
-  };
-  content: {
-    companyName: string;
-    iconPosition?: "left" | "right";
-    jobTitle: string;
-    location: string;
-    summary: string;
-    list: CVListItem[];
-    useListIcon?: boolean;
-  };
-}
-
-export function CVItem({ imageContent, content }: CVItemsProps) {
+export function HighlightItem({ highlight }: { highlight: Highlight }) {
   const {
-    url,
+    position,
+    iconPosition,
+    imageContent,
+    keyAchievements,
+    skills,
+    summary,
+    useListIcon = true,
+  } = highlight;
+  const {
     position: imagePosition = "left",
     width = 384,
     height = 384,
     alt = "Unknown Image",
-  } = imageContent;
-  const { companyName, iconPosition, jobTitle, location, summary, list, useListIcon = false } = content;
+  } = imageContent || {};
+  const { title, company, location, startDate, endDate } = position;
+
+  const logoElement = workItemLogo[position.logo as keyof typeof workItemLogo];
+  const logoIsNextImageType =
+    typeof logoElement === "object" && logoElement !== null
+      ? workItemLogo[position.logo as keyof typeof workItemLogo] as StaticImageData
+      : {} as StaticImageData;
+
+  const image =
+    imageContent && typeof logoElement === "function" ? (
+      logoElement({ width, height })
+    ) : logoIsNextImageType && (
+      <Image
+        className="object-contain"
+        src={logoIsNextImageType.src}
+        width={width}
+        height={height}
+        alt={alt}
+      />
+    );
+
   return (
     <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
       {/* Image: Left */}
@@ -41,13 +49,7 @@ export function CVItem({ imageContent, content }: CVItemsProps) {
           className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0"
           data-aos="fade-up"
         >
-          <Image
-            className="object-contain"
-            src={url}
-            width={width}
-            height={height}
-            alt={alt}
-          />
+          {image}
         </div>
       ) : null}
       {/* Content */}
@@ -58,16 +60,13 @@ export function CVItem({ imageContent, content }: CVItemsProps) {
         <div className="md:pr-4 lg:pr-12 xl:pr-16">
           <div className="font-architects-daughter text-xl text-purple-600 mb-2"></div>
           <h2 className="h3 mb-3">
-            {companyName} - {location}
+            {title}
           </h2>
-          <p className="text-xl text-gray-400 mb-4">{jobTitle}</p>
+          <p className="text-xl text-gray-400 mb-4">{company} ({location}) | {startDate} - {endDate}</p>
           <p className="text-xl text-gray-400 mb-4">{summary}</p>
           <ul className="text-lg text-gray-400 -mb-2">
-            {list.map((item, index) => (
-              <li
-                key={`${item.description.replace(" ", "-")}`}
-                className="flex items-baseline mb-2"
-              >
+            {keyAchievements && keyAchievements.map((achievement, _) => (
+              <li key={hash(achievement)} className="flex items-baseline mb-2">
                 {iconPosition === "left" && useListIcon ? (
                   <svg
                     className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
@@ -77,7 +76,7 @@ export function CVItem({ imageContent, content }: CVItemsProps) {
                     <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                   </svg>
                 ) : null}
-                <span>{item.description}</span>
+                <span>{achievement}</span>
                 {iconPosition === "right" && useListIcon ? (
                   <svg
                     className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
@@ -98,13 +97,7 @@ export function CVItem({ imageContent, content }: CVItemsProps) {
           className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 rtl"
           data-aos="fade-up"
         >
-          <Image
-            className="object-contain"
-            src={url}
-            width={width}
-            height={height}
-            alt={alt}
-          />
+          {image}
         </div>
       ) : null}
     </div>

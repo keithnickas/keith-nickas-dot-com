@@ -1,4 +1,3 @@
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import MobileMenu from './mobile-menu'
@@ -36,10 +35,15 @@ export default function Header() {
                   Contact
                 </Link>
               </li>
+              {/* <li>
+                <Link href="/auth/signin" className="btn-sm text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+                  Sign In
+                </Link>
+              </li> */}
             </ul>
           </nav>
 
-          {/* <MobileMenu /> */}
+          <MobileMenu />
 
         </div>
       </div>

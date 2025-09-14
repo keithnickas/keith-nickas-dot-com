@@ -1,28 +1,46 @@
-export const metadata = {
-  title: "Keith Nickas - Software Engineer - Code Examples",
-  description:
-    "A personal website showcasing professional, and, personal works developed by Keith Nickas.",
-};
-// import Image from "next/image";
-
-import Contact from "@/components/contact";
 import Link from "next/link";
-
+import Image from "next/image";
+import wristbandLogo from "@/public/images/wristband/wristband_transparent_logo.svg";
+import { Deem, GapInc, GitHub } from "@/components/icons";
 
 export default function Code() {
   return (
     <>
-    <div className="max-w-7xl min-h-screen py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
-      <h1 className="h1 py-6">Code Samples and Designs</h1>
-      <h2 className="h4 py-6">By Organization</h2>
-      <ul className="pb-12">
-        <li><Link href="/code/gap/">Gap</Link></li>
-        <li><Link href="/code/deem/">Deem</Link></li>
-      </ul>
-      <p className="text-white lg:text-lg pb-24">
-          Additional content coming.
-        </p>
-      <Contact />
+      <div className="w-full py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
+        <div className="max-w-7xl flex flex-col justify-center mx-auto">
+          <h1 className="h4">Code Samples</h1>
+          <p className="text-white lg:text-lg pb-6">
+            Here is just a small sampling of various projects that showcasing
+            different technologies and approaches.
+          </p>
+        </div>
+        <div className="max-w-7xl flex gap-6 justify-center items-center mx-auto">
+          <div className="btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+            <Link className="size-36" href="/code/wristband/">
+              <Image
+                className="size-36"
+                src={wristbandLogo}
+                alt="Wristband, Identity Access Management"
+              />
+            </Link>
+          </div>
+          <div className="btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+            <Link className="size-36" href="/code/gap/">
+              <GapInc className="size-36" fill="white" />
+            </Link>
+          </div>
+
+          <div className="btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+            <Link className="size-36" href="/code/deem/">
+              <Deem className="size-36" />
+            </Link>
+          </div>
+          <div className="btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+            <Link className="size-36 items-center" href="https://github.com/keithnickas">
+              <GitHub className="size-36" />
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

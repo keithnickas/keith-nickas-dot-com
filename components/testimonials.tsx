@@ -11,8 +11,8 @@ export default function Testimonials() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h1 className="h3 mb-4">Discover What My Co-Workers Have to Say:</h1>
-            <p className="text-xl text-gray-400">Genuine Testimonials Speak for Themselves</p>
+            <h1 data-aos="fade-up" className="h3 mb-4">Discover What My Co-Workers Have to Say:</h1>
+            <p data-aos="fade-up" className="text-xl text-gray-400">Genuine Testimonials Speak for Themselves</p>
           </div>
 
           {/* Testimonials */}

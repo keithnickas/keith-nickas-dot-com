@@ -8,12 +8,13 @@ export const Block = ({
   title,
 }: {
   children: React.ReactNode;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   title: string;
 }) => (
   <div
     className="relative flex flex-col items-center"
-    data-aos="fade-up"
+    data-aos="zoom-in"
+    data-aos-delay="300"
     data-aos-anchor="[data-aos-id-blocks]"
   >
     {icon}

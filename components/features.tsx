@@ -2,7 +2,6 @@ import React from "react";
 import { Block } from "./block";
 import {
   ContinuousIntegration,
-  GlobeWithLines,
   HeadIcon,
   Notes,
   SpeechBubbleWithCog,
@@ -16,7 +15,13 @@ export default function Features() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+          <div
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
+            data-aos-offset="0"
+            className="max-w-3xl mx-auto text-center pb-12 md:pb-20"
+          >
             <h2 className="h2 mb-4 feature-title">Who am I?</h2>
             <p className="text-xl text-gray-400 pb-5">
               Results-driven Senior Software Engineer with a proven track record
@@ -47,8 +52,8 @@ export default function Features() {
               icon={<Star2Lines invert backgroundColor="#164d37" />}
             >
               <p className="text-lg text-gray-400 text-center">
-                Javascript, Typescript, React, NextJS, Node, Webpack, Babel, Playwright,
-                Jest
+                Javascript, Typescript, React, NextJS, Node, Webpack, Babel,
+                Playwright, Jest
               </p>
             </Block>
 
@@ -65,7 +70,13 @@ export default function Features() {
             {/* 3rd item */}
             <Block
               title="CI/CD"
-              icon={<ContinuousIntegration backgroundColor="#164d37" stroke="#fff" fill="#fff"/>}
+              icon={
+                <ContinuousIntegration
+                  backgroundColor="#164d37"
+                  stroke="#fff"
+                  fill="#fff"
+                />
+              }
             >
               <p className="text-lg text-gray-400 text-center">
                 Jenkins, Codefresh, Bitbucket, Github, Gitlab, Azure Cloud,
@@ -78,7 +89,8 @@ export default function Features() {
               icon={<Notes backgroundColor="#164d37" />}
             >
               <p className="text-lg text-gray-400 text-center">
-                Agile/Scrum, Project Management, Team Leadership, Collaboration, and Mentorship
+                Agile/Scrum, Project Management, Team Leadership, Collaboration,
+                and Mentorship
               </p>
             </Block>
             {/* 5th item */}

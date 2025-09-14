@@ -43,10 +43,10 @@ export default function Hero() {
         </div>
 
         {/* Hero content */}
-        <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+        <div className="flex">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4 hero-title lg:hero-title lg:text-flicker-in-glow lg:text-flicker-in-glow" data-aos="fade-up">
+          <div className="flex justify-center items-center flex-col max-w-3xl mx-auto text-center pb-12 md:pb-16 min-h-screen">
+            <h1 className="h1 mb-4 hero-title lg:hero-title lg:text-glow" data-aos="fade-up">
               Software Engineering
             </h1>
             <p
@@ -54,7 +54,7 @@ export default function Hero() {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <svg id="animated-borders" viewBox="0 0 1100 200" aria-label="Keith Nickas">
+              <svg id="animated-borders" viewBox="0 0 1100 200" aria-label="Keith Nickas" style={{ width: '45vw', height: 'auto' }}>
                 <symbol id="s-text">
                   <text textAnchor="middle" x="50%" y="80%">
                     Keith Nickas

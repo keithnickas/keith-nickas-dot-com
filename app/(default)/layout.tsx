@@ -5,7 +5,10 @@ import Script from "next/script";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import dynamic from "next/dynamic";
+const Calendly = dynamic(() => import("../../components/calendly"), {
+  ssr: false,
+});
 import Footer from "@/components/ui/footer";
 
 export default function DefaultLayout({
@@ -15,10 +18,8 @@ export default function DefaultLayout({
 }) {
   useEffect(() => {
     AOS.init({
-      once: true,
       disable: "phone",
-      duration: 600,
-      easing: "ease-out-sine",
+      once: true,
     });
   });
 
@@ -27,7 +28,7 @@ export default function DefaultLayout({
       <main className="grow">{children}</main>
 
       <Footer />
-
+      <Calendly />
       <Script
         type="text/javascript"
         src="https://assets.calendly.com/assets/external/widget.js"
