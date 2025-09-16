@@ -59,8 +59,8 @@ const Breadcrumbs = ({
         <ul className={containerClasses}>
           <li className={listClasses}>
             <Link href={"/"}>{homeElement}</Link>
+            {hasPathNames && separator}
           </li>
-          {hasPathNames && separator}
           {breadcrumbs}
         </ul>
         {hasPathNames ? (
