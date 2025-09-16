@@ -10,10 +10,10 @@ export default function CodeLayout({
     <>
       <Breadcrumbs
         homeElement={"Home"}
-        separator={<span> &gt; </span>}
+        separator={<span className="mx-2"> &gt; </span>}
         activeClasses="text-white"
         containerClasses="flex"
-        listClasses="hover:underline mx-2 font-bold"
+        listClasses="font-bold"
         capitalizeLinks
       />
       <main className="grow">{children}</main>

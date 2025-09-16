@@ -46,9 +46,9 @@ const Breadcrumbs = ({
     return (
       <React.Fragment key={index}>
         <li className={itemClasses}>
-          <Link href={href}>{itemLink}</Link>
+          <Link href={href} className="hover:underline">{itemLink}</Link>
+          {pathNames.length !== index + 1 && separator}
         </li>
-        {pathNames.length !== index + 1 && separator}
       </React.Fragment>
     );
   });

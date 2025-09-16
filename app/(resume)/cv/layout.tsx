@@ -18,8 +18,9 @@ export default function ResumeLayout({
 
   return (
     <>
-      <main className="grow">{children}</main>
-      <Footer />
+      <main className="grow">{children}
+        <Footer />
+      </main>
       <Calendly />
     </>
   );

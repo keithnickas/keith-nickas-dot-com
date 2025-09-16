@@ -24,10 +24,10 @@ export default function Resume() {
     <>
       <Breadcrumbs
         homeElement={"Home"}
-        separator={<span> &gt; </span>}
+        separator={<span className="mx-2"> &gt; </span>}
         activeClasses="text-white"
         containerClasses="flex"
-        listClasses="hover:underline mx-2 font-bold"
+        listClasses="font-bold"
         capitalizeLinks
       />
       <div className=" bg-gray-100 pt-24 pb-6 px-4 sm:px-6 lg:px-8 min-h-screen">
