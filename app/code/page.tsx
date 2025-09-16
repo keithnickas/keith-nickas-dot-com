@@ -7,7 +7,7 @@ export default function Code() {
   return (
     <>
       <div className="w-full py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
-        <div className="max-w-7xl flex flex-col justify-center mx-auto">
+        <div className="max-w-7xl flex flex-col justify-center mx-auto mb-12">
           <h1 className="h4">Code Samples</h1>
           <p className="text-white lg:text-lg pb-6">
             Here is just a small sampling of various projects that showcasing
