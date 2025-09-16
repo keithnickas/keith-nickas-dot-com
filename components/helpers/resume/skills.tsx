@@ -1,7 +1,11 @@
 import { WorkExperience } from "@/components/types/resume-types";
 import hash from "object-hash";
 
-export const Skills = ({ skills }: { skills: WorkExperience["skills"] }) => (
+export const Skills = ({ skills }: { skills: WorkExperience["skills"] }) => {
+  if (!skills || skills.length === 0) {
+    return null;
+  }
+  return (
   <ul className="text-gray-900">
     {skills.map((item, _) => (
       <li key={hash(item)} className="flex items-baseline mb-2">
@@ -13,3 +17,4 @@ export const Skills = ({ skills }: { skills: WorkExperience["skills"] }) => (
     ))}
   </ul>
 );
+}
