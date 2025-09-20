@@ -56,12 +56,13 @@ const ResumeComponent = (props: WorkExperience) => {
 
   const resumeItem = <PositionTitleAndLocation {...position} />;
   const logoElement = workItemLogo[position.logo as keyof typeof workItemLogo];
-  const logo = () => {
+  const logo = (props?: Record<string, any>) => {
     if (typeof logoElement === "function")
       return logoElement({
         fill,
         width: width || logoWidth,
         height: height || logoHeight,
+        ...props,
       });
     else if (React.isValidElement(logoElement)) return logoElement;
     return null;
@@ -70,7 +71,7 @@ const ResumeComponent = (props: WorkExperience) => {
   return (
     <section className="mb-12">
       <div className="mb-8 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/3 mr-8">{logo()}</div>
+        <div className="md:w-1/3 mr-8">{logo({ className: "w-52 md:w-full"})}</div>
         <div className="md:w-2/3">
           {resumeItem}
           <SummaryItems summaryItems={summary} />

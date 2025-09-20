@@ -9,10 +9,9 @@ export default function Gap() {
     <>
       <div className="max-w-7xl flex flex-col gap-x-1.5 py-24 px-4 max-lg:flex-wrap mx-auto">
         <div className="w-full flex flex-col mb-6">
-          <div>
-            <GapInc className="size-36" fill="white" />
+          <div className="w-52">
+            <GapInc fill="white" />
           </div>
-          <h1 className="h4">Samples</h1>
         </div>
         <div className="w-full flex flex-col mb-6">
           <Link className="size-36" href="/code/gap/spotlight-image">

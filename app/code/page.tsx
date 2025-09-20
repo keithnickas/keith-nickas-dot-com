@@ -15,38 +15,39 @@ export default function Code() {
           </p>
         </div>
         <div className="max-w-7xl flex flex-col gap-6 justify-center items-center mx-auto">
-          <Link
-            className="size-36 btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
-            href="/code/wristband/"
-          >
-            <Image
-              className="size-36"
-              src={wristbandLogo}
-              alt="Wristband, Identity Access Management"
-              width={150}
-              style={{ height: "auto" }}
-            />
-          </Link>
-          <Link
-            className="size-36 btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
-            href="/code/gap/"
-          >
-            <GapInc className="size-36" fill="white" width={150} />
-          </Link>
-
-          <Link
-            className="size-36 btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
-            href="/code/deem/"
-          >
-            <Deem className="size-36" width={150} />
-          </Link>
-
-          <Link
-            className="size-36 items-center btn-lg text-white border border-teal-600 hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
-            href="https://github.com/keithnickas"
-          >
-            <GitHub className="size-36" width={150} />
-          </Link>
+          <div className="flex gap-4">
+            <Link
+              className="btn-sm md:btn-lg text-white hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
+              href="/code/wristband/"
+            >
+              <Image
+                className="h-auto"
+                src={wristbandLogo}
+                alt="Wristband, Identity Access Management"
+                width={150}
+              />
+            </Link>
+            <Link
+              className="btn-sm md:btn-lg text-white hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
+              href="/code/gap/"
+            >
+              <GapInc className="size-36" fill="white" width={150} />
+            </Link>
+          </div>
+          <div className="flex gap-4">
+            <Link
+              className="btn-sm md:btn-lg text-white hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
+              href="/code/deem/"
+            >
+              <Deem className="size-36" width={150} />
+            </Link>
+            <Link
+              className="btn-sm md:btn-lg items-center text-white hover:bg-teal-600 hover:bg-transparent ml-3 hover:btn-lift"
+              href="https://github.com/keithnickas"
+            >
+              <GitHub className="size-36" width={150} />
+            </Link>
+          </div>
         </div>
       </div>
     </>

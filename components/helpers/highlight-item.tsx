@@ -42,7 +42,7 @@ export function HighlightItem({ highlight }: { highlight: Highlight }) {
     );
 
   return (
-    <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
+    <div className={`${imagePosition === "left" ? "flex flex-col " : "flex flex-col-reverse "}md:grid md:grid-cols-12 md:gap-6 items-center`}>
       {/* Image: Left */}
       {imagePosition === "left" ? (
         <div

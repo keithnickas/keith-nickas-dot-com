@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import MobileMenu from './mobile-menu'
+// import MobileMenu from './mobile-menu'
 import headshotAvatar from '@/public/images/headshot-avatar.webp'
 import HeaderTitle from '../header-title'
 
@@ -31,7 +31,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="btn-sm text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+                <Link href="/contact" className="btn-sm text-black hover:text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
                   Contact
                 </Link>
               </li>
@@ -43,7 +43,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          <MobileMenu />
+          {/* <MobileMenu /> */}
 
         </div>
       </div>

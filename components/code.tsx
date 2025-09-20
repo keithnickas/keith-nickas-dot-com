@@ -10,16 +10,21 @@ import "highlight.js/styles/vs2015.min.css";
 type CodeProps = {
   snippet: string;
   title?: string;
+  useInline?: boolean;
   type: "json" | "javascript" | "html" | "typescript" | "xml";
 };
 
-export default function Code({ snippet, title, type }: CodeProps) {
+export default function Code({ snippet, title, type, useInline }: CodeProps) {
   const lang = { javascript, json, html, typescript, xml };
 
   hljs.registerLanguage(type, lang[type]);
   const highlightedCode = hljs.highlight(snippet, { language: type }).value;
 
-  return (
+  return useInline ? (
+    <code className={`language-${type} wrap whitespace-pre-wrap font-mono text-sm text-white`}>
+      <span dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+    </code>
+  ) : (
     <div className="relative bg-gray-900 w-full p-4 rounded-md border border-gray-700">
       <div className="static text-white">
         <div className="flex justify-between items-center mb-2">

@@ -4,6 +4,7 @@ import React, { ReactNode, useCallback } from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import hash from "object-hash";
 
 type BreadcrumbProps = {
   homeElement: ReactNode;
@@ -18,6 +19,7 @@ const LINKS: Record<string, string> = {
   cv: "Resumé",
   "flight-results": "Flight Results Prototype",
   "spotlight-image": "Spotlight Image and Video",
+  "vue-sdk": "Vue SDK",
 };
 
 const Breadcrumbs = ({
@@ -43,14 +45,14 @@ const Breadcrumbs = ({
     let itemLink = capitalizeLinks
       ? linkName[0].toUpperCase() + linkName.slice(1, linkName.length)
       : linkName;
-    return (
-      <React.Fragment key={index}>
+    return !href.match(/((code\/$)|(code$))/g) ? (
+      <React.Fragment key={hash({link, linkName, index})}>
         <li className={itemClasses}>
-          <Link href={href} className="hover:underline">{itemLink}</Link>
+          <Link href={href} className="hover:underline truncate md:overflow">{itemLink}</Link>
           {pathNames.length !== index + 1 && separator}
         </li>
       </React.Fragment>
-    );
+    ) : null;
   });
 
   return (

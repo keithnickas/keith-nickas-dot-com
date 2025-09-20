@@ -355,8 +355,8 @@ export const GapInc = ({
     viewBox="0 0 109 31"
     aria-label="Gap, Inc."
     className={className}
-    width={width || 100}
-    height={height || 30}
+    width={width || undefined}
+    height={height || undefined}
   >
     <g fill={fill || "#0a0b09"} fillRule="evenodd">
       <path d="m106.346121 18.7053041c-.975645 0-1.798056.7785758-1.798056 1.7446026 0 .9686424.822411 1.7886317 1.798056 1.7886317.986273 0 1.775469-.8199893 1.775469-1.7886317 0-.9660268-.789196-1.7446026-1.775469-1.7446026" />

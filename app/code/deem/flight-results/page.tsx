@@ -1,13 +1,15 @@
-import Contact from "@/components/contact";
+import Image from "next/image";
+import deemLogo from "@/public/images/deem/deem.svg"
 
 export default function FlightResults() {
   return (
     <>
       <div className="max-w-7xl min-h-screen py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
-        <h1 className="h1 font-extrabold text-white lg:text-4xl pb-6">
-          Deem Flight Results Prototype
+        <Image src={deemLogo} alt="Deem" width={200} height={100} className="pb-6" />
+        <h1 className="h1 font-light text-white lg:text-4xl pb-6">
+          Flight Results Prototype
         </h1>
-        <p className="text-white lg:text-lg pb-6">
+        <p className="text-white pb-6">
           <span className="font-bold italic">Challenge:</span>
           <br />
           Provide an experience that surfaces pertinent information in a
@@ -15,20 +17,20 @@ export default function FlightResults() {
           and the intent of the information is to direct the user to make the
           appropriate choices based on corporate and personal needs.
         </p>
-        <p className="text-white lg:text-lg pb-6">
+        <p className="text-white pb-6">
           <span className="font-bold italic">Other challenges:</span>
           <br />
           Display Complex flights where more than one connection, multiple carriers,
           or flight tiers could be displayed within a single flight object.
         </p>
-        <p className="text-white lg:text-lg pb-6">
+        <p className="text-white pb-6">
           <span className="font-bold italic">Requirements:</span>
           <br />
           Encompass all existing features of the flight application,
           specifically surrounding fare tiers, policy, dynamic filtering, and fare
           comparison.
         </p>
-        <p className="text-white lg:text-lg pb-6">
+        <p className="text-white pb-6">
           <span className="font-bold italic">Research:</span>
           <br />
           Reviewed Google Flights, American, Alaska, Southwest, Delta, and
@@ -36,7 +38,7 @@ export default function FlightResults() {
           third-party consumer sites such as Expedia, Kayak, Kiwi, and others to
           gain further insight into the user experience.
         </p>
-        <h2 className="h2 font-extrabold text-white lg:text-2xl pb-6">
+        <h2 className="h2 font-light text-white lg:text-2xl pb-6">
           Wireframes
         </h2>
         <iframe
@@ -50,15 +52,15 @@ export default function FlightResults() {
           src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FpI3hmMyRy36GTRTHXu9g9P%2FFlight-Redesign%3Fnode-id%3D0-1%26t%3DAqQ8WyFhGlA4Ae4g-1"
           allowFullScreen
         ></iframe>
-        <h2 className="h2 font-extrabold text-white lg:text-2xl py-6">
+        <h2 className="h2 font-light text-white lg:text-2xl py-6">
           Component
         </h2>
-        <p className="text-white lg:text-lg pb-6">
-          Research cues are from Google, Delta and Alaska that inspired the
+        <p className="text-white pb-6">
+          Research cues came from Google, Delta and Alaska Airlines that inspired the
           final design.
         </p>
-        <div className="flex column gap-20">
-          <div className="flex flex-wrap content-start basis-1/3">
+        <div className="flex flex-col gap-10 text-white">
+          <div className="flex flex-wrap content-start">
             <span className="font-bold italic">Filters UX:</span> Add option for
             displaying fare tier, stops, flight times, and, other filter options
             that could be configured to be displayed above the flight objects.
@@ -66,7 +68,7 @@ export default function FlightResults() {
             values. The user also has the option to select the filter when
             hovering the filter title to expand the available options.
           </div>
-          <div className="flex flex-wrap content-start basis-1/3">
+          <div className="flex flex-wrap content-start">
             <span className="font-bold italic">Use Case:</span> When a user has
             selected a stepping, all the flight objects would update to display
             the appropriate options. Let’s say the user has used Flight Times,
@@ -74,7 +76,7 @@ export default function FlightResults() {
             stepping would be displayed and others not matching would be hidden
             from view.
           </div>
-          <div className="flex flex-wrap content-start basis-1/3">
+          <div className="flex flex-wrap content-start">
             <span className="font-bold italic">Flight Object UX:</span> In this
             view you see informational icons, textual color treatments such as a
             different arrival airport (orange) than originally searched for, out
@@ -82,8 +84,8 @@ export default function FlightResults() {
             related details would be indicated below.
           </div>
         </div>
-        <div className="flex flex-wrap content-start py-6">
-          <p className="text-white lg:text-lg pb-6">
+        <div className="flex flex-wrap content-start py-6 text-white">
+          <p className="pb-6">
             <span className="font-bold italic">Enhancements:</span>
             <br />
             Add an option for displaying fare tier “tab” upfront. Two styles were
@@ -106,7 +108,6 @@ export default function FlightResults() {
           </ol>
         </div>
       </div>
-      <Contact />
     </>
   );
 }

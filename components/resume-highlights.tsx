@@ -20,7 +20,7 @@ export default function ResumeHighlights({
         <div className="py-12 md:py-20 border-t border-gray-800">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4">Highlights</h1>
+            <h2 className="h1 font-light mb-4">Highlights</h2>
           </div>
 
           {/* Items */}
@@ -34,7 +34,7 @@ export default function ResumeHighlights({
               >
                 <a
                   href="https://1drv.ms/w/s!AlNLwqrOUfGHjQ7VJVqkT-lHyXSd?e=SivKyi"
-                  className="p-4 bg-teal-400 text-white rounded-md border-transparent border hover:bg-transparent hover:border-teal-400 hover:border hover:btn-lift"
+                  className="p-4 bg-teal-400 text-white border-transparent border hover:bg-transparent hover:border-teal-400 hover:border hover:btn-lift"
                   type="button"
                   id="download-resume"
                   target="_blank"
