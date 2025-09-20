@@ -189,7 +189,7 @@ export default function SpotlightImage() {
         ></iframe>
       </div>
       <div className="flex lg:my-20 max-lg:my-6 flex-col">
-        <h2 className="h2 text-3xl font-light text-white lg:text-4xl pb-6">
+        <h2 className="h2 text-3xl font-light text-white pb-6">
           Component
         </h2>
         <p className="text-white p-4">
@@ -199,7 +199,7 @@ export default function SpotlightImage() {
           CTA link or button. The component can optionally display a video
           instead of an image.
         </p>
-        <h3 className="h4 text-xl font-light text-white lg:text-2xl py-6">
+        <h3 className="h4 font-light text-white py-6">
           Image
         </h3>
         <p className="text-white p-4">
@@ -209,13 +209,13 @@ export default function SpotlightImage() {
           It can also be vertically aligned at the top, center, or bottom of the
           container.
         </p>
-        <h3 className="h4 font-light text-white lg:text-2xl py-6">Video</h3>
+        <h3 className="h4 font-light text-white py-6">Video</h3>
         <p className="text-white p-4">
           The component can optionally display a video instead of an image. The
           video will automatically play when the component is displayed on the
           page. The video can be configured to loop, or, play once then stop.
         </p>
-        <h3 className="h4 font-light text-white lg:text-2xl py-6">
+        <h3 className="h4 font-light text-white py-6">
           Sub-components
         </h3>
         <p className="text-white p-4">
