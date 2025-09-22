@@ -25,7 +25,7 @@ export default function WristbandVueSDK() {
         />
       </Link>
       <h1 className="h1 text-4xl font-light text-white sm:text-4xl pb-6">
-        A Vue.js Client Auth SDK
+        Vue.js Client Auth SDK
       </h1>
       <p className="text-white pb-6">
         This project is in progress – An open source Vue.js SDK for integrating
@@ -94,7 +94,7 @@ export default function WristbandVueSDK() {
           <div className="w-24 justify-self-end">
             <FontAwesomeIcon
               icon={["fas", "arrow-right-long"]}
-              size="lg"
+              size="4x"
               className="text-teal-100"
             />
           </div>

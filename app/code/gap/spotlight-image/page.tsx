@@ -5,7 +5,6 @@ export const metadata = {
 };
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Contact from "@/components/contact";
 import { GapInc } from "@/components/icons";
 import spotlightImage from "@/public/images/gap/spotlight-image.webp";
 import Code from "@/components/code";
@@ -160,7 +159,13 @@ export default function SpotlightImage() {
             The JSON payload here is an example of what the CMS provider sends
             to the website for this component.
           </p>
-          <div className="w-24 justify-self-end"><FontAwesomeIcon icon={["fas", "arrow-right-long"]} size="lg" className="text-teal-600" /></div>
+          <div className="w-24 justify-self-end">
+            <FontAwesomeIcon
+              icon={["fas", "arrow-right-long"]}
+              size="4x"
+              className="text-teal-600"
+            />
+          </div>
         </div>
         <div className="flex column content-start max-w-3xl overflow-hidden">
           <Code snippet={code} type="json" title="JSON payload:" />
@@ -188,42 +193,44 @@ export default function SpotlightImage() {
           title="Gap wireframe for Spotlight Image/Video React component"
         ></iframe>
       </div>
-      <div className="flex lg:my-20 max-lg:my-6 flex-col">
-        <h2 className="h2 text-3xl font-light text-white pb-6">
-          Component
-        </h2>
-        <p className="text-white p-4">
-          The component is built using React, receiving a JSON payload from a
-          CMS provider. The JSON is processed then rendered on the page. The
-          wireframes show optionally displaying image, headline, subheading, and
-          CTA link or button. The component can optionally display a video
-          instead of an image.
-        </p>
-        <h3 className="h4 font-light text-white py-6">
-          Image
-        </h3>
-        <p className="text-white p-4">
-          The image is responsive and will scale to the size of the container it
-          is in. The headline and subheading are optional. The layout can be
-          configured to display on the left, center, or right side of the image.
-          It can also be vertically aligned at the top, center, or bottom of the
-          container.
-        </p>
-        <h3 className="h4 font-light text-white py-6">Video</h3>
-        <p className="text-white p-4">
-          The component can optionally display a video instead of an image. The
-          video will automatically play when the component is displayed on the
-          page. The video can be configured to loop, or, play once then stop.
-        </p>
-        <h3 className="h4 font-light text-white py-6">
-          Sub-components
-        </h3>
-        <p className="text-white p-4">
-          There are several sub-components that make up the entire component,
-          including an image or video, Heading, Subheading, description, and CTA
-          link. It can be configured to also display a "details" link, that is
-          displayed in the lower right corner of the component.
-        </p>
+      <div className="flex flex-wrap gap-10 text-white">
+        
+          <h2 className="h2 font-light text-white pb-6">Component</h2>
+          <p className="text-white p-4">
+            The component is built using React, receiving a JSON payload from a
+            CMS provider. The JSON is processed then rendered on the page. The
+            wireframes show optionally displaying image, headline, subheading,
+            and CTA link or button. The component can optionally display a video
+            instead of an image.
+          </p>
+        <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+          <h3 className="h4 font-light text-white py-6">Image</h3>
+          <p className="text-white p-4">
+            The image is responsive and will scale to the size of the container
+            it is in. The headline and subheading are optional. The layout can
+            be configured to display on the left, center, or right side of the
+            image. It can also be vertically aligned at the top, center, or
+            bottom of the container.
+          </p>
+        </div>
+        <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+          <h3 className="h4 font-light text-white py-6">Video</h3>
+          <p className="text-white p-4">
+            The component can optionally display a video instead of an image.
+            The video will automatically play when the component is displayed on
+            the page. The video can be configured to loop, or, play once then
+            stop.
+          </p>
+        </div>
+        <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+          <h3 className="h4 font-light text-white py-6">Sub-components</h3>
+          <p className="text-white p-4">
+            There are several sub-components that make up the entire component,
+            including an image or video, Heading, Subheading, description, and
+            CTA link. It can be configured to also display a "details" link,
+            that is displayed in the lower right corner of the component.
+          </p>
+        </div>
       </div>
     </div>
   );
