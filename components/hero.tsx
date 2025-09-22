@@ -46,26 +46,51 @@ export default function Hero() {
         <div className="flex">
           {/* Section header */}
           <div className="flex justify-center items-center flex-col max-w-3xl mx-auto text-center pb-12 md:pb-16 min-h-screen">
-            <h1 className="h1 mb-4 hero-title lg:hero-title lg:text-glow" data-aos="fade-up">
-              Software Engineering
+            <h1
+              className="h1 mb-4 hero-title lg:hero-title lg:text-glow"
+              data-aos="fade-up"
+            >
+              Full-Stack
+              <br />
+              Software Engineer
             </h1>
             <p
               className="text-xl text-gray-400 mb-8"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <svg id="animated-borders" viewBox="0 0 1100 200" aria-label="Keith Nickas" style={{ width: '45vw', height: 'auto' }}>
+              <svg
+                id="animated-borders"
+                viewBox="0 0 1100 200"
+                aria-label="Keith Nickas"
+                style={{ width: "45vw", height: "auto" }}
+              >
                 <symbol id="s-text">
                   <text textAnchor="middle" x="50%" y="80%">
                     Keith Nickas
                   </text>
                 </symbol>
                 <g className="g-ants">
-                  <use xlinkHref="#s-text" className="text-copy-static lg:text-copy"></use>
-                  <use xlinkHref="#s-text" className="text-copy-static lg:text-copy"></use>
-                  <use xlinkHref="#s-text" className="text-copy-static lg:text-copy"></use>
-                  <use xlinkHref="#s-text" className="text-copy-static lg:text-copy"></use>
-                  <use xlinkHref="#s-text" className="text-copy-static lg:text-copy"></use>
+                  <use
+                    xlinkHref="#s-text"
+                    className="text-copy-static lg:text-copy"
+                  ></use>
+                  <use
+                    xlinkHref="#s-text"
+                    className="text-copy-static lg:text-copy"
+                  ></use>
+                  <use
+                    xlinkHref="#s-text"
+                    className="text-copy-static lg:text-copy"
+                  ></use>
+                  <use
+                    xlinkHref="#s-text"
+                    className="text-copy-static lg:text-copy"
+                  ></use>
+                  <use
+                    xlinkHref="#s-text"
+                    className="text-copy-static lg:text-copy"
+                  ></use>
                 </g>
               </svg>
             </p>
@@ -76,7 +101,9 @@ export default function Hero() {
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
-                  Collaborative, Proficient, Results-driven leader.
+                  Senior Software Engineer focused on efficiency, innovation,
+                  and collaboration—building better code, stronger teams, and
+                  solutions that last.
                 </div>
                 {/* <a
                   className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"

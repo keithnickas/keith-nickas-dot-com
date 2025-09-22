@@ -37,20 +37,20 @@ const ResumeComponent = (props: WorkExperience) => {
   };
 
   const buttonCollapseClassNames = classNames(
-    "group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-white [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary dark:[&:not([data-twe-collapse-collapsed])]:shadow-white/10",
+    "group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline dark:bg-body-dark dark:text-white [&:not([data-twe-collapse-collapsed])]:bg-white [&:not([data-twe-collapse-collapsed])]:text-primary [&:not([data-twe-collapse-collapsed])]:shadow-border-b dark:[&:not([data-twe-collapse-collapsed])]:bg-surface-dark dark:[&:not([data-twe-collapse-collapsed])]:text-primary dark:[&:not([data-twe-collapse-collapsed])]:shadow-white/10",
     {
       "text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:!text-primary-400 dark:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]":
-        activeElement === ("collapseOne" || "collapseTwo"),
-      "": activeElement !== ("collapseOne" || "collapseTwo"),
+        activeElement !== getCollapsed[activeElement],
+      "": activeElement === getCollapsed[activeElement],
     }
   );
   const svgCollapseClassNames = classNames(
     "-me-1 ms-auto h-5 w-5 shrink-0 transition-transform duration-200 ease-in-out group-data-[twe-collapse-collapsed]:me-0 group-data-[twe-collapse-collapsed]:rotate-0 motion-reduce:transition-none [&>svg]:h-6 [&>svg]:w-6",
     {
       "rotate-[-180deg] -mr-1":
-        activeElement === ("collapseOne" || "collapseTwo"),
+        activeElement,
       "rotate-0 fill-[#212529] dark:fill-white":
-        activeElement !== ("collapseOne" || "collapseTwo"),
+        !activeElement,
     }
   );
 
