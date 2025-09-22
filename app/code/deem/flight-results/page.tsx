@@ -1,5 +1,6 @@
 import Image from "next/image";
 import deemLogo from "@/public/images/deem/deem.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function FlightResults() {
   return (
@@ -15,9 +16,11 @@ export default function FlightResults() {
         <h1 className="h1 font-light text-white pb-6">
           Flight Results Prototype
         </h1>
-        <div className="flex flex-wrap sm:flex-nowrap gap-10 text-white mb-10">
-          <div className="flex md:basis-1/2 flex-wrap content-start animation-hover">
-            <h2 className="h3 font-light text-white py-6 text-gradient-hover from-[#ff7e5f] to-[#feb47b]">Requirements</h2>
+        <div className="flex flex-wrap gap-10 text-white mb-10">
+          <div className="flex md:flex-[0_0_380px] flex-wrap content-start animation-hover">
+            <h2 data-animate-hover className="h3 font-light text-white py-6 text-gradient-hover from-[#ff7e5f] to-[#feb47b]">
+              Requirements
+            </h2>
             <p className="text-white pb-4">
               Encompass all existing features of the flight application,
               specifically surrounding fare tiers, policy, dynamic filtering,
@@ -27,8 +30,10 @@ export default function FlightResults() {
               and screen sizes.
             </p>
           </div>
-          <div className="flex md:basis-1/2 flex-wrap content-start animation-hover">
-            <h2 className="h3 font-light text-white py-6 text-gradient-hover from-[#5f9cff] to-[#2b42d7]">Research</h2>
+          <div className="flex md:flex-[0_0_380px] flex-wrap content-start animation-hover">
+            <h2 data-animate-hover className="h3 font-light text-white py-6 text-gradient-hover from-[#5f9cff] to-[#2b42d7]">
+              Research
+            </h2>
             <p className="text-white pb-4">
               Reviewed Google Flights, American, Alaska, Southwest, Delta, and
               United airlines' customer-facing websites. Additionally, reviewed
@@ -36,22 +41,31 @@ export default function FlightResults() {
               others to gain further insight into the user experience.
             </p>
           </div>
-          <div className="flex md:basis-1/2 flex-wrap content-start animation-hover">
-            <h2 className="h3 font-light text-white py-6 text-gradient-hover from-[#cc5fff] to-[#952bd7]">Challenge</h2>
+          <div className="flex md:flex-[0_0_380px] flex-wrap content-start animation-hover">
+            <h2 data-animate-hover className="h3 font-light text-white py-6 text-gradient-hover from-[#cc5fff] to-[#952bd7]">
+              The Challenge
+            </h2>
             <p className="text-white pb-4">
               Provide an experience that surfaces pertinent information in a
               simplistic, cohesive manner which minimizes any potential
-              confusion and the intent of the information is to direct the user
+              confusion. The intent of each flight object is to direct the user
               to make the appropriate choices based on corporate and personal
               needs.
             </p>
           </div>
-          <div className="flex md:basis-1/2 flex-wrap content-start animation-hover">
-            <h2 className="h3 font-light text-white py-6 text-gradient-hover from-[#ff5ff2] to-[#d72bbd]">Other challenges</h2>
+          <div className="flex md:flex-[0_0_100%] flex-wrap content-start animation-hover">
+            <h2 data-animate-hover className="h3 font-light text-white py-6 text-gradient-hover from-[#ff5ff2] to-[#d72bbd]">
+              Complex Flights Use Case
+            </h2>
             <p className="text-white pb-4">
-              Display Complex flights where more than one connection, multiple
-              carriers, or flight tiers could be displayed within a single
-              flight object.
+              Displaying complex flights where more than one connection is
+              possible, it has multiple carriers, or flight tiers that deviate
+              from the selected or contracted fare needed to be displayed within
+              a single flight object. This required a robust approach to meet
+              the various scenarios that could arise for a given flight. The
+              solution was to present the user with a clear hierarchy of
+              information that is easy to digest, while providing an intuitive
+              way to display additional information as needed.
             </p>
           </div>
         </div>
@@ -73,55 +87,95 @@ export default function FlightResults() {
           Research cues came from Google, Delta and Alaska Airlines that
           inspired the final design.
         </p>
-        <div className="flex flex-col gap-10 text-white">
-          <div className="flex flex-wrap content-start">
-            <h3 className="h4 font-light text-white py-6">Filters UX</h3>
+        <div className="flex flex-wrap gap-10 text-white">
+          <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+            <h3 data-animate-hover className="h4 font-light text-white py-6 text-gradient-hover from-[#cc5fff] to-[#952bd7]">Filters UX</h3>
             <p className="text-white pb-4">
-              Add option for displaying fare tier, stops, flight times, and,
+              <span className="font-bold">Acceptance Criteria:</span> Add option for displaying fare tier, stops, flight times, and,
               other filter options that could be configured to be displayed
-              above the flight objects. The chevron icons ({`< / >`}) are used
-              for stepping of predefined values. The user also has the option to
+              above the flight objects. The chevron icons (
+              <span className="font-bold">{`< / >`}</span>) are used for
+              stepping of predefined values. The user also has the option to
               select the filter when hovering the filter title to expand the
-              available options.
-            </p>
-          </div>
-          <div className="flex flex-wrap content-start">
-            <h3 className="h4 font-light text-white py-6">Use Case</h3>
+              available options.</p>
             <p className="text-white pb-4">
-              When a user has selected a stepping, all the flight objects would
-              update to display the appropriate options. Let’s say the user has
-              used Flight Times, which is stepped (up or down), the flight
-              objects that match that stepping would be displayed and others not
-              matching would be hidden from view.
+              <span className="font-bold">User Experience:</span> When a user
+              hovers over the filter title, the filter options will expand to
+              display the available options. The user can then select the
+              desired option and the flight objects will update to match the
+              selected filter. The user can also use the chevron icons to step
+              through the predefined available options. The filters should float
+              as the user scrolls down the page, allowing for easy access to the
+              filter options at all times.
             </p>
           </div>
-          <div className="flex flex-wrap content-start">
-            <h3 className="h4 font-light text-white py-6">Flight Object UX</h3>
+          <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+            <h3 data-animate-hover className="h4 font-light text-white py-6 text-gradient-hover from-[#cc5fff] to-[#952bd7]">Flight Times UX</h3>
             <p className="text-white pb-4">
-              In this view you see informational icons, textual color treatments
-              such as a different arrival airport (orange) than originally
-              searched for, out of policy (red ban icon), extended layover
-              (warning icon) and related details would be indicated below.
+              <span className="font-bold">Acceptance Criteria:</span> When a user has selected a specific time
+              stepping (e.g. 06:00 - 08:00), the flight results will update to
+              display the available flight options.
+            </p>
+            <p className="text-white pb-4">
+              <span className="font-bold">User experience:</span> Let's assume the user is going to update the
+              flight time for departure. The user makes their changes and the
+              flight objects update to match the selected range while others not
+              matching would be hidden from view. The user can always reset the
+              filter to view all available flight options. They can also use the
+              chevron icons to step through the predefined available time ranges
+              that are from the original search results data.
             </p>
           </div>
-          <div className="flex flex-wrap content-start">
-            <h3 className="h4 font-light text-white py-6">Enhancements</h3>
+          <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
+            <h3 data-animate-hover className="h4 font-light text-white text-gradient-hover from-[#ff5ff2] to-[#d72bbd] py-6">
+              Complex Flights Resolution
+            </h3>
+            <p className="text-white pb-4">
+              To enhance the user experience, informational icons, textual color treatments are used to convey important details
+              such as a <span className="text-yellow-500">burnt yellow</span>{" "}
+              text style indicating an alternate arrival or departure airport
+              than originally selected, a red "out of policy" ban icon (
+              <FontAwesomeIcon
+                icon={["fas", "ban"]}
+                className="text-red-500"
+                size="sm"
+              />
+              ), and a red extended layover warning icon (
+              <FontAwesomeIcon
+                icon={["fas", "exclamation-triangle"]}
+                className="text-red-500"
+                size="sm"
+              />
+              ) to alert the user of potential issues with their flight selection.
+              These visual cues help users quickly identify important information
+              and make informed decisions when selecting their flights.
+            </p>
+          </div>
+          <div className="flex flex-wrap md:flex-[0_0_100%] content-start animation-hover">
+            <h3 data-animate-hover className="h4 font-light text-white py-6 text-gradient-hover from-[#5f9cff] to-[#2b42d7]">Enhancements</h3>
             <div className="text-white pb-4">
               Add an option for displaying fare tier “tab” upfront. Two styles
-              were developed based on input from stakeholders.
+              were developed based on input from stakeholders. The changes
+              presented:
               <ol className="list-decimal pl-8 py-4">
                 <li>
-                  To display the pertinent flight object info, and then
-                  displaying available flight tiers below.
+                  While displaying the pertinent flight info, organize the
+                  available flight tiers below the main flight info.
                 </li>
                 <li>
-                  Display flight tiers at the top by maintaining the existing
-                  experience.
+                  To maintain a version of the existing experience by displaying
+                  flight tiers at the top, but enhance the UX by the use of font
+                  color and font weight to be a visual indicator, thereby
+                  showing which fare tier best matches their search criteria, as
+                  well as the fare contract if applicable.
                 </li>
                 <li>
-                  Increase separation of the flight objects, while maintaining
-                  the ability to show more options to the user to reduce
-                  scrolling through multiple pages of results.
+                  Increase separation of the flight item results using
+                  whitespace, the flight item should be expandable to display
+                  additional information such as amenities, flight times,
+                  layover(s), while maintaining the ability to show more flight
+                  options to the user, reducing the need for scrolling through
+                  multiple page results.
                 </li>
               </ol>
             </div>

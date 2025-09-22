@@ -2,6 +2,7 @@ import "./css/style.css";
 import Script from "next/script";
 import { Inter, Architects_Daughter, Josefin_Slab } from "next/font/google";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 /* import all the icons in Free Solid */
 import { fas } from "@fortawesome/free-solid-svg-icons";
