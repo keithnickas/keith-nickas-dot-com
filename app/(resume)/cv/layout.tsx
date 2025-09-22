@@ -1,11 +1,9 @@
 "use client";
 import Footer from "@/components/ui/footer";
-import dynamic from 'next/dynamic';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-
-const Calendly = dynamic(() => import('../../../components/calendly'), { ssr: false });
+import Calendly from "@/components/calendly";
+import 'aos/dist/aos.css';
 
 export default function ResumeLayout({
   children,
@@ -13,7 +11,11 @@ export default function ResumeLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    AOS.init();
+    AOS.init({
+      disable: "phone",
+      once: true,
+    });
+    return () => AOS.refresh();
   }, []);
 
   return (

@@ -55,7 +55,7 @@ export default function FlightResults() {
           </div>
           <div className="flex md:flex-[0_0_100%] flex-wrap content-start animation-hover">
             <h2 data-animate-hover className="h3 font-light text-white py-6 text-gradient-hover from-[#ff5ff2] to-[#d72bbd]">
-              Complex Flights Use Case
+              Complex Flights
             </h2>
             <p className="text-white pb-4">
               Displaying complex flights where more than one connection is
@@ -82,7 +82,7 @@ export default function FlightResults() {
           src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FpI3hmMyRy36GTRTHXu9g9P%2FFlight-Redesign%3Fnode-id%3D0-1%26t%3DAqQ8WyFhGlA4Ae4g-1"
           allowFullScreen
         ></iframe>
-        <h2 className="h2 font-light text-white py-6">Component</h2>
+        <h2 className="h2 font-light text-white py-6">Research & Results</h2>
         <p className="text-white pb-6">
           Research cues came from Google, Delta and Alaska Airlines that
           inspired the final design.
@@ -128,7 +128,7 @@ export default function FlightResults() {
           </div>
           <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
             <h3 data-animate-hover className="h4 font-light text-white text-gradient-hover from-[#ff5ff2] to-[#d72bbd] py-6">
-              Complex Flights Resolution
+              Complex Flights
             </h3>
             <p className="text-white pb-4">
               To enhance the user experience, informational icons, textual color treatments are used to convey important details

@@ -8,7 +8,7 @@ export default function Gap() {
   return (
     <>
       <div className="max-w-7xl flex flex-col gap-x-1.5 py-24 px-4 max-lg:flex-wrap mx-auto">
-        <div className="w-full flex flex-col mb-6">
+        <div className="w-full flex flex-col mb-12">
           <div className="w-52">
             <GapInc fill="white" />
           </div>
@@ -22,11 +22,6 @@ export default function Gap() {
             />
             Athleta Spotlight Image/Video Component
           </Link>
-        </div>
-        <div className="w-full flex flex-col">
-          <p className="text-white lg:text-lg pb-6">
-            Additional content coming.
-          </p>
         </div>
       </div>
     </>

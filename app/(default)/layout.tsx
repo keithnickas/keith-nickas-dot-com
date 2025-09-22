@@ -5,10 +5,7 @@ import Script from "next/script";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import dynamic from "next/dynamic";
-const Calendly = dynamic(() => import("../../components/calendly"), {
-  ssr: false,
-});
+import { Calendly } from "@/components/calendly";
 import Footer from "@/components/ui/footer";
 
 export default function DefaultLayout({
@@ -21,7 +18,8 @@ export default function DefaultLayout({
       disable: "phone",
       once: true,
     });
-  });
+    return () => AOS.refresh();
+  }, []);
 
   return (
     <>

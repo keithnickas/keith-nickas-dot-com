@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GapInc } from "@/components/icons";
 import spotlightImage from "@/public/images/gap/spotlight-image.webp";
 import Code from "@/components/code";
+import Link from "next/link";
 
 const code = JSON.stringify(
   {
@@ -196,7 +197,7 @@ export default function SpotlightImage() {
       <div className="flex flex-wrap gap-10 text-white">
         
           <h2 className="h2 font-light text-white pb-6">Component</h2>
-          <p className="text-white p-4">
+          <p className="text-white pb-4">
             The component is built using React, receiving a JSON payload from a
             CMS provider. The JSON is processed then rendered on the page. The
             wireframes show optionally displaying image, headline, subheading,
@@ -205,7 +206,7 @@ export default function SpotlightImage() {
           </p>
         <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
           <h3 className="h4 font-light text-white py-6">Image</h3>
-          <p className="text-white p-4">
+          <p className="text-white pb-4">
             The image is responsive and will scale to the size of the container
             it is in. The headline and subheading are optional. The layout can
             be configured to display on the left, center, or right side of the
@@ -215,7 +216,7 @@ export default function SpotlightImage() {
         </div>
         <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
           <h3 className="h4 font-light text-white py-6">Video</h3>
-          <p className="text-white p-4">
+          <p className="text-white pb-4">
             The component can optionally display a video instead of an image.
             The video will automatically play when the component is displayed on
             the page. The video can be configured to loop, or, play once then
@@ -224,13 +225,22 @@ export default function SpotlightImage() {
         </div>
         <div className="flex flex-wrap md:flex-[0_0_380px] content-start animation-hover">
           <h3 className="h4 font-light text-white py-6">Sub-components</h3>
-          <p className="text-white p-4">
+          <p className="text-white pb-4">
             There are several sub-components that make up the entire component,
             including an image or video, Heading, Subheading, description, and
             CTA link. It can be configured to also display a "details" link,
             that is displayed in the lower right corner of the component.
           </p>
         </div>
+      </div>
+      <div className="flex flex-wrap gap-10 text-white pt-20">
+        <p className="text-white lg:text-lg pb-6">
+            View more on my github page{" "}
+            <Link href="https://github.com/keithnickas" className="hover:underline text-teal-100">
+              here
+            </Link>
+            .
+          </p>
       </div>
     </div>
   );

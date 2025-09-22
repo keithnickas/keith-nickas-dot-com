@@ -3,10 +3,7 @@
 import Footer from "@/components/ui/footer";
 import Breadcrumbs from "../../components/ui/breadcrumbs";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-const Calendly = dynamic(() => import("@/components/calendly"), {
-  ssr: false,
-});
+import { Calendly } from "@/components/calendly";
 
 export default function CodeLayout({
   children,

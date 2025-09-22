@@ -7,12 +7,11 @@ export default function ResumeHighlights({
 }: {
   highlights: Highlight[];
 }) {
-  const HighlightItems = () => {
-    if ((highlights && highlights.length === 0) || !highlights) return null;
-    return highlights.map((highlight, _) => (
-      <HighlightItem key={hash(highlight)} highlight={highlight} />
-    ));
-  };
+  if ((highlights && highlights.length === 0) || !highlights) return null;
+
+  const highlightItems = highlights.map((highlight, _) => (
+    <HighlightItem key={hash(highlight)} highlight={highlight} />
+  ));
 
   return (
     <section>
@@ -25,7 +24,7 @@ export default function ResumeHighlights({
 
           {/* Items */}
           <div className="grid gap-20">
-            <HighlightItems />
+            {highlightItems}
             {/* Download Button */}
             <div className="flex items-center md:grid md:grid-cols-12 md:gap-6">
               <div

@@ -8,7 +8,7 @@ export default function Wristband() {
       <div className="max-w-7xl py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
         <Link href="https://wristband.dev">
           <Image
-            className="h-auto pb-6"
+            className="h-auto pb-12"
             src={wristbandLogo}
             alt="Wristband, an Identity Access Management Platform for Developers, Small Businesses, with Enterprise Features"
             width={200}
@@ -27,14 +27,16 @@ export default function Wristband() {
               Vue.js Client Auth SDK
             </Link>
           </p>
-          <p className="text-white lg:text-lg pb-6">
-            Additional content coming. Please checkout my github{" "}
+        </div>
+        <div className="flex flex-wrap gap-10 text-white pt-20">
+        <p className="text-white lg:text-lg pb-6">
+            View more on my github page{" "}
             <Link href="https://github.com/keithnickas" className="hover:underline text-teal-100">
               here
             </Link>
             .
           </p>
-        </div>
+      </div>
       </div>
     </>
   );

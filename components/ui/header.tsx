@@ -31,7 +31,12 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="btn-sm text-black hover:text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-3 hover:btn-lift">
+                <Link href="/code" className="btn-sm font-medium text-white hover:border-teal-600 flex items-center transition duration-150 ease-in-out hover:btn-lift">
+                  Code
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="btn-sm text-black hover:text-white bg-teal-600 hover:border-teal-600 hover:bg-transparent ml-6 hover:btn-lift">
                   Contact
                 </Link>
               </li>

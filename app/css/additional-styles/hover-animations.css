@@ -19,6 +19,7 @@
 .animation-hover:hover [data-animate-hover] {
     animation-play-state: running;
     color: inherit;
+    font-size: min(2.5rem, 6vw);
     background: linear-gradient(90deg, var(--tw-gradient-stops));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

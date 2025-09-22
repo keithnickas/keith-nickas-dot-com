@@ -129,9 +129,9 @@ export default function WristbandVueSDK() {
           CTA link or button. The component can optionally display a video
           instead of an image.
         </p> */}
-        <h3 className="h4 text-xl font-light text-white lg:text-2xl py-6">
+        <h4 className="h4 text-xl font-light text-white lg:text-2xl py-6">
           Learn More
-        </h3>
+        </h4>
         <p className="text-white p-4">
           To learn more about the Wristband Vue.js SDK, including installation
           instructions, configuration options, and usage examples, please visit

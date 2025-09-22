@@ -1,18 +1,18 @@
 // Sourced from https://github.com/kcabading/nextjs-breadcrumb
 "use client";
-import React, { ReactNode, useCallback } from "react";
+import React, { ReactNode, use, useCallback } from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import hash from "object-hash";
 
 type BreadcrumbProps = {
-  homeElement: ReactNode;
-  separator: ReactNode;
-  containerClasses?: string;
-  listClasses?: string;
   activeClasses?: string;
   capitalizeLinks?: boolean;
+  containerClasses?: string;
+  homeElement: ReactNode;
+  listClasses?: string;
+  separator: ReactNode;
 };
 
 const LINKS: Record<string, string> = {
@@ -23,12 +23,12 @@ const LINKS: Record<string, string> = {
 };
 
 const Breadcrumbs = ({
-  homeElement,
-  separator,
-  containerClasses,
-  listClasses,
   activeClasses,
   capitalizeLinks,
+  containerClasses,
+  homeElement,
+  listClasses,
+  separator,
 }: BreadcrumbProps) => {
   const paths = usePathname();
   const router = useRouter();
@@ -45,14 +45,14 @@ const Breadcrumbs = ({
     let itemLink = capitalizeLinks
       ? linkName[0].toUpperCase() + linkName.slice(1, linkName.length)
       : linkName;
-    return !href.match(/((code\/$)|(code$))/g) ? (
+    return (
       <React.Fragment key={hash({link, linkName, index})}>
         <li className={itemClasses}>
           <Link href={href} className="hover:underline truncate md:overflow">{itemLink}</Link>
           {pathNames.length !== index + 1 && separator}
         </li>
       </React.Fragment>
-    ) : null;
+    );
   });
 
   return (
@@ -61,7 +61,7 @@ const Breadcrumbs = ({
         <ul className={containerClasses}>
           <li className={listClasses}>
             <Link href={"/"}>{homeElement}</Link>
-            {hasPathNames && separator}
+            {hasPathNames && <>{separator}</>}
           </li>
           {breadcrumbs}
         </ul>
