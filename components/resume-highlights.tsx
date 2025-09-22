@@ -33,7 +33,7 @@ export default function ResumeHighlights({
                 data-aos="fade-right"
               >
                 <a
-                  href="https://1drv.ms/w/s!AlNLwqrOUfGHjQ7VJVqkT-lHyXSd?e=SivKyi"
+                  href="https://1drv.ms/w/c/87f151ceaac24b53/EYzVM12Z6Z1ImwPynmR-NaABBMwo-zFx4H5NSP6TgnRCtQ"
                   className="p-4 bg-teal-400 text-white border-transparent border hover:bg-transparent hover:border-teal-400 hover:border hover:btn-lift"
                   type="button"
                   id="download-resume"
