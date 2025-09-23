@@ -1,10 +1,15 @@
 import "./css/style.css";
 import Script from "next/script";
 import { Inter, Architects_Daughter, Josefin_Slab } from "next/font/google";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
+/* import all the icons in Free Solid */
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+library.add(fas);
 
 import Header from "@/components/ui/header";
-import { AnimatedBackground } from "@/components/animated-background";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,19 +47,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${architects_daughter.variable} ${josefinSlab.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}
       >
-        <div className="flex flex-col min-h-screen overflow-hidden">
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <Breadcrumbs
-            homeElement={"Home"}
-            separator={<span> &gt; </span>}
-            activeClasses="text-white"
-            containerClasses="flex"
-            listClasses="hover:underline mx-2 font-bold"
-            capitalizeLinks
-          />
           {children}
         </div>
-        <AnimatedBackground />
+        <div id="modal-root" />
         <Script
           type="text/javascript"
           src="https://www.google.com/recaptcha/api.js"

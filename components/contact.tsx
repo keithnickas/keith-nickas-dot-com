@@ -1,7 +1,6 @@
 "use client";
 
-import dynamic from 'next/dynamic';
-const Calendly = dynamic(() => import('./calendly'), { ssr: false });
+import { CalendlyInline } from "./calendly";
 
 export default function Newsletter() {
   return (
@@ -17,7 +16,7 @@ export default function Newsletter() {
             <div className="mb-6 lg:mr-16 lg:mb-0 text-left lg:text-left lg:w-1/2">
               <h1 className="h3 text-white mb-2">Schedule a chat</h1>
             </div>
-            <Calendly />
+            <CalendlyInline />
           </div>
         </div>
       </div>

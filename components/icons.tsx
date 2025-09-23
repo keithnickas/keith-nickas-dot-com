@@ -12,17 +12,25 @@ export interface FeatureIcons {
   viewBox?: SVGAttributes<SVGAElement>["viewBox"];
 }
 
-export const ListIcon = ({position}: {position?: "left" | "right"}) => (
-  <div className={`${position === "left" ? "justify-start" : position === "right" ? "justify-end" : ""}`}>
-    <svg
-      className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
-      viewBox="0 0 12 12"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-    </svg>
-  </div>
-);
+export const ListIcon = ({ position }: { position?: "left" | "right" }) => {
+  let justifyClass = "";
+  if (position === "left") {
+    justifyClass = "justify-start";
+  } else if (position === "right") {
+    justifyClass = "justify-end";
+  }
+  return (
+    <div className={justifyClass}>
+      <svg
+        className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
+        viewBox="0 0 12 12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+      </svg>
+    </div>
+  );
+};
 
 export const Star2Lines = ({
   backgroundColor,
@@ -328,7 +336,17 @@ export const ContinuousIntegration = ({
   </svg>
 );
 
-export const GapInc = ({fill}: {fill?: string}) => (
+export const GapInc = ({
+  fill,
+  className,
+  width,
+  height,
+}: {
+  fill?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+}) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -336,6 +354,9 @@ export const GapInc = ({fill}: {fill?: string}) => (
     y="0px"
     viewBox="0 0 109 31"
     aria-label="Gap, Inc."
+    className={className}
+    width={width || undefined}
+    height={height || undefined}
   >
     <g fill={fill || "#0a0b09"} fillRule="evenodd">
       <path d="m106.346121 18.7053041c-.975645 0-1.798056.7785758-1.798056 1.7446026 0 .9686424.822411 1.7886317 1.798056 1.7886317.986273 0 1.775469-.8199893 1.775469-1.7886317 0-.9660268-.789196-1.7446026-1.775469-1.7446026" />
@@ -349,4 +370,46 @@ export const GapInc = ({fill}: {fill?: string}) => (
   </svg>
 );
 
-export const Deem = () => (<Image src={deemLogo} alt="Deem" width={100} height={30} />);
+export const Deem = ({
+  className,
+  width,
+  height,
+}: {
+  className?: string;
+  width?: number;
+  height?: number;
+}) => (
+  <Image
+    src={deemLogo}
+    alt="Deem"
+    width={width || 100}
+    height={height || 30}
+    className={className}
+  />
+);
+
+export const GitHub = ({
+  fill,
+  className,
+  width = 100,
+  height = "auto",
+}: {
+  className?: string;
+  fill?: string;
+  width?: number | string;
+  height?: number | string;
+}) => (
+  <svg
+    className={`${className} fill-current`}
+    viewBox="0 0 367.4 90"
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    aria-label="Keith Nickas' GitHub"
+  >
+    <g fill={fill || "#fff"}>
+      <path d="m46.1 0c-25.5 0-46.1 20.6-46.1 46.1 0 20.4 13.2 37.7 31.5 43.8 2.3.4 3.2-1 3.2-2.2 0-1.1-.1-4.7-.1-8.6-11.6 2.1-14.6-2.8-15.5-5.4-.5-1.3-2.8-5.4-4.7-6.5-1.6-.9-3.9-3-.1-3.1 3.6-.1 6.2 3.3 7.1 4.7 4.2 7 10.8 5 13.4 3.8.4-3 1.6-5 2.9-6.2-10.3-1.2-21-5.1-21-22.8 0-5 1.8-9.2 4.7-12.4-.5-1.2-2.1-5.9.5-12.2 0 0 3.9-1.2 12.7 4.7 3.7-1 7.6-1.6 11.5-1.6s7.8.5 11.5 1.6c8.8-6 12.7-4.7 12.7-4.7 2.5 6.3.9 11.1.5 12.2 2.9 3.2 4.7 7.3 4.7 12.4 0 17.7-10.8 21.6-21.1 22.8 1.7 1.4 3.1 4.2 3.1 8.5 0 6.2-.1 11.1-.1 12.7 0 1.2.9 2.7 3.2 2.2 18.2-6.1 31.4-23.4 31.4-43.8.3-25.4-20.4-46-45.9-46z"></path>
+      <path d="m221.6 67.1h-.1zm0 0c-.5 0-1.8.3-3.2.3-4.4 0-5.9-2-5.9-4.6v-17.5h8.9c.5 0 .9-.4.9-1.1v-9.5c0-.5-.4-.9-.9-.9h-8.9v-11.7c0-.4-.3-.7-.8-.7h-12c-.5 0-.8.3-.8.7v12.1s-6.1 1.5-6.5 1.6-.7.5-.7.9v7.6c0 .6.4 1.1.9 1.1h6.2v18.3c0 13.6 9.5 15 16 15 3 0 6.5-.9 7.1-1.2.3-.1.5-.5.5-.9v-8.4c.1-.6-.3-1-.8-1.1zm132.2-12.2c0-10.1-4.1-11.4-8.4-11-3.3.2-6 1.9-6 1.9v19.6s2.7 1.9 6.8 2c5.8.2 7.6-1.9 7.6-12.5zm13.6-.9c0 19.1-6.2 24.6-17 24.6-9.1 0-14.1-4.6-14.1-4.6s-.2 2.6-.5 2.9c-.2.3-.4.4-.8.4h-8.3c-.6 0-1.1-.4-1.1-.9l.1-62c0-.5.4-.9.9-.9h11.9c.5 0 .9.4.9.9l-.1 20.9s4.6-3 11.3-3h.1c6.8-0 16.7 2.5 16.7 21.7zm-48.7-20.2h-11.7c-.6 0-.9.4-.9 1.1v30.3s-3.1 2.2-7.3 2.2-5.4-1.9-5.4-6.1v-26.5c0-.5-.4-.9-.9-.9h-11.9c-.5 0-.9.4-.9.9v28.5c0 12.3 6.9 15.3 16.3 15.3 7.8 0 14.1-4.3 14.1-4.3s.3 2.2.4 2.5.5.5.9.5h7.5c.6 0 .9-.4.9-.9l.1-41.7c-.1-.4-.6-.9-1.2-.9zm-132.2 0h-11.9c-.5 0-.9.5-.9 1.1v40.9c0 1.1.7 1.5 1.7 1.5h10.7c1.1 0 1.4-.5 1.4-1.5v-41.1c0-.5-.5-.9-1-.9zm-5.8-18.9c-4.3 0-7.7 3.4-7.7 7.7s3.4 7.7 7.7 7.7c4.2 0 7.6-3.4 7.6-7.7s-3.4-7.7-7.6-7.7zm92-1.4h-11.8c-.5 0-.9.4-.9.9v22.8h-18.5v-22.7c0-.5-.4-.9-.9-.9h-11.9c-.5 0-.9.4-.9.9v62c0 .5.5.9.9.9h11.9c.5 0 .9-.4.9-.9v-26.6h18.5l-.1 26.5c0 .5.4.9.9.9h11.9c.5 0 .9-.4.9-.9v-62c0-.4-.4-.9-.9-.9zm-105.3 27.5v32c0 .2-.1.6-.3.7 0 0-7 5-18.5 5-13.9 0-30.3-4.4-30.3-33 0-28.7 14.4-34.6 28.4-34.5 12.2 0 17.1 2.7 17.8 3.2.2.3.3.5.3.8l-2.3 9.9c0 .5-.5 1.1-1.1.9-2-.6-5-1.8-12.1-1.8-8.2 0-17 2.3-17 20.8s8.4 20.6 14.4 20.6c5.1 0 7-.6 7-.6v-12.8h-8.2c-.6 0-1.1-.4-1.1-.9v-10.3c0-.5.4-.9 1.1-.9h20.9c.6-.1 1 .4 1 .9z"></path>
+    </g>
+  </svg>
+);

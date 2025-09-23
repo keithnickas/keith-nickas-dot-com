@@ -2,7 +2,6 @@ import React from "react";
 import { Block } from "./block";
 import {
   ContinuousIntegration,
-  GlobeWithLines,
   HeadIcon,
   Notes,
   SpeechBubbleWithCog,
@@ -16,23 +15,29 @@ export default function Features() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4 feature-title">Who am I?</h2>
+          <div
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
+            data-aos-offset="0"
+            className="max-w-3xl mx-auto text-center pb-12 md:pb-20"
+          >
+            <h2 className="h2 mb-4 feature-title text-white">Who am I?</h2>
             <p className="text-xl text-gray-400 pb-5">
-              Results-driven Senior Software Engineer with a proven track record
-              of leading end-to-end software development processes. Skilled in
-              system maintenance and upgrades, third-party integrations, and
-              cross-functional collaboration. Adept at converting legacy
-              components to modern technologies, improving code quality, and
-              driving innovation. Experienced in cloud migration and technical
-              documentation.
+              As a senior software engineer I'm focused on way to push
+              efficiency, innovation, and enhance collaboration. My experience
+              spans full-stack development, system modernization, and cloud
+              migration, with a track record of reducing project turnaround
+              time, cutting development costs, and improving code quality. I
+              tend to be closely worth with stakeholders and teams to provide
+              scalable deliverables to raise internal and external satisfaction.
             </p>
             <p className="text-xl text-gray-400 pb-5">
-              My day-to-day can vary, but it typically can encompass writing
-              Technical Design Documents, delivering a unified codebase for UI
-              components, development and implementation of new technologies and
-              features, and leading mission critical projects. Below are just a
-              few highlights of my skill set.
+              My average day could consist of writing TDDs, develop and
+              integrate new features, bug fixes, code optimizations, and lead
+              mission-critical projects. Whether modernizing legacy systems,
+              mentoring developers, or driving adoption of new technologies, my
+              goal is the same—build solutions that last and teams that thrive.
             </p>
           </div>
 
@@ -47,8 +52,8 @@ export default function Features() {
               icon={<Star2Lines invert backgroundColor="#164d37" />}
             >
               <p className="text-lg text-gray-400 text-center">
-                Javascript, Typescript, React, NextJS, Node, Webpack, Babel, Playwright,
-                Jest
+                Javascript, Typescript, React, NextJS, Node, Webpack, Babel,
+                Playwright, Jest
               </p>
             </Block>
 
@@ -65,7 +70,13 @@ export default function Features() {
             {/* 3rd item */}
             <Block
               title="CI/CD"
-              icon={<ContinuousIntegration backgroundColor="#164d37" stroke="#fff" fill="#fff"/>}
+              icon={
+                <ContinuousIntegration
+                  backgroundColor="#164d37"
+                  stroke="#fff"
+                  fill="#fff"
+                />
+              }
             >
               <p className="text-lg text-gray-400 text-center">
                 Jenkins, Codefresh, Bitbucket, Github, Gitlab, Azure Cloud,
@@ -78,7 +89,8 @@ export default function Features() {
               icon={<Notes backgroundColor="#164d37" />}
             >
               <p className="text-lg text-gray-400 text-center">
-                Agile/Scrum, Project Management, Team Leadership, Collaboration, and Mentorship
+                Agile/Scrum, Project Management, Team Leadership, Collaboration,
+                and Mentorship
               </p>
             </Block>
             {/* 5th item */}
