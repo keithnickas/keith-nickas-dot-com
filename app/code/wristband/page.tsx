@@ -24,7 +24,15 @@ export default function Wristband() {
               href="/code/wristband/vue-sdk"
               className="btn-sm md:btn-lg text-black border-transparent hover:text-white hover:border bg-teal-600 hover:bg-teal-600 hover:bg-transparent hover:border-teal-600 hover:btn-lift"
             >
-              Vue.js Client Auth SDK
+              Vue.js Client Auth SDK Overview
+            </Link>
+          </p>
+          <p className="text-white lg:text-lg pb-6">
+            <Link
+              href="/code/wristband/vue-sdk/technical-design"
+              className="btn-sm md:btn-lg text-black border-transparent hover:text-white hover:border bg-teal-600 hover:bg-teal-600 hover:bg-transparent hover:border-teal-600 hover:btn-lift"
+            >
+              Vue.js SDK TDD 
             </Link>
           </p>
         </div>

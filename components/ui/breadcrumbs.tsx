@@ -20,6 +20,7 @@ const LINKS: Record<string, string> = {
   "flight-results": "Flight Results Prototype",
   "spotlight-image": "Spotlight Image and Video",
   "vue-sdk": "Vue SDK",
+  "technical-design": "Technical Design Document",
 };
 
 const Breadcrumbs = ({

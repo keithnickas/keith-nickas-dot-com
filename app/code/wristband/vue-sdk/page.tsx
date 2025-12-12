@@ -99,7 +99,7 @@ export default function WristbandVueSDK() {
             />
           </div>
         </div>
-        <div className="flex column content-start overflow-hidden">
+        <div className="flex column content-start">
           <Code snippet={wristbandAppConfig} type="typescript" />
         </div>
       </div>

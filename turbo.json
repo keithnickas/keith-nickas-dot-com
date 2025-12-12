@@ -1,0 +1,23 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
+    },
+    "dev": {
+      "cache": false
+    },
+    "start": {},
+    "lint": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    }
+  },
+  "globalDependencies": {
+    "app": [],
+    "server": [],
+    "shared": []
+  }
+}
