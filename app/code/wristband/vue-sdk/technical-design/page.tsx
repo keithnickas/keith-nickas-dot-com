@@ -399,6 +399,7 @@ async function getToken(): Promise<string> {
           4. Data Flow Diagrams
         </h2>
         <details
+        // @ts-ignore
           name="initial-session-load"
           open={false}
           className="cursor-pointer"
@@ -419,6 +420,7 @@ async function getToken(): Promise<string> {
         </details>
 
         <details
+        // @ts-ignore
           name="initial-session-load"
           open={false}
           className="cursor-pointer"
@@ -439,6 +441,7 @@ async function getToken(): Promise<string> {
         </details>
 
         <details
+        // @ts-ignore
           name="initial-session-load"
           open={false}
           className="cursor-pointer"
