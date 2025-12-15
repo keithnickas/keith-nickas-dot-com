@@ -285,10 +285,10 @@
     color: #cfcfcf;
   }
 
-  & pre:not(.hljs) {
+  /* & pre:not(.hljs) {
     padding: 23px;
     line-height: 19px;
-  }
+  } */
 
   & blockquote {
     background: rgba(127, 127, 127, 0.1);

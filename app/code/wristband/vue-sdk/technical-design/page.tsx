@@ -1,9 +1,8 @@
-"use client"
 import Image from "next/image"
 import Link from "next/link"
 import wristbandLogo from "@/public/images/wristband/wristband_transparent_logo.svg"
-import Code from "@/components/code"
 import Diagram from "@/components/diagram"
+import { Code } from "@/components/code"
 import {
   architectureDiagram,
   InitialSessionLoadDiagram,
@@ -42,7 +41,7 @@ export default function WristbandVueSDKOverview() {
         <p>
           <Code
             snippet="@wristband/vue-client-auth"
-            type="node-repl"
+            type="java"
             useInline
           />{" "}
           is a lightweight, type-safe Vue 3 SDK that bridges frontend and
@@ -98,8 +97,6 @@ export default function WristbandVueSDKOverview() {
           <Diagram
             id="vue-component-pinia-state"
             className="max-w-3xl m-auto p-4"
-            onError={(error: any) => error}
-            suppressErrorRendering={false}
           >
             {architectureDiagram}
           </Diagram>
@@ -241,8 +238,8 @@ export default function WristbandVueSDKOverview() {
           </li>
           <li>
             <span className="font-bold">Type Narrowing:</span> Composables can
-            specialize types (e.g.,
-            <code>useWristbandSession&lt;TSessionData&gt;</code>)
+            specialize types (e.g., {" "}
+            <Code snippet="useWristbandSession&lt;TSessionData&gt;" type="typescript" useInline></Code>)
           </li>
         </ul>
         <p>
@@ -330,8 +327,8 @@ async function getToken(): Promise<string> {
           </li>
           <li>
             <span className="font-bold">Transport:</span> Avoid token
-            serialization - read directly from
-            <code>document.cookie</code>
+            serialization - read directly from {" "}
+            <Code snippet="document.cookie()" type="javascript" useInline/>
           </li>
           <li>
             <span className="font-bold">Flexibility:</span> Configurable
@@ -412,8 +409,6 @@ async function getToken(): Promise<string> {
           <Diagram
             id="initial-session-load-diagram"
             className="max-w-3xl m-auto p-4"
-            onError={(error: any) => error}
-            suppressErrorRendering={false}
           >
             {InitialSessionLoadDiagram}
           </Diagram>
@@ -433,8 +428,6 @@ async function getToken(): Promise<string> {
           <Diagram
             id="token-acquisition-diagram"
             className="max-w-3xl m-auto p-4"
-            onError={(error: any) => error}
-            suppressErrorRendering={false}
           >
             {tokenAcquisitionDiagram}
           </Diagram>
@@ -454,8 +447,6 @@ async function getToken(): Promise<string> {
           <Diagram
             id="session-state-diagram"
             className="max-w-3xl m-auto p-4"
-            onError={(error: any) => error}
-            suppressErrorRendering={false}
           >
             {sessionStateDiagram}
           </Diagram>
