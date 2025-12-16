@@ -49,7 +49,6 @@ export default function Code() {
               alt: "GitHub",
             }}
           />
-          <div className="text-white"> Additional content coming soon! </div>
         </div>
       </div>
     </>

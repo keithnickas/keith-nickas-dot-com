@@ -1,6 +1,5 @@
-// Sourced from https://github.com/kcabading/nextjs-breadcrumb
 "use client";
-import React, { ReactNode, use, useCallback } from "react";
+import React, { ReactNode, useCallback } from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -12,7 +11,7 @@ type BreadcrumbProps = {
   containerClasses?: string;
   homeElement: ReactNode;
   listClasses?: string;
-  separator: ReactNode;
+  separator?: ReactNode;
 };
 
 const LINKS: Record<string, string> = {
@@ -57,7 +56,7 @@ const Breadcrumbs = ({
   });
 
   return (
-    <div className="flex mt-16 p-5 bg-teal-900 justify-between">
+    <div className="hidden md:flex mt-16 p-5 bg-teal-900 justify-between">
       <div className="flex container mx-auto justify-between">
         <ul className={containerClasses}>
           <li className={listClasses}>

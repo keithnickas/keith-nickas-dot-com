@@ -1,7 +1,26 @@
-'use client'
+"use client"
 
-import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useRef, useEffect } from "react"
+import Link from "next/link"
+
+const LINKS: Record<string, { path: string; name: string }> = {
+  home: { path: "/", name: "Home" },
+  cv: { path: "/cv", name: "Resumé" },
+  flightResults: {
+    path: "/code/deem/flight-results",
+    name: "Flight Results Prototype",
+  },
+  spotlightImage: {
+    path: "/code/gap/spotlight-image",
+    name: "Spotlight Image and Video",
+  },
+  vuesdk: { path: "/code/wristband/vue-sdk", name: "Vue.js Client Auth SDK Overview" },
+  technicalDesign: {
+    path: "/code/wristband/vue-sdk/technical-design",
+    name: "Vue.js Auth SDK TDD",
+  },
+  contact: { path: "/contact", name: "Contact" },
+}
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -12,30 +31,43 @@ export default function MobileMenu() {
   // close the mobile menu on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: EventTarget | null }): void => {
-      if (!mobileNav.current || !trigger.current) return;
-      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node)) return;
+      if (!mobileNav.current || !trigger.current) return
+      if (
+        !mobileNavOpen ||
+        mobileNav.current.contains(target as Node) ||
+        trigger.current.contains(target as Node)
+      )
+        return
       setMobileNavOpen(false)
-    };
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
+    }
+    document.addEventListener("click", clickHandler)
+    return () => document.removeEventListener("click", clickHandler)
   })
 
   // close the mobile menu if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!mobileNavOpen || keyCode !== 27) return;
+      if (!mobileNavOpen || keyCode !== 27) return
       setMobileNavOpen(false)
-    };
-    document.addEventListener('keydown', keyHandler)
-    return () => document.removeEventListener('keydown', keyHandler)
+    }
+    document.addEventListener("keydown", keyHandler)
+    return () => document.removeEventListener("keydown", keyHandler)
   })
+  const navLinks = Object.entries(LINKS).map(([, link]) => (
+    <li
+      key={link.path}
+      className="flex font-medium w-full text-teal-300 hover:text-gray-200 py-2 justify-center"
+    >
+      {<Link href={link.path} onClick={() => setMobileNavOpen(false)}>{link.name}</Link>}
+    </li>
+  ))
 
   return (
     <div className="md:hidden">
       {/* Hamburger button */}
       <button
         ref={trigger}
-        className={`hamburger ${mobileNavOpen && 'active'}`}
+        className={`hamburger ${mobileNavOpen && "active"}`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -48,7 +80,7 @@ export default function MobileMenu() {
         >
           <rect y="4" width="24" height="2" rx="1" />
           <rect y="11" width="24" height="2" rx="1" />
-          <rect y="18" width="24" height="2" rx="1" />
+          <rect y="11" width="24" height="2" rx="1" />
         </svg>
       </button>
 
@@ -56,11 +88,16 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
-        style={mobileNavOpen ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
+        className="absolute z-20 left-0 w-full px-4 sm:p-6 overflow-hidden transition-all duration-300 ease-in-out"
+        style={
+          mobileNavOpen
+            ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 }
+            : { maxHeight: 0, opacity: 0.8 }
+        }
       >
         <ul className="bg-gray-800 px-4 py-2">
-          <li>
+          {navLinks}
+          {/*  <li>
             <Link href="/signin" className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center" onClick={() => setMobileNavOpen(false)}>
               Sign in
             </Link>
@@ -72,7 +109,7 @@ export default function MobileMenu() {
             >
               Sign up
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

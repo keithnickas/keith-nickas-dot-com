@@ -2,6 +2,7 @@ import { BundledLanguage, BundledTheme } from "shiki"
 import { transformToHighlight, transformToInlineHighlight } from "./helpers/highlight-code-to-html"
 
 type CodeProps = {
+  cssOverrides?: string
   snippet: string
   title?: string
   theme?: BundledTheme
@@ -10,6 +11,7 @@ type CodeProps = {
 }
 
 export async function Code({
+  cssOverrides,
   snippet,
   title,
   type = "javascript",
@@ -25,7 +27,7 @@ export async function Code({
   return useInline ? (
     inlineCode
   ) : (
-    <div className="relative bg-black max-w-4xl p-4 rounded-md border border-gray-700 mb-8">
+    <div className={`relative bg-black w-full md:max-w-4xl p-4 rounded-md border border-gray-700 mb-8 ${cssOverrides ?? ''}`}>
       <div className="static text-white">
         <div className="flex justify-between items-center mb-2">
           <span className="text-gray-400">{title || "Code:"}</span>

@@ -91,15 +91,15 @@ export default function WristbandVueSDK() {
             state is properly managed and that the user session is fetched upon
             initialization.
           </p>
-          <div className="w-24 justify-self-end">
+          <div className="w-24 inline-grid md:inline-block justify-self-center md:justify-self-end">
             <FontAwesomeIcon
               icon={["fas", "arrow-right-long"]}
               size="4x"
-              className="text-teal-100"
+              className="rotate-90 md:rotate-0 text-teal-100"
             />
           </div>
         </div>
-        <div className="flex column content-start">
+        <div className="flex column content-start max-w-3xl overflow-hidden">
           <Code snippet={wristbandAppConfig} type="typescript" />
         </div>
       </div>

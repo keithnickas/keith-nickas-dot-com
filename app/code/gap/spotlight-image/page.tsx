@@ -160,11 +160,11 @@ export default function SpotlightImage() {
             The JSON payload here is an example of what the CMS provider sends
             to the website for this component.
           </p>
-          <div className="w-24 justify-self-end">
+          <div className="w-24 inline-grid md:inline-block justify-self-center md:justify-self-end">
             <FontAwesomeIcon
               icon={["fas", "arrow-right-long"]}
               size="4x"
-              className="text-teal-600"
+              className="rotate-90 md:rotate-0 text-teal-600"
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-// import MobileMenu from './mobile-menu'
+import MobileMenu from './mobile-menu'
 import headshotAvatar from '@/public/images/headshot-avatar.webp'
 import HeaderTitle from '../header-title'
 
@@ -48,7 +48,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* <MobileMenu /> */}
+          <MobileMenu />
 
         </div>
       </div>
