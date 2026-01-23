@@ -5,7 +5,6 @@ import {projects} from "@/data/projects"
 
 type PageLayoutProps = {
   children: React.ReactNode
-  darkMode: boolean
   showBackButton?: boolean
 }
 
