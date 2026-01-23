@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, Architects_Daughter, Josefin_Slab } from "next/font/google";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /* import all the icons in Free Solid */
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -57,6 +58,7 @@ export default function RootLayout({
           src="https://www.google.com/recaptcha/api.js"
           async
         />
+        <SpeedInsights />
       </body>
     </html>
   );
