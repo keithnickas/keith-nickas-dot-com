@@ -4,7 +4,26 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './utils/**/*.{js,ts,jsx,tsx}',
     './node_modules/tw-elements-react/dist/js/**/*.js',
+  ],
+  // Ensure blob-related classes are included even if files move
+  safelist: [
+    'absolute',
+    'inset-0',
+    'opacity-20',
+    'rounded-full',
+    'mix-blend-multiply',
+    'blur-3xl',
+    'bg-cyan-500',
+    'bg-purple-500',
+    'bg-pink-500',
+    'from-blue-500',
+    'to-cyan-500',
+    'from-purple-500',
+    'to-pink-500',
+    'from-orange-500',
+    'to-red-500',
   ],
   theme: {
     extend: {
@@ -76,11 +95,14 @@ module.exports = {
       scale: {
         '98': '.98'
       },
+      blur: {
+        '3xl': '64px',
+      }
     },
   },
   plugins: [
     require("tw-elements-react/dist/plugin.cjs"),
     require('@tailwindcss/forms'),
   ],
-  darkMode: "class",
+  darkMode: "media",
 }

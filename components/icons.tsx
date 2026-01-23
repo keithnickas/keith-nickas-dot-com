@@ -1,23 +1,23 @@
-import { SVGAttributes } from "react";
-import Image from "next/image";
-import deemLogo from "@/public/images/deem/deem.svg";
+import { SVGAttributes } from "react"
+import Image from "next/image"
+import deemLogo from "@/public/images/deem/deem.svg"
 
 export interface FeatureIcons {
-  backgroundColor?: SVGAttributes<SVGAElement>["fill"];
-  fill?: SVGAttributes<SVGAElement>["fill"];
-  fillRule?: SVGAttributes<SVGAElement>["fillRule"];
-  invert?: boolean;
-  stroke?: SVGAttributes<SVGAElement>["stroke"];
-  strokeWidth?: SVGAttributes<SVGAElement>["strokeWidth"];
-  viewBox?: SVGAttributes<SVGAElement>["viewBox"];
+  backgroundColor?: SVGAttributes<SVGAElement>["fill"]
+  fill?: SVGAttributes<SVGAElement>["fill"]
+  fillRule?: SVGAttributes<SVGAElement>["fillRule"]
+  invert?: boolean
+  stroke?: SVGAttributes<SVGAElement>["stroke"]
+  strokeWidth?: SVGAttributes<SVGAElement>["strokeWidth"]
+  viewBox?: SVGAttributes<SVGAElement>["viewBox"]
 }
 
 export const ListIcon = ({ position }: { position?: "left" | "right" }) => {
-  let justifyClass = "";
+  let justifyClass = ""
   if (position === "left") {
-    justifyClass = "justify-start";
+    justifyClass = "justify-start"
   } else if (position === "right") {
-    justifyClass = "justify-end";
+    justifyClass = "justify-end"
   }
   return (
     <div className={justifyClass}>
@@ -29,8 +29,8 @@ export const ListIcon = ({ position }: { position?: "left" | "right" }) => {
         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
       </svg>
     </div>
-  );
-};
+  )
+}
 
 export const Star2Lines = ({
   backgroundColor,
@@ -70,7 +70,7 @@ export const Star2Lines = ({
       stroke={stroke || (invert ? "white" : "black")}
     />
   </svg>
-);
+)
 
 export const Notes = ({
   backgroundColor,
@@ -106,7 +106,7 @@ export const Notes = ({
       strokeLinecap="square"
     />
   </svg>
-);
+)
 
 export const GlobeWithLines = ({
   backgroundColor,
@@ -150,7 +150,7 @@ export const GlobeWithLines = ({
       />
     </g>
   </svg>
-);
+)
 
 export const HeadIcon = ({
   backgroundColor,
@@ -185,7 +185,7 @@ export const HeadIcon = ({
       <circle className="stroke-current text-purple-300" cx="13" cy="9" r="3" />
     </g>
   </svg>
-);
+)
 
 export const ThumbsUp = ({
   backgroundColor,
@@ -214,7 +214,7 @@ export const ThumbsUp = ({
       <path className="stroke-current text-purple-300" d="M22 30h4v12h-4z" />
     </g>
   </svg>
-);
+)
 
 export const SpeechBubbleWithCog = ({
   backgroundColor,
@@ -253,7 +253,7 @@ export const SpeechBubbleWithCog = ({
       />
     </g>
   </svg>
-);
+)
 
 export const ContinuousIntegration = ({
   backgroundColor,
@@ -334,7 +334,7 @@ export const ContinuousIntegration = ({
       </g>
     </g>
   </svg>
-);
+)
 
 export const GapInc = ({
   fill,
@@ -342,10 +342,10 @@ export const GapInc = ({
   width,
   height,
 }: {
-  fill?: string;
-  className?: string;
-  width?: number;
-  height?: number;
+  fill?: string
+  className?: string
+  width?: number
+  height?: number
 }) => (
   <svg
     version="1.1"
@@ -368,16 +368,16 @@ export const GapInc = ({
       <path d="m11.1360304 0c-5.31887824 0-11.13598611 4.2433686-11.13598611 11.7880553 0 4.9046785 3.17006914 10.560033 12.69577701 10.560033.9774159 0 4.8233058-.1848355 6.0332289-.5279145v-5.7190007c0-1.8623043.5744034-2.868001 2.6846827-2.868001v-.6225118h-8.7555556v.6225118h.8339257c1.7639544 0 2.3764447.9355115 2.3764447 3.5345421v2.3126228c0 1.8976149-2.0783926 2.2620546-3.6164829 2.2620546-5.1435014 0-8.9344754-4.603013-8.9344754-10.8582109 0-5.83539472 3.38043277-9.66767881 7.818441-9.66767881 2.9530625 0 6.6249042 1.71321539 7.18425 5.77087667h.6111617v-6.28440535h-.6873355c-.222764.51352868-.5186017.70533905-1.2037228.70533905-1.6736087 0-2.8396875-1.00831226-5.9043534-1.00831226" />
     </g>
   </svg>
-);
+)
 
 export const Deem = ({
   className,
   width,
   height,
 }: {
-  className?: string;
-  width?: number;
-  height?: number;
+  className?: string
+  width?: number
+  height?: number
 }) => (
   <Image
     src={deemLogo}
@@ -386,7 +386,7 @@ export const Deem = ({
     height={height || 30}
     className={className}
   />
-);
+)
 
 export const GitHub = ({
   fill,
@@ -394,10 +394,10 @@ export const GitHub = ({
   width = 100,
   height = "auto",
 }: {
-  className?: string;
-  fill?: string;
-  width?: number | string;
-  height?: number | string;
+  className?: string
+  fill?: string
+  width?: number | string
+  height?: number | string
 }) => (
   <svg
     className={`${className} fill-current`}
@@ -412,4 +412,15 @@ export const GitHub = ({
       <path d="m221.6 67.1h-.1zm0 0c-.5 0-1.8.3-3.2.3-4.4 0-5.9-2-5.9-4.6v-17.5h8.9c.5 0 .9-.4.9-1.1v-9.5c0-.5-.4-.9-.9-.9h-8.9v-11.7c0-.4-.3-.7-.8-.7h-12c-.5 0-.8.3-.8.7v12.1s-6.1 1.5-6.5 1.6-.7.5-.7.9v7.6c0 .6.4 1.1.9 1.1h6.2v18.3c0 13.6 9.5 15 16 15 3 0 6.5-.9 7.1-1.2.3-.1.5-.5.5-.9v-8.4c.1-.6-.3-1-.8-1.1zm132.2-12.2c0-10.1-4.1-11.4-8.4-11-3.3.2-6 1.9-6 1.9v19.6s2.7 1.9 6.8 2c5.8.2 7.6-1.9 7.6-12.5zm13.6-.9c0 19.1-6.2 24.6-17 24.6-9.1 0-14.1-4.6-14.1-4.6s-.2 2.6-.5 2.9c-.2.3-.4.4-.8.4h-8.3c-.6 0-1.1-.4-1.1-.9l.1-62c0-.5.4-.9.9-.9h11.9c.5 0 .9.4.9.9l-.1 20.9s4.6-3 11.3-3h.1c6.8-0 16.7 2.5 16.7 21.7zm-48.7-20.2h-11.7c-.6 0-.9.4-.9 1.1v30.3s-3.1 2.2-7.3 2.2-5.4-1.9-5.4-6.1v-26.5c0-.5-.4-.9-.9-.9h-11.9c-.5 0-.9.4-.9.9v28.5c0 12.3 6.9 15.3 16.3 15.3 7.8 0 14.1-4.3 14.1-4.3s.3 2.2.4 2.5.5.5.9.5h7.5c.6 0 .9-.4.9-.9l.1-41.7c-.1-.4-.6-.9-1.2-.9zm-132.2 0h-11.9c-.5 0-.9.5-.9 1.1v40.9c0 1.1.7 1.5 1.7 1.5h10.7c1.1 0 1.4-.5 1.4-1.5v-41.1c0-.5-.5-.9-1-.9zm-5.8-18.9c-4.3 0-7.7 3.4-7.7 7.7s3.4 7.7 7.7 7.7c4.2 0 7.6-3.4 7.6-7.7s-3.4-7.7-7.6-7.7zm92-1.4h-11.8c-.5 0-.9.4-.9.9v22.8h-18.5v-22.7c0-.5-.4-.9-.9-.9h-11.9c-.5 0-.9.4-.9.9v62c0 .5.5.9.9.9h11.9c.5 0 .9-.4.9-.9v-26.6h18.5l-.1 26.5c0 .5.4.9.9.9h11.9c.5 0 .9-.4.9-.9v-62c0-.4-.4-.9-.9-.9zm-105.3 27.5v32c0 .2-.1.6-.3.7 0 0-7 5-18.5 5-13.9 0-30.3-4.4-30.3-33 0-28.7 14.4-34.6 28.4-34.5 12.2 0 17.1 2.7 17.8 3.2.2.3.3.5.3.8l-2.3 9.9c0 .5-.5 1.1-1.1.9-2-.6-5-1.8-12.1-1.8-8.2 0-17 2.3-17 20.8s8.4 20.6 14.4 20.6c5.1 0 7-.6 7-.6v-12.8h-8.2c-.6 0-1.1-.4-1.1-.9v-10.3c0-.5.4-.9 1.1-.9h20.9c.6-.1 1 .4 1 .9z"></path>
     </g>
   </svg>
-);
+)
+
+export const LinkedIn = ({ size = 1 }) => (
+  <svg
+    className="w-8 h-8 fill-current"
+    viewBox="0 0 32 32"
+    transform={`scale(${size})`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M23.3 8H8.7c-.4 0-.7.3-.7.7v14.7c0 .3.3.6.7.6h14.7c.4 0 .7-.3.7-.7V8.7c-.1-.4-.4-.7-.8-.7zM12.7 21.6h-2.3V14h2.4v7.6h-.1zM11.6 13c-.8 0-1.4-.7-1.4-1.4 0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4-.1.7-.7 1.4-1.4 1.4zm10 8.6h-2.4v-3.7c0-.9 0-2-1.2-2s-1.4 1-1.4 2v3.8h-2.4V14h2.3v1c.3-.6 1.1-1.2 2.2-1.2 2.4 0 2.8 1.6 2.8 3.6v4.2h.1z" />
+  </svg>
+)

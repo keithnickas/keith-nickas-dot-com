@@ -1,37 +1,27 @@
-"use client";
+import Navigation from "@/components/navigation"
+import ScrollProgress from "@/components/scroll-progress"
+import Footer from "@/components/footer"
+import {projects} from "@/data/projects"
 
-import { useEffect } from "react";
-import Script from "next/script";
+type PageLayoutProps = {
+  children: React.ReactNode
+  darkMode: boolean
+  showBackButton?: boolean
+}
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { Calendly } from "@/components/calendly";
-import Footer from "@/components/ui/footer";
-
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      once: true,
-    });
-    return () => AOS.refresh();
-  }, []);
+// Reusable Page Layout Component
+export default function PageLayout({ children }: PageLayoutProps) {
 
   return (
-    <>
-      <main className="grow">{children}</main>
-
-      <Footer />
-      <Calendly />
-      <Script
-        type="text/javascript"
-        src="https://assets.calendly.com/assets/external/widget.js"
-        async
-      />
-    </>
-  );
+      <div
+        className={`min-h-screen transition-colors duration-500 dark:bg-slate-950 dark:text-white bg-gray-50 text-gray-900`}
+      >
+        <ScrollProgress />
+        <Navigation projects={projects} />
+        {/* Page Content */}
+        {children}
+        {/* Footer */}
+        <Footer />
+      </div>
+  )
 }
