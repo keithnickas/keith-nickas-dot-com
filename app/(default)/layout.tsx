@@ -9,7 +9,7 @@ type PageLayoutProps = {
 }
 
 // Reusable Page Layout Component
-export default function PageLayout({ children }: PageLayoutProps) {
+export default function DefaultPageLayout({ children }: PageLayoutProps) {
 
   return (
       <div

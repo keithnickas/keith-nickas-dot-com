@@ -11,7 +11,6 @@ library.add(fas)
 
 import React from "react"
 
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -32,12 +31,6 @@ const architects_daughter = Architects_Daughter({
   display: "swap",
 })
 
-export const metadata = {
-  title: "Keith Nickas, UI Software Engineer",
-  description:
-    "A personal website showcasing professional, and, personal works developed by Keith Nickas.",
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -45,8 +38,8 @@ export default function RootLayout({
 }) {
 
   return (
-
     <html lang="en">
+      <head />
       <body
         className={`${inter.variable} ${architects_daughter.variable} ${josefinSlab.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}
       >

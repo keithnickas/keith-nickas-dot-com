@@ -61,6 +61,7 @@ export default function Navigation({
               >
                 KN
               </a>
+              <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">Keith Nickas – Software Engineer</div>
             </div>
             <div className="flex items-center gap-3 md:hidden z-[200]">
               <button

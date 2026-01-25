@@ -7,6 +7,40 @@ import CaseStudyTechnicalHighlights from "@/components/case-study/case-study-tec
 import CaseStudyUserFlows from "@/components/case-study/case-study-user-flows"
 import CaseStudyLearnings from "@/components/case-study/case-study-learnings"
 import CaseStudyCTA from "@/components/case-study/case-study-cta"
+import { type Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Wristband Authentication UX | Keith Nickas Portfolio',
+  description: 'Principal Frontend Engineer building intuitive CIAM dashboards and auth flows. Architected React/Next.js platform with Vue.js SDK, comprehensive testing, and developer-first design.',
+  keywords: [
+    'Authentication UX',
+    'CIAM Platform',
+    'React Dashboard',
+    'Auth Flows',
+    'Vue.js SDK',
+    'Identity Management',
+    'Frontend Architecture',
+    'Developer Tools',
+    'User Onboarding',
+    'Security UX'
+  ],
+  openGraph: {
+    type: 'article',
+    url: 'https://keithnickas.dev/projects/wristband-auth',
+    title: 'Wristband Authentication UX Case Study',
+    description: 'Building developer-friendly authentication experiences and CIAM dashboards.',
+    images: [
+      {
+        url: '/api/og?title=Wristband%20Authentication%20UX&subtitle=Case%20Study%20by%20Keith%20Nickas&techStack=React,Next.js,TypeScript,Figma&theme=purple',
+        width: 1200,
+        height: 630,
+        alt: 'Wristband Authentication Project',
+      },
+    ],
+    publishedTime: '2020-04-01T00:00:00Z',
+    authors: ['Keith Nickas'],
+  },
+};
 
 const WristbandProjectCaseStudy = () => {
   return (

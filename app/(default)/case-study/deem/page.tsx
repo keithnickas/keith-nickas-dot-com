@@ -1,3 +1,4 @@
+import { type Metadata } from "next"
 import project from "@/data/case-studies/deem-case-study"
 import CaseStudyHero from "@/components/case-study/case-study-hero"
 import CaseStudyChallenge from "@/components/case-study/case-study-challenge"
@@ -8,9 +9,41 @@ import CaseStudyBusinessImpact from "@/components/case-study/case-study-business
 import CaseStudyKeyFeatures from "@/components/case-study/case-study-key-features"
 import CaseStudyLearnings from "@/components/case-study/case-study-learnings"
 import CaseStudyCTA from "@/components/case-study/case-study-cta"
-import PageLayout from "@/app/legacy/layout"
 
-const DeemProjectCaseStudy = () => {
+export const metadata: Metadata = {
+  title: 'Deem Travel Platform Modernization | Keith Nickas Portfolio',
+  description: 'Led transformation from legacy monolith to modern React SPA for travel booking. Architected shared component libraries, mentored global teams, and established TDD practices reducing costs and accelerating delivery.',
+  keywords: [
+    'Legacy Modernization',
+    'React Migration',
+    'SPA Architecture',
+    'Travel Technology',
+    'Component Library',
+    'Test-Driven Development',
+    'Team Mentorship',
+    'Technical Leadership',
+    'Code Quality',
+    'Accessibility'
+  ],
+  openGraph: {
+    type: 'article',
+    url: 'https://keithnickas.dev/projects/deem-spa',
+    title: 'Deem Travel Platform Modernization Case Study',
+    description: 'Transforming legacy travel booking systems into modern React SPAs.',
+    images: [
+      {
+        url: '/api/og?title=Deem%20Travel%20Platform%20Modernization&subtitle=Transforming%20legacy%20travel%20booking%20systems%20into%20modern%20React%20SPAs.&theme=orange',
+        width: 1200,
+        height: 630,
+        alt: 'Deem Platform Modernization Project',
+      },
+    ],
+    publishedTime: '2014-07-01T00:00:00Z',
+    authors: ['Keith Nickas'],
+  },
+};
+
+export default function DeemProjectCaseStudy() {
   return (
       <main className="pt-24">
         {/* Hero Section */}
@@ -82,4 +115,3 @@ const DeemProjectCaseStudy = () => {
   )
 }
 
-export default DeemProjectCaseStudy
