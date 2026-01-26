@@ -109,7 +109,7 @@ export default function DeemProjectCaseStudy() {
             href: "/contact",
             className: "from-orange-500 to-red-500 hover:shadow-orange-500/50",
           }}
-          cta2={{ title: "View More Projects", href: "/" }}
+          cta2={{ title: "View More Projects", href: "/#work" }}
         />
       </main>
   )

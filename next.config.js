@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -7,14 +6,6 @@ const nextConfig = {
       hostname: "media.licdn.com",
       port: "",
     }]
-  },
-  webpack: (config, { isServer }) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "tw-elements":
-        "tw-elements/js/tw-elements.umd.min.js",
-    };
-    return config;
   },
 }
 

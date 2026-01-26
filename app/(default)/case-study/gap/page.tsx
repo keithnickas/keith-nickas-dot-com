@@ -79,7 +79,7 @@ const GapProjectCaseStudy = () => {
             "Let's discuss how I can help create scalable, multi-brand design systems that accelerate product development."
           }
           cta1={{ title: "Get in Touch", href: "/contact" }}
-          cta2={{ title: "View More Projects", href: "/" }}
+          cta2={{ title: "View More Projects", href: "/#work" }}
         />
       </main>
   )

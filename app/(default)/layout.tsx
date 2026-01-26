@@ -2,6 +2,8 @@ import Navigation from "@/components/navigation"
 import ScrollProgress from "@/components/scroll-progress"
 import Footer from "@/components/footer"
 import {projects} from "@/data/projects"
+import Script from "next/script"
+import { Calendly } from "@/components/calendly"
 
 type PageLayoutProps = {
   children: React.ReactNode
@@ -21,6 +23,12 @@ export default function DefaultPageLayout({ children }: PageLayoutProps) {
         {children}
         {/* Footer */}
         <Footer />
+        <Calendly useWrapper />
+      <Script
+        type="text/javascript"
+        src="https://assets.calendly.com/assets/external/widget.js"
+        async
+      />
       </div>
   )
 }

@@ -1,3 +1,10 @@
+import { Deem, GapInc, Wristband } from "@/components/icons";
+
+type logoType = {
+  component?: React.ReactElement;
+  color?: string;
+}
+
 export interface Project {
     title: string;
     company: string;
@@ -8,13 +15,14 @@ export interface Project {
     tech: string[];
     color: string;
     href: string;
+    logo?: logoType | string;
   }
 
-export type ProjectsData = Project[] | never[] | undefined;
+export type ProjectsData = Project[] | undefined;
 
 export const projects: ProjectsData = [
     {
-      title: "Gap / BR Platform",
+      title: "Brand Design Platform",
       company: "Gap, Inc.",
       description: "Multi-brand design system",
       challenge: "Fragmented UI across brands causing inconsistent experiences",
@@ -25,9 +33,10 @@ export const projects: ProjectsData = [
       tech: ["React", "Next.js", "Design System", "TypeScript", "Performance"],
       color: "from-blue-500 to-cyan-500",
       href: "/case-study/gap",
+      logo: { component: <GapInc />, color: "#ffffff"},
     },
-    {
-      title: "Auth UX That Just Works",
+      {
+        title: "Auth UX That Just Works",
       company: "Wristband",
       description: "Authentication UX",
       challenge: "Complex authentication flows causing UX friction",
@@ -37,6 +46,7 @@ export const projects: ProjectsData = [
       tech: ["React", "Next.js", "Auth", "Testing", "UX Design"],
       color: "from-purple-500 to-pink-500",
       href: "/case-study/wristband",
+      logo: { component: <Wristband />},
     },
     {
       title: "Monolith to Modern SPA",
@@ -49,5 +59,6 @@ export const projects: ProjectsData = [
       tech: ["React", "SPA", "TDD", "Accessibility", "Mentorship"],
       color: "from-orange-500 to-red-500",
       href: "/case-study/deem",
+      logo: { component: <Deem />, color: "#ffffff"},
     },
   ];

@@ -57,11 +57,12 @@ export default function Navigation({
               <a
                 href="/"
                 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
-                title="Home"
+                title="Keith Nickas"
+                aria-label="Keith Nickas, return to homepage"
               >
                 KN
               </a>
-              <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">Keith Nickas – Software Engineer</div>
+              <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">Software Engineer</div>
             </div>
             <div className="flex items-center gap-3 md:hidden z-[200]">
               <button

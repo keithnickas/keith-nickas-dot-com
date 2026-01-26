@@ -88,7 +88,7 @@ const WristbandProjectCaseStudy = () => {
         }
         className="from-purple-500/10 to-pink-500/10 border-purple-500/20"
         cta1={{ title: "Get in Touch", href: "/contact", className: "from-purple-500 to-pink-500 hover:shadow-purple-500/50"}}
-        cta2={{ title: "View More Projects", href: "/"}}
+        cta2={{ title: "View More Projects", href: "/#work"}}
       />
     </main>
   )

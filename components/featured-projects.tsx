@@ -22,9 +22,17 @@ const FeaturedProjects = ({ projects }: { projects: ProjectsData }) => (
 
             <div className="p-6">
               <div
-                className={`text-sm font-medium mb-2 dark:text-cyan-400 text-cyan-600`}
+                className={`text-sm font-medium mb-2 dark:text-cyan-400 text-cyan-600 w-32`}
+                style={
+                  typeof project.logo === "object" &&
+                  project.logo !== null ? {
+                    color: project.logo.color,
+                  } : undefined
+                }
               >
-                {project.company}
+                  {typeof project.logo === "object" && "component" in project.logo
+                    ? project.logo?.component ?? project.company
+                    : project.company}
               </div>
               <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">
                 {project.title}

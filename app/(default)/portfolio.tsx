@@ -1,10 +1,11 @@
 "use client"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { Mail } from "lucide-react"
 import { LinkedIn } from "@/components/icons"
 import { projects } from "@/data/projects"
 import { RandomColorBlobs } from "@/utils/color-blobs"
 import FeaturedProjects from "@/components/featured-projects"
+import { pillars, testimonials, skillTree } from "@/data/portfolio"
 
 export default function Portfolio() {
   const [activeSkill, setActiveSkill] = useState<number | null>(null)
@@ -17,83 +18,69 @@ export default function Portfolio() {
     return () => clearInterval(interval)
   }, [])
 
-  const pillars = [
-    {
-      title: "Frontend Architecture",
-      skills: [
-        "React",
-        "Vue.js",
-        "Next.js",
-        "TypeScript",
-        "Component Design",
-        'State Management (Redux, Pinia, etc.)',
-        "Performance",
-        "Scalability",
-      ],
-    },
-    {
-      title: "Design Systems",
-      skills: [
-        "Component Libraries",
-        "Design Tokens",
-        "Accessibility",
-        "Documentation",
-        "Style Guides",
-      ],
-    },
-    {
-      title: "Growth & UX",
-      skills: [
-        "A/B Testing",
-        "Analytics",
-        "Conversion Optimization",
-        "User Flows",
-        "Experimentation",
-      ],
-    },
-  ]
-
-  const testimonials = [
-    {
-      quote:
-        "Keith has saved the day for our team more times than I can remember. He has a deep understanding of many of the technologies we use day to day, but more importantly, he has intimate knowledge on how those things are configured and used for our project.",
-      author: "Lisa L.",
-      role: "Gap Colleague",
-      theme: "Problem Solver",
-    },
-    {
-      quote:
-        "Keith worked on our team for several years at Deem and I found him to be a steady and consistent contributor and really positive team player. I could count on him to stay the course during thick and thin!",
-      author: "John F. Rizzo",
-      role: "Deem Leadership",
-      theme: "Team Player",
-      linkedin: "https://www.linkedin.com/in/jfrizzo",
-    },
-    {
-      quote:
-        "I've worked with Keith the past three years. He is an excellent front-end programmer. He led the team in the transition to react. Whenever there's a react or javascript issue, he is the first person I go to to help resolve the issue.",
-      author: "James Park",
-      role: "Deem Colleague",
-      theme: "Technical Excellence",
-      linkedin: "https://www.linkedin.com/in/jamespark",
-    },
-  ]
-
-  const skillTree = {
-    core: "React • Vue • Next.js • TypeScript • NestJS",
-    branches: [
-      {
-        name: "Design Systems",
-        tools: ["Component Libraries", "Storybook", "Tailwind"],
-      },
-      {
-        name: "Performance",
-        tools: ["Lighthouse", "Webpack", "Code Splitting", "Vite"],
-      },
-      { name: "A/B Testing", tools: ["Analytics", "GTM", "Experimentation"] },
-      { name: "Accessibility", tools: ["WCAG", "a11y", "Section 508"] },
-    ],
-  }
+  const pillarsElements = useMemo(
+    () =>
+      pillars.map((pillar, idx) => (
+        <div
+          key={pillar.title}
+          onMouseEnter={() => setActiveSkill(idx)}
+          onMouseLeave={() => setActiveSkill(null)}
+          className={`group relative p-8 rounded-2xl transition-all duration-300 cursor-pointer dark:bg-slate-800/50 dark:hover:bg-slate-800 bg-white hover:bg-gray-50 backdrop-blur-sm border dark:border-slate-700 dark:hover:border-cyan-500/50 border-gray-200 hover:border-cyan-300`}
+          style={{
+            transform:
+              activeSkill === idx ? "translateY(-8px)" : "translateY(0)",
+            boxShadow:
+              activeSkill === idx
+                ? "0 20px 60px rgba(6, 182, 212, 0.3)"
+                : "none",
+            minHeight: "280px",
+          }}
+        >
+          <h3 className="text-xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">
+            {pillar.title}
+          </h3>
+          <div
+            className={`space-y-2 transition-all duration-300 opacity-100 md:opacity-0 ${
+              activeSkill === idx ? "md:opacity-100" : "md:opacity-0"
+            } ${activeSkill === idx ? "md:absolute md:relative" : ""}`}
+          >
+            {pillar.skills.map((skill, i) => (
+              <div
+                key={i}
+                className="text-sm dark:text-slate-200 text-gray-600"
+              >
+                • {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+      )),
+    [activeSkill, pillars]
+  )
+  const skillTreeBranches = useMemo(
+    () =>
+      skillTree.branches.map((branch, idx) => (
+        <div
+          key={idx}
+          className="relative p-6 rounded-xl bg-white border border-gray-200 hover:border-cyan-300 transition-all duration-300 hover:scale-105 dark:bg-slate-800/50 dark:border-slate-700 hover:dark:border-cyan-500/50"
+        >
+          <h3 className="font-bold text-lg mb-4 text-cyan-400">
+            {branch.name}
+          </h3>
+          <div className="space-y-2">
+            {branch.tools.map((tool, i) => (
+              <div
+                key={i}
+                className="text-sm dark:text-slate-200 text-gray-600"
+              >
+                • {tool}
+              </div>
+            ))}
+          </div>
+        </div>
+      )),
+    [skillTree.branches]
+  )
 
   return (
     <div
@@ -141,41 +128,7 @@ export default function Portfolio() {
 
           {/* Three Pillars */}
           <div className="grid md:grid-cols-3 gap-6 mt-16">
-            {pillars.map((pillar, idx) => (
-              <div
-                key={pillar.title}
-                onMouseEnter={() => setActiveSkill(idx)}
-                onMouseLeave={() => setActiveSkill(null)}
-                className={`group relative p-8 rounded-2xl transition-all duration-300 cursor-pointer dark:bg-slate-800/50 dark:hover:bg-slate-800 bg-white hover:bg-gray-50 backdrop-blur-sm border dark:border-slate-700 dark:hover:border-cyan-500/50 border-gray-200 hover:border-cyan-300`}
-                style={{
-                  transform:
-                    activeSkill === idx ? "translateY(-8px)" : "translateY(0)",
-                  boxShadow:
-                    activeSkill === idx
-                      ? "0 20px 60px rgba(6, 182, 212, 0.3)"
-                      : "none",
-                  minHeight: "280px",
-                }}
-              >
-                <h3 className="text-xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">
-                  {pillar.title}
-                </h3>
-                <div
-                  className={`space-y-2 transition-all duration-300 ${
-                    activeSkill === idx ? "opacity-100" : "opacity-0"
-                  } ${activeSkill === idx ? "md:absolute md:relative" : ""}`}
-                >
-                  {pillar.skills.map((skill, i) => (
-                    <div
-                      key={i}
-                      className="text-sm dark:text-slate-200 text-gray-600"
-                    >
-                      • {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+            {pillarsElements}
           </div>
         </div>
       </section>
@@ -202,28 +155,7 @@ export default function Portfolio() {
             </div>
 
             {/* Branches */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {skillTree.branches.map((branch, idx) => (
-                <div
-                  key={idx}
-                  className="relative p-6 rounded-xl bg-white border border-gray-200 hover:border-cyan-300 transition-all duration-300 hover:scale-105 dark:bg-slate-800/50 dark:border-slate-700 hover:dark:border-cyan-500/50"
-                >
-                  <h3 className="font-bold text-lg mb-4 text-cyan-400">
-                    {branch.name}
-                  </h3>
-                  <div className="space-y-2">
-                    {branch.tools.map((tool, i) => (
-                      <div
-                        key={i}
-                        className="text-sm dark:text-slate-200 text-gray-600"
-                      >
-                        • {tool}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">{skillTreeBranches}</div>
           </div>
         </div>
       </section>
