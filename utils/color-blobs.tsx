@@ -7,65 +7,96 @@ export function RandomColorBlobs() {
   const blob3Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const animateBlob = () => {
-      if (blob1Ref.current) {
-        blob1Ref.current.style.left = `${Math.random() * 80 + 10}%`
-        blob1Ref.current.style.top = `${Math.random() * 80 + 10}%`
-        blob1Ref.current.style.width = `${Math.random() * 192 + 288}px`
-        blob1Ref.current.style.height = `${Math.random() * 192 + 288}px`
-        blob1Ref.current.style.transition = `all ${
-          Math.random() * 3 + 4
-        }s ease-in-out`
-      }
-      if (blob2Ref.current) {
-        blob2Ref.current.style.left = `${Math.random() * 80 + 10}%`
-        blob2Ref.current.style.top = `${Math.random() * 80 + 10}%`
-        blob2Ref.current.style.width = `${Math.random() * 192 + 288}px`
-        blob2Ref.current.style.height = `${Math.random() * 192 + 288}px`
-        blob2Ref.current.style.transition = `all ${
-          Math.random() * 3 + 4
-        }s ease-in-out`
-      }
-      if (blob3Ref.current) {
-        blob3Ref.current.style.left = `${Math.random() * 80 + 10}%`
-        blob3Ref.current.style.top = `${Math.random() * 80 + 10}%`
-        blob3Ref.current.style.width = `${Math.random() * 192 + 288}px`
-        blob3Ref.current.style.height = `${Math.random() * 192 + 288}px`
-        blob3Ref.current.style.transition = `all ${
-          Math.random() * 3 + 4
-        }s ease-in-out`
-      }
+    const prefersReducedMotion = window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
+
+    if (prefersReducedMotion) return // do not animate
+
+    let isMounted = true
+
+    const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min
+
+    const scheduleBlobAnimation = (element: HTMLDivElement | null) => {
+      if (!isMounted || !element) return
+      if (document.hidden) return
+
+      // Position in percent (so layout isn't triggered by left/top changes)
+      const translateXPercent = `${randomBetween(10, 90)}%`
+      const translateYPercent = `${randomBetween(10, 90)}%`
+      // scale (relative to base size)
+      const scaleFactor = (randomBetween(288, 480) / 360).toString()
+      // duration (s)
+      const animationDuration = `${randomBetween(4, 7).toFixed(2)}s`
+
+      // set CSS variables (single DOM write per property)
+      element.style.setProperty("--blob-tx", translateXPercent)
+      element.style.setProperty("--blob-ty", translateYPercent)
+      element.style.setProperty("--blob-scale", scaleFactor)
+      element.style.setProperty("--blob-duration", animationDuration)
+      element.style.setProperty("--blob-pulse-duration", animationDuration)
     }
-    animateBlob()
-    const interval = setInterval(animateBlob, 8000)
-    return () => clearInterval(interval)
+
+    // initial animate
+    scheduleBlobAnimation(blob1Ref.current)
+    scheduleBlobAnimation(blob2Ref.current)
+    scheduleBlobAnimation(blob3Ref.current)
+
+    const cycleInterval = setInterval(() => {
+      scheduleBlobAnimation(blob1Ref.current)
+      scheduleBlobAnimation(blob2Ref.current)
+      scheduleBlobAnimation(blob3Ref.current)
+    }, 8000)
+
+    return () => {
+      isMounted = false
+      clearInterval(cycleInterval)
+    }
   }, [])
-  return (
-    <div className="absolute inset-0 opacity-20">
+
+    return (
+    <div className="absolute inset-0 opacity-20 pointer-events-none">
       <div
         ref={blob1Ref}
-        className="absolute bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"
+        className="absolute"
         style={{
-          transition: "all 4s ease-in-out",
-          animation: "pulse 4s ease-in-out infinite",
-        }}
-      ></div>
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          transition: "transform var(--blob-duration, 4s) ease-in-out",
+          willChange: "transform",
+        } as React.CSSProperties}
+      >
+        <div className="blob-shape bg-cyan-500 mix-blend-multiply filter blur-3xl" />
+      </div>
+
       <div
         ref={blob2Ref}
-        className="absolute bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"
+        className="absolute"
         style={{
-          transition: "all 5s ease-in-out",
-          animation: "pulse 5s ease-in-out infinite",
-        }}
-      ></div>
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          transition: "transform var(--blob-duration, 5s) ease-in-out",
+          willChange: "transform",
+        } as React.CSSProperties}
+      >
+        <div className="blob-shape bg-purple-500 mix-blend-multiply filter blur-3xl" />
+      </div>
+
       <div
         ref={blob3Ref}
-        className="absolute bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl"
+        className="absolute"
         style={{
-          transition: "all 6s ease-in-out",
-          animation: "pulse 6s ease-in-out infinite",
-        }}
-      ></div>
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          transition: "transform var(--blob-duration, 6s) ease-in-out",
+          willChange: "transform",
+        } as React.CSSProperties}
+      >
+        <div className="blob-shape bg-pink-500 mix-blend-multiply filter blur-3xl" />
+      </div>
     </div>
   )
 }

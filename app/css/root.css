@@ -5,3 +5,21 @@
 #calendly-popup .calendly-badge-widget {
     @apply bottom-28;
 }
+
+/* Blob pulse animation for color blobs */
+@keyframes blob-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.94); opacity: 0.9; }
+}
+
+.blob-shape {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    animation: blob-pulse var(--blob-pulse-duration, 5s) ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blob-shape { animation: none !important; }
+}
