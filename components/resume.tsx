@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { WorkExperience } from "./types/resume-types";
 import { Accordion } from "./accordion";
 import { KeyAchievementsList } from "./helpers/resume/key-achievements";
-import { workItemLogo } from "./helpers/resume/work-item-logo";
 import { PositionTitleAndLocation } from "./helpers/resume/position-title-location";
 import { Skills } from "./helpers/resume/skills";
 import { SummaryItems } from "./helpers/resume/summary-items";
@@ -55,23 +54,11 @@ const ResumeComponent = (props: WorkExperience) => {
   );
 
   const resumeItem = <PositionTitleAndLocation {...position} />;
-  const logoElement = workItemLogo[position.logo as keyof typeof workItemLogo];
-  const logo = (props?: Record<string, any>) => {
-    if (typeof logoElement === "function")
-      return logoElement({
-        fill,
-        width: width || logoWidth,
-        height: height || logoHeight,
-        ...props,
-      });
-    else if (React.isValidElement(logoElement)) return logoElement;
-    return null;
-  };
 
   return (
     <section className="mb-12">
       <div className="mb-8 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/3 mr-8">{logo({ className: "w-52 md:w-full"})}</div>
+        <div className="md:w-1/3 mr-8"></div>
         <div className="md:w-2/3">
           {resumeItem}
           <SummaryItems summaryItems={summary} />

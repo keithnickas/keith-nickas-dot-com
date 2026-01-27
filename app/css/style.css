@@ -1,19 +1,3 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-
-/* Additional styles */
-@import 'additional-styles/utility-patterns.css';
-@import 'additional-styles/range-slider.css';
-@import 'additional-styles/toggle-switch.css';
-@import 'additional-styles/theme.css';
-@import 'additional-styles/svg-animation.css';
-@import 'additional-styles/text-flicker.css';
-@import 'additional-styles/hover-animations.css';
-@import 'additional-styles/variables.css';
-@import 'additional-styles/tdd.css';
-
-@import 'tailwindcss/utilities';
-
 .hero-title {
     font-family: var(--font-josefin);
     color: #fff;
@@ -47,6 +31,14 @@
 }
 .hover\:btn-lift {
     transition: 0.3s all ease-in-out;
+}
+
+.calendly-badge-widget {
+    bottom: initial;
+}
+
+.calendly-badge-widget {
+    @apply bottom-8 md:bottom-8 !important;
 }
 
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */

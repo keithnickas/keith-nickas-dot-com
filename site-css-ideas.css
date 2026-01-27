@@ -1,0 +1,35 @@
+/* parent element; remove gap-16, needs left/right padding of 8px */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 11px;
+overflow: hidden;
+position: relative;
+padding-left: 8px;
+padding-right: 8px;
+backdrop-filter: blur(6px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+
+/* element:before overlay */
+content: "";
+display: block;
+position: absolute;
+background: rgba(21, 23, 25, 100%);
+top: 1px;
+left: 1px;
+width: 1102px;
+height: calc(100% - 2px);
+z-index: 0;
+border-radius: 10px;
+
+
+
+/* original styles */
+
+    --_gradient-blend-mode: normal;
+    --_gradient-blur: 140px;
+    background: radial-gradient(at 0% 0%, #C4C4C4 0px, transparent 50%), radial-gradient(at 100% 100%, #7A7A7A 0px, transparent 50%), radial-gradient(at 0.4% 100%, #2E2E2E 0px, transparent 50%) #151719;
+    mix-blend-mode: var(--_gradient-blend-mode);
+
+.frosted-backdrop {
+    backdrop-filter: blur(var(--_gradient-blur)) contrast(100%) brightness(100%);
+    -webkit-backdrop-filter: blur(var(--_gradient-blur)) contrast(100%) brightness(100%);
+};
