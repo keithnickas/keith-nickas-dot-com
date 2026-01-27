@@ -1,7 +1,6 @@
-import Image, { StaticImageData } from "next/image";
+// import Image, { StaticImageData } from "next/image";
 import hash from "object-hash";
 import { Highlight } from "../types/resume-types";
-import { workItemLogo } from "./resume/work-item-logo";
 import React from "react";
 
 export function HighlightItem({ highlight }: { highlight: Highlight }) {
@@ -22,25 +21,6 @@ export function HighlightItem({ highlight }: { highlight: Highlight }) {
   } = imageContent || {};
   const { title, company, location, startDate, endDate } = position;
 
-  const logoElement = workItemLogo[position.logo as keyof typeof workItemLogo];
-  const logoIsNextImageType =
-    typeof logoElement === "object" && logoElement !== null
-      ? workItemLogo[position.logo as keyof typeof workItemLogo] as StaticImageData
-      : {} as StaticImageData;
-
-  const image =
-    imageContent && typeof logoElement === "function" ? (
-      logoElement({ width, height })
-    ) : logoIsNextImageType && (
-      <Image
-        className="object-contain"
-        src={logoIsNextImageType.src}
-        width={width}
-        height={height}
-        alt={alt}
-      />
-    );
-
   return (
     <div className={`${imagePosition === "left" ? "flex flex-col " : "flex flex-col-reverse "}md:grid md:grid-cols-12 md:gap-6 items-center`}>
       {/* Image: Left */}
@@ -49,7 +29,7 @@ export function HighlightItem({ highlight }: { highlight: Highlight }) {
           className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0"
           data-aos="fade-up"
         >
-          {image}
+          {/* {image} */}
         </div>
       ) : null}
       {/* Content */}
@@ -97,7 +77,7 @@ export function HighlightItem({ highlight }: { highlight: Highlight }) {
           className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 rtl"
           data-aos="fade-up"
         >
-          {image}
+          {/* {image} */}
         </div>
       ) : null}
     </div>
