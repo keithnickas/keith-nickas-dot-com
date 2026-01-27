@@ -16,9 +16,9 @@ export default function Footer() {
               <div
                 className={`text-xs px-3 py-1 rounded-full dark:bg-green-500/10 dark:text-green-400 dark:border dark:border-green-500/20 bg-green-100 text-green-700 border border-green-200`}
               >
-                Lighthouse Score: 98
+                Lighthouse Score: 99
               </div>
-              <div
+              {/* <div
                 className={`text-xs dark:text-slate-400 text-gray-500`}>
                 | 
               </div>
@@ -27,7 +27,7 @@ export default function Footer() {
                 }`}
               >
                 Bundle: 42KB gzip
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
