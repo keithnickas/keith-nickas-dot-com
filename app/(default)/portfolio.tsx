@@ -14,7 +14,7 @@ export default function Portfolio() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 6000)
+    }, 15000)
     return () => clearInterval(interval)
   }, [])
 
@@ -83,7 +83,7 @@ export default function Portfolio() {
   )
 
   return (
-    <div
+    <main
       className={`min-h-screen transition-colors duration-500 dark:bg-slate-950 dark:text-white bg-gray-50 text-gray-900 overflow-hidden`}
     >
       {/* Hero Section */}
@@ -161,7 +161,7 @@ export default function Portfolio() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-20 px-6">
+      <section id="testimonials" className="py-20 px-6" role="slider" aria-valuenow={currentTestimonial + 1} aria-valuemin={1} aria-valuemax={testimonials.length} aria-label="Testimonials">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
             What Colleagues Say
@@ -200,14 +200,12 @@ export default function Portfolio() {
             </div>
 
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-2 mt-8" role="tablist">
               {testimonials.map((_, idx) => (
                 <button
-                  role="slider"
-                  aria-valuenow={currentTestimonial + 1}
-                  aria-valuemin={1}
-                  aria-valuemax={testimonials.length}
                   key={testimonials[idx].author}
+                  role="tab"
+                  aria-label={`View testimonial from ${testimonials[idx].author}`}
                   onClick={() => setCurrentTestimonial(idx)}
                   className={`w-4 h-4 rounded-full transition-all ${
                     idx === currentTestimonial
@@ -252,6 +250,6 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

@@ -41,7 +41,7 @@ export default function Navigation({
     <>
       <nav
         className={`fixed w-full z-40 transition-all duration-300 dark:bg-slate-900/50 backdrop-blur-md bg-white dark:border-slate-800 border-gray-100`}
-      >
+      role="navigation">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
