@@ -23,3 +23,8 @@
 @media (prefers-reduced-motion: reduce) {
     .blob-shape { animation: none !important; }
 }
+
+/* Pause pulse while scrolling (JS toggles `user-is-scrolling` on <html>) */
+.user-is-scrolling .blob-shape {
+    animation-play-state: paused !important;
+}

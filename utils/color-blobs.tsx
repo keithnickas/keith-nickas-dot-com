@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useRef } from "react"
+import { createBlobAnimator, scrollPauseAnimation, prefersReducedMotion } from "./color-blobs-helpers"
 
 export function RandomColorBlobs() {
   const blob1Ref = useRef<HTMLDivElement>(null)
@@ -7,50 +8,23 @@ export function RandomColorBlobs() {
   const blob3Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false
+    if (prefersReducedMotion()) return
 
-    if (prefersReducedMotion) return // do not animate
+    const animator1 = createBlobAnimator(blob1Ref.current)
+    const animator2 = createBlobAnimator(blob2Ref.current)
+    const animator3 = createBlobAnimator(blob3Ref.current)
 
-    let isMounted = true
+    animator1.start()
+    animator2.start()
+    animator3.start()
 
-    const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min
-
-    const scheduleBlobAnimation = (element: HTMLDivElement | null) => {
-      if (!isMounted || !element) return
-      if (document.hidden) return
-
-      // Position in percent (so layout isn't triggered by left/top changes)
-      const translateXPercent = `${randomBetween(10, 90)}%`
-      const translateYPercent = `${randomBetween(10, 90)}%`
-      // scale (relative to base size)
-      const scaleFactor = (randomBetween(288, 480) / 360).toString()
-      // duration (s)
-      const animationDuration = `${randomBetween(4, 7).toFixed(2)}s`
-
-      // set CSS variables (single DOM write per property)
-      element.style.setProperty("--blob-tx", translateXPercent)
-      element.style.setProperty("--blob-ty", translateYPercent)
-      element.style.setProperty("--blob-scale", scaleFactor)
-      element.style.setProperty("--blob-duration", animationDuration)
-      element.style.setProperty("--blob-pulse-duration", animationDuration)
-    }
-
-    // initial animate
-    scheduleBlobAnimation(blob1Ref.current)
-    scheduleBlobAnimation(blob2Ref.current)
-    scheduleBlobAnimation(blob3Ref.current)
-
-    const cycleInterval = setInterval(() => {
-      scheduleBlobAnimation(blob1Ref.current)
-      scheduleBlobAnimation(blob2Ref.current)
-      scheduleBlobAnimation(blob3Ref.current)
-    }, 8000)
+    const removeScroll = scrollPauseAnimation([animator1, animator2, animator3])
 
     return () => {
-      isMounted = false
-      clearInterval(cycleInterval)
+      removeScroll()
+      animator1.cancel()
+      animator2.cancel()
+      animator3.cancel()
     }
   }, [])
 
@@ -63,11 +37,10 @@ export function RandomColorBlobs() {
           width: "360px",
           height: "360px",
           transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          transition: "transform var(--blob-duration, 4s) ease-in-out",
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-cyan-500 mix-blend-multiply filter blur-3xl" />
+        <div className="blob-shape bg-cyan-500 mix-blend-multiply filter blur-xl" />
       </div>
 
       <div
@@ -77,11 +50,10 @@ export function RandomColorBlobs() {
           width: "360px",
           height: "360px",
           transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          transition: "transform var(--blob-duration, 5s) ease-in-out",
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-purple-500 mix-blend-multiply filter blur-3xl" />
+        <div className="blob-shape bg-purple-500 filter blur-xl" />
       </div>
 
       <div
@@ -91,11 +63,10 @@ export function RandomColorBlobs() {
           width: "360px",
           height: "360px",
           transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          transition: "transform var(--blob-duration, 6s) ease-in-out",
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-pink-500 mix-blend-multiply filter blur-3xl" />
+        <div className="blob-shape bg-pink-500 filter blur-xl" />
       </div>
     </div>
   )
