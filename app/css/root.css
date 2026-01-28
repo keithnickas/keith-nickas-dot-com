@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #calendly-popup .calendly-badge-widget {
-    @apply bottom-28;
+    @apply md:bottom-28;
 }
 
 /* Blob pulse animation for color blobs */
@@ -22,4 +22,9 @@
 
 @media (prefers-reduced-motion: reduce) {
     .blob-shape { animation: none !important; }
+}
+
+/* Pause pulse while scrolling (JS toggles `user-is-scrolling` on <html>) */
+.user-is-scrolling .blob-shape {
+    animation-play-state: paused !important;
 }
