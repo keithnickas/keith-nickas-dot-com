@@ -87,18 +87,18 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
  * Returns a cleanup function.
  */
 export function scrollPauseAnimation(animators: Animator[]) {
-  let rafId = 0
-  let scrolling = false
+  let rafRequestId = 0
+  let isScrolling = false
 
   const onScroll = () => {
-    if (!scrolling) {
-      scrolling = true
+    if (!isScrolling) {
+      isScrolling = true
       document.documentElement.classList.add("user-is-scrolling")
       animators.forEach((a) => a.pause())
     }
-    cancelAnimationFrame(rafId)
-    rafId = requestAnimationFrame(() => {
-      scrolling = false
+    cancelAnimationFrame(rafRequestId)
+    rafRequestId = requestAnimationFrame(() => {
+      isScrolling = false
       document.documentElement.classList.remove("user-is-scrolling")
       animators.forEach((a) => a.play())
     })
@@ -108,6 +108,6 @@ export function scrollPauseAnimation(animators: Animator[]) {
 
   return () => {
     window.removeEventListener("scroll", onScroll)
-    cancelAnimationFrame(rafId)
+    cancelAnimationFrame(rafRequestId)
   }
 }

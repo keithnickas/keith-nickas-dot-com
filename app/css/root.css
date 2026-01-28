@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #calendly-popup .calendly-badge-widget {
-    @apply bottom-28;
+    @apply md:bottom-28;
 }
 
 /* Blob pulse animation for color blobs */
