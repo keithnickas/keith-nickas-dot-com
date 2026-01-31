@@ -15,7 +15,7 @@ import wristbandLogo from "@/public/images/wristband/wristband_transparent_logo.
 
 export default function WristbandVueSDK() {
   return (
-    <div className="max-w-7xl min-h-screen py-24 px-4 flex-nowrap max-lg:flex-wrap mx-auto">
+    <div className="py-24 px-4 max-w-7xl min-h-screen flex-nowrap max-lg:flex-wrap mx-auto vscode-dark">
       <Link href="https://wristband.dev">
         <Image
           alt="Wristband, an Identity Access Management Platform"
