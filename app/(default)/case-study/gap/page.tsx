@@ -52,25 +52,25 @@ const GapProjectCaseStudy = () => {
   return (
       <main className="pt-24">
         {/* Hero Section */}
-        <CaseStudyHero project={project} />
+        <CaseStudyHero data={project} />
 
         {/* Challenge Section */}
-        <CaseStudyChallenge project={project} />
+        <CaseStudyChallenge challenge={project.challenge} />
 
         {/* Approach Section */}
-        <CaseStudyApproach project={project} />
+        <CaseStudyApproach approach={project.approach} />
 
         {/* System Pillars Section */}
-        <CaseStudySystemPillars project={project} />
+        <CaseStudySystemPillars systemPillars={project.systemPillars} />
 
         {/* Results Section */}
-        <CaseStudyResults project={project} />
+        <CaseStudyResults results={project.results} />
 
         {/* Technical Highlights */}
-        <CaseStudyTechnicalHighlights project={project} />
+        <CaseStudyTechnicalHighlights technicalHighlights={project.technicalHighlights} />
 
         {/* Learnings Section */}
-        <CaseStudyLearnings project={project} />
+        <CaseStudyLearnings learnings={project.learnings} />
 
         {/* CTA Section */}
         <CaseStudyCTA

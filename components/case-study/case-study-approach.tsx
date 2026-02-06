@@ -1,14 +1,14 @@
 import { CaseStudy } from "../types/case-study-types"
 
-const CaseStudyApproach = ({ project, stepClassName }: { project: CaseStudy, stepClassName?: string }) => (
+const CaseStudyApproach = ({ approach, stepClassName }: { approach: CaseStudy["approach"], stepClassName?: string }) => (
   <section className="px-6 py-12">
     <div className="max-w-4xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold mb-8">
-        {project.approach.title}
+        {approach?.title}
       </h2>
 
       <div className="space-y-6">
-        {project.approach.steps.map((step, idx) => (
+        {approach?.steps.map((step, idx) => (
           <div
             key={step.title}
             className={`p-6 rounded-xl dark:bg-slate-800/30 dark:border-slate-700/50 bg-white border border-gray-200 transition-all hover:scale-[1.02]`}

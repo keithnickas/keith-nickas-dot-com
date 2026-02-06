@@ -28,3 +28,27 @@
 .user-is-scrolling .blob-shape {
     animation-play-state: paused !important;
 }
+
+.mermaid-container {
+    @apply w-full;
+    height: auto;
+    & .mermaid-diagram {
+        @apply w-full;
+    }
+    & svg {
+        @apply object-contain;
+        height: 45svh;
+    }
+}
+
+.portal .mermaid-container {
+    @apply w-full;
+    height: auto;
+    & .mermaid-diagram {
+        @apply w-full h-full;
+    }
+    & svg {
+        @apply object-contain;
+        height: 100%;
+    }
+}

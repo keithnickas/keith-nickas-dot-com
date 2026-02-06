@@ -1,12 +1,12 @@
 import { CaseStudy } from "../types/case-study-types";
 
-const CaseStudySystemPillars = ({ project, pillarClassName, iconBgColor }: { project: CaseStudy, pillarClassName?: string, iconBgColor?: string }) => (
+const CaseStudySystemPillars = ({ systemPillars, pillarClassName, iconBgColor }: { systemPillars: CaseStudy["systemPillars"], pillarClassName?: string, iconBgColor?: string }) => (
       <section className="px-6 py-12">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">{project.systemPillars?.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">{systemPillars?.title}</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {project.systemPillars?.pillars.map((pillar, _) => {
+            {systemPillars?.pillars.map((pillar, _) => {
               const IconComponent = pillar.icon;
               return (
                 <div

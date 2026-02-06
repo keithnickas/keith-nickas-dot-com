@@ -48,52 +48,52 @@ export default function DeemProjectCaseStudy() {
       <main className="pt-24">
         {/* Hero Section */}
         <CaseStudyHero
-          project={project}
+          data={project}
           badgeClassName="bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/20"
           iconClassName="text-orange-500"
         />
 
         {/* Challenge Section */}
         <CaseStudyChallenge
-          project={project}
+          challenge={project.challenge}
           titleClassName="text-orange-400"
         />
 
         {/* Approach Section */}
         <CaseStudyApproach
-          project={project}
+          approach={project.approach}
           stepClassName="bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400"
         />
 
         {/* Business Impact Section */}
         <CaseStudyBusinessImpact
-          project={project}
+          impact={project.impact}
           iconBgColor="bg-orange-500"
         />
 
         {/* Results Section */}
         <CaseStudyResults
-          project={project}
+          results={project.results}
           metricClassName="from-orange-500/10 to-red-500/10 border-orange-500/20"
           metricLabelClassName="text-orange-400"
         />
 
         {/* Key Features Section */}
         <CaseStudyKeyFeatures
-          project={project}
+          keyFeatures={project.keyFeatures}
           featureClassName="text-orange-400"
         />
 
         {/* Technical Highlights */}
         <CaseStudyTechnicalHighlights
-          project={project}
+          technicalHighlights={project.technicalHighlights}
           highlightClassName="bg-orange-500/20"
           highlightDotClassName="bg-orange-400"
         />
 
         {/* Learnings Section */}
         <CaseStudyLearnings
-          project={project}
+          learnings={project.learnings}
           learningClassName="bg-orange-500/10 border-orange-500/20"
         />
 

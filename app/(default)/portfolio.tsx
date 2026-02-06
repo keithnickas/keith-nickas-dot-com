@@ -40,13 +40,11 @@ export default function Portfolio() {
             {pillar.title}
           </h3>
           <div
-            className={`space-y-2 transition-all duration-300 opacity-100 md:opacity-0 ${
-              activeSkill === idx ? "md:opacity-100" : "md:opacity-0"
-            } ${activeSkill === idx ? "md:absolute md:relative" : ""}`}
+            className={`space-y-2 transition-all duration-300 opacity-100 ${activeSkill === idx ? "md:absolute md:relative" : ""}`}
           >
-            {pillar.skills.map((skill, i) => (
+            {pillar.skills.map((skill, _) => (
               <div
-                key={i}
+                key={skill}
                 className="text-sm dark:text-slate-200 text-gray-600"
               >
                 • {skill}
@@ -68,9 +66,9 @@ export default function Portfolio() {
             {branch.name}
           </h3>
           <div className="space-y-2">
-            {branch.tools.map((tool, i) => (
+            {branch.tools.map((tool, _) => (
               <div
-                key={i}
+                key={tool}
                 className="text-sm dark:text-slate-200 text-gray-600"
               >
                 • {tool}
@@ -97,7 +95,7 @@ export default function Portfolio() {
             <span
               className={`px-4 py-2 rounded-full text-sm font-medium dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20 bg-cyan-100 text-cyan-700 border border-cyan-200`}
             >
-              Senior Frontend Engineer & Technical Lead
+             Keith Nickas, Senior Frontend Engineer & Technical Lead
             </span>
           </div>
 

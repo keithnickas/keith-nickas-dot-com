@@ -1,7 +1,9 @@
 import { BundledLanguage, BundledTheme } from "shiki"
 import { transformToHighlight, transformToInlineHighlight } from "./helpers/highlight-code-to-html"
+import { CopyButton } from "@/hooks/use-clipboard"
 
 type CodeProps = {
+  colorReplacements?: Record<string, Record<string, string>>
   cssOverrides?: string
   snippet: string
   title?: string
@@ -11,6 +13,7 @@ type CodeProps = {
 }
 
 export async function Code({
+  colorReplacements = { "github-dark-default": {"#0d1117": "rgba(15, 23, 42, var(--tw-bg-opacity, 1))"} },
   cssOverrides,
   snippet,
   title,
@@ -18,8 +21,8 @@ export async function Code({
   theme = "github-dark-default",
   useInline,
 }: CodeProps) {
-  const transformToInlineCode = await transformToInlineHighlight(snippet, type, theme)
-  const transformToHighlightedCode = await transformToHighlight(snippet, type, theme) 
+  const transformToInlineCode = await transformToInlineHighlight({snippet, type, theme})
+  const transformToHighlightedCode = await transformToHighlight({snippet, type, theme, colorReplacements})
   
   const inlineCode = <span dangerouslySetInnerHTML={{ __html: transformToInlineCode }} />;
   const highlightedCode = <div dangerouslySetInnerHTML={{ __html: transformToHighlightedCode }} />;
@@ -27,22 +30,15 @@ export async function Code({
   return useInline ? (
     inlineCode
   ) : (
-    <div className={`relative bg-black w-full md:max-w-4xl p-4 rounded-md border border-gray-700 mb-8 ${cssOverrides ?? ''}`}>
-      <div className="static text-white">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-gray-400">{title || "Code:"}</span>
-        </div>
-      </div>
-      <div className="relative overflow-x-auto bg-[#0d1117] border border-gray-700 h-96">
-        <div className="flex justify-between items-center">
-          <pre id="code">
-            <code className={`language-${type}`}>
-              {highlightedCode}
-            </code>
-          </pre>
-        </div>
-      </div>
-    </div>
+    <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700">
+            <div className="bg-slate-800 px-6 py-3 flex items-center justify-between">
+              <span className="text-sm font-mono text-slate-300">{title || ""}</span>
+              <CopyButton snippet={snippet} />
+            </div>
+            <pre className="bg-slate-900 p-6 overflow-x-auto max-h-[400px]">
+              <code className="text-sm font-mono">{highlightedCode}</code>
+            </pre>
+          </div>
   )
 }
 

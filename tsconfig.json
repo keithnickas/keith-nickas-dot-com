@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2022",
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "incremental": true,
     "plugins": [
       {
@@ -25,10 +26,9 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "tw-elements": ["./node_modules/tw-elements/dist/js/index.min.js"],
+      "@/*": ["./*"],
+      "@": ["./"],
+      "tw-elements": ["./node_modules/tw-elements/dist/js/index.min.js"]
     }
   },
   "include": [
