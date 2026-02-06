@@ -1,11 +1,8 @@
 "use client"
-import { MermaidDiagram } from "@lightenna/react-mermaid-diagram";
+import Mermaid from "@/components/helpers/mermaid";
 
 export default function Diagram(
-  props: React.ComponentProps<typeof MermaidDiagram>
-) {
-  const { children, ...restProps } = props;
-  return (
-    <MermaidDiagram {...restProps}>{children}</MermaidDiagram>
-  );
+  props: React.ComponentProps<typeof Mermaid>,
+) { 
+  return <Mermaid {...props} />;
 }

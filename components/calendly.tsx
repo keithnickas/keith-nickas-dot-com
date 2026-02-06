@@ -1,5 +1,6 @@
 "use client"
 import dynamic from "next/dynamic"
+import { ComponentType } from "react"
 import { InlineWidget, PopupWidget } from "react-calendly"
 
 export default function CalendlyPopup({
@@ -39,11 +40,12 @@ export function CalendlyInline() {
   )
 }
 
-export const Calendly = dynamic(
+export const Calendly: ComponentType<{useWrapper?: boolean}> = dynamic(
   () =>
+    // @ts-ignore
     import("./calendly").catch((error) => {
       console.error("Error loading Calendly component:", error)
-      return () => <div>Error loading Calendly component</div>
+      return () => <div>Error loading Calendly component</div>;
     }),
   {
     ssr: false,

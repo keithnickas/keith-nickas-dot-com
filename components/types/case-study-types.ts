@@ -58,26 +58,47 @@ export interface CaseStudyKeyFeature {
   description: string;
 }
 
+export interface CaseStudyKeyFeatures {
+  title?: string;
+  features: CaseStudyKeyFeature[];
+}
+
 export interface CaseStudyComponentShowcase {
   examples: string;
   category: string;
 }
 
+export interface TechnicalHighlights {
+  title?: string;
+  highlights: string[];
+}
+
 export interface CaseStudy {
   title: string;
-  company: string;
-  role: string;
-  timeline: string;
-  tags: string[];
-  overview: string;
-  challenge: CaseStudyChallenge;
-  approach: CaseStudyApproach;
-  results: CaseStudyResults;
-  technicalHighlights: string[];
-  learnings: string[];
+  company?: string;
+  role?: string;
+  timeline?: string;
+  tags?: string[];
+  overview?: string;
+  challenge?: CaseStudyChallenge;
+  approach?: CaseStudyApproach;
+  results?: CaseStudyResults;
+  technicalHighlights?: TechnicalHighlights;
+  learnings?: string[];
   impact?: CaseStudyImpact;
   userFlows?: CaseStudyUserFlow[];
-  keyFeatures?: CaseStudyKeyFeature[];
+  keyFeatures?: CaseStudyKeyFeatures;
   systemPillars?: CaseStudySystemPillars;
   componentShowcase?: CaseStudyComponentShowcase[];
+}
+
+export interface DocumentMetaData {
+  version: string;
+  date: string;
+  author: string;
+}
+
+export interface CaseStudyData extends CaseStudy {
+  documentMetaData?: DocumentMetaData;
+  documentType?: string;
 }
