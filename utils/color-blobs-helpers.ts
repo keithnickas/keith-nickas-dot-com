@@ -14,72 +14,52 @@ type Animator = {
 }
 
 export function createBlobAnimator(element: HTMLDivElement | null): Animator {
-  let mounted = true
-  let lastAnimation: Animation | null = null
-
-  const play = () => {
-    if (lastAnimation && lastAnimation.play) lastAnimation.play()
-  }
-
-  const pause = () => {
-    if (lastAnimation && lastAnimation.pause) lastAnimation.pause()
-  }
-
-  const cancel = () => {
-    mounted = false
-    if (lastAnimation) {
-      try {
-        lastAnimation.cancel()
-      } catch {}
-      lastAnimation = null
-    }
-  }
+  let mounted = true;
+  let lastAnimation: Animation | null = null;
 
   const runSequence = () => {
-    if (!mounted || !element) return
-    if (document.hidden) return
+    if (!mounted || !element || document.hidden) return;
 
-    const translateX = `${randomBetween(10, 90)}%`
-    const translateY = `${randomBetween(10, 90)}%`
-    const scaleFactor = randomBetween(288, 480) / 360
-    const durationMs = Math.round(randomBetween(4000, 7000))
+    const nextTX = `${randomBetween(10, 90)}%`;
+    const nextTY = `${randomBetween(10, 90)}%`;
+    const nextScale = randomBetween(0.8, 1.3);
+    const durationMs = Math.round(randomBetween(4000, 7000));
 
-    element.style.setProperty("--blob-tx", translateX)
-    element.style.setProperty("--blob-ty", translateY)
-    element.style.setProperty("--blob-scale", String(scaleFactor))
-    element.style.setProperty("--blob-duration", `${durationMs}ms`)
-    element.style.setProperty("--blob-pulse-duration", `${durationMs}ms`)
+    // Fast: read current value directly from the style object (avoiding getComputedStyle)
+    const currentTranslate = element.style.translate || "50% 50%";
+    const currentScale = element.style.scale || "1";
 
-    const computed = getComputedStyle(element).transform
-    const from = computed === "none" ? "translate(50%,50%) scale(1)" : computed
-    const to = `translate(${translateX}, ${translateY}) scale(${scaleFactor})`
-
-    try {
-      const anim = element.animate(
-        [{ transform: from }, { transform: to }],
-        { duration: durationMs, easing: "cubic-bezier(.22,.9,.24,1)", fill: "forwards" }
-      )
-
-      lastAnimation = anim
-      // schedule next when finished
-      anim.onfinish = () => {
-        if (!mounted) return
-        const pauseMs = Math.round(randomBetween(250, 1200))
-        setTimeout(() => runSequence(), pauseMs)
+    const anim = element.animate(
+      [
+        { translate: currentTranslate, scale: currentScale },
+        { translate: `${nextTX} ${nextTY}`, scale: String(nextScale) }
+      ],
+      { 
+        duration: durationMs, 
+        easing: "cubic-bezier(.22,.9,.24,1)",
+        fill: "both" // Safe here because we only have ONE active animation
       }
-    } catch {
-      // fallback: set CSS vars and re-run after duration
-      const pauseMs = Math.round(randomBetween(250, 1200)) + durationMs
-      setTimeout(() => runSequence(), pauseMs)
-    }
-  }
+    );
+
+    lastAnimation = anim;
+
+    anim.onfinish = () => {
+      if (!mounted) return;
+      // Commit final values so the browser can stop tracking the animation object
+      element.style.translate = `${nextTX} ${nextTY}`;
+      element.style.scale = String(nextScale);
+      anim.cancel(); // Free up memory immediately
+
+      setTimeout(runSequence, Math.round(randomBetween(250, 1200)));
+    };
+  };
 
   return {
     start: runSequence,
-    pause,
-    play,
-    cancel,
-  }
+    pause: () => lastAnimation?.pause(),
+    play: () => lastAnimation?.play(),
+    cancel: () => { mounted = false; lastAnimation?.cancel(); }
+  };
 }
 
 /**

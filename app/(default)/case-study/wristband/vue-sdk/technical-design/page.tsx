@@ -92,52 +92,72 @@ const jsonLd = {
   ],
 }
 
-const TechnicalDesignDoc = () => {
-  const problemStatementElements = problemStatements.map((item, idx) => (
+const problemStatementElements = problemStatements.map((item, _) => (
+  <div
+    key={item.title.split(" ").join("-")}
+    className="p-6 rounded-xl bg-white dark:bg-slate-800/30 border border-gray-200 dark:border-slate-700"
+  >
+    <h3 className="text-lg font-bold mb-2 text-purple-400">{item.title}</h3>
+    <p className="text-gray-600 dark:text-slate-400">{item.desc}</p>
+  </div>
+))
+
+const architectureDiagramElements = architectureDiagrams.map(
+  (component, idx) => (
     <div
-      key={idx}
-      className="p-6 rounded-xl bg-white dark:bg-slate-800/30 border border-gray-200 dark:border-slate-700"
+      key={component.title.split(" ").join("-")}
+      className="p-6 rounded-xl bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700"
     >
-      <h3 className="text-lg font-bold mb-2 text-purple-400">{item.title}</h3>
-      <p className="text-gray-600 dark:text-slate-400">{item.desc}</p>
-    </div>
-  ))
-
-  const architectureDiagramElements = architectureDiagrams.map(
-    (component, idx) => (
-      <div
-        key={idx}
-        className="p-6 rounded-xl bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-slate-700"
-      >
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-10 h-10 rounded-lg bg-purple-500 flex items-center justify-center text-white font-bold">
-            {idx + 1}
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-purple-400">
-              {component.title}
-            </h3>
-            <p className="text-xs text-gray-500 dark:text-slate-500">
-              {component.subtitle}
-            </p>
-          </div>
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-10 h-10 rounded-lg bg-purple-500 flex items-center justify-center text-white font-bold">
+          {idx + 1}
         </div>
-        <ul className="mt-4 space-y-2">
-          {component.features.map((feature, _) => (
-            <li
-              key={feature}
-              className="flex items-start gap-2 text-sm text-gray-600 dark:text-slate-400"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
-              {feature}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h3 className="text-lg font-bold text-purple-400">
+            {component.title}
+          </h3>
+          <p className="text-xs text-gray-500 dark:text-slate-500">
+            {component.subtitle}
+          </p>
+        </div>
       </div>
-    )
+      <ul className="mt-4 space-y-2">
+        {component.features.map((feature, _) => (
+          <li
+            key={feature}
+            className="flex items-start gap-2 text-sm text-gray-600 dark:text-slate-400"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
   )
+)
 
-  const securityFeatureElements = securityFeatures.map((item, _) => (
+const securityFeatureElements = securityFeatures.map((item, _) => (
+  <li
+    key={item.split(" ").join("-")}
+    className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300"
+  >
+    <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
+    {item}
+  </li>
+))
+
+const rationalePointElements = rationalePoints.map((point, _) => (
+  <li
+    key={point.split(" ").join("-")}
+    className="flex items-start gap-2 text-gray-600 dark:text-slate-400"
+  >
+    <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
+    {point}
+  </li>
+))
+
+const performanceOptimizationElements = performanceOptimizations.map(
+  (item, _) => (
     <li
       key={item.split(" ").join("-")}
       className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300"
@@ -145,30 +165,10 @@ const TechnicalDesignDoc = () => {
       <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
       {item}
     </li>
-  ))
-
-  const rationalePointElements = rationalePoints.map((point, _) => (
-    <li
-      key={point.split(" ").join("-")}
-      className="flex items-start gap-2 text-gray-600 dark:text-slate-400"
-    >
-      <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2" />
-      {point}
-    </li>
-  ))
-
-  const performanceOptimizationElements = performanceOptimizations.map(
-    (item, _) => (
-      <li
-        key={item.split(" ").join("-")}
-        className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300"
-      >
-        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5" />
-        {item}
-      </li>
-    )
   )
+)
 
+export default function TechnicalDesignDoc(){
   return (
     <main className="pt-24">
       <Script
@@ -471,5 +471,3 @@ export default function Dashboard() {
     </main>
   )
 }
-
-export default TechnicalDesignDoc

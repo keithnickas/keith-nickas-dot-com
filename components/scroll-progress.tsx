@@ -1,8 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
+"use client"
+import { useEffect, useState } from "react"
 
 export default function ScrollProgress() {
-const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,8 +16,9 @@ const [scrollProgress, setScrollProgress] = useState(0)
   }, [])
 
   return (
-      <div
-        className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 z-50"
-        style={{ width: `${scrollProgress}%`, transition: "width 0.1s ease" }}
-      />);
-  }
+    <div
+      className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 z-50"
+      style={{ width: `${scrollProgress}%`, transition: "width 0.1s ease" }}
+    />
+  )
+}
