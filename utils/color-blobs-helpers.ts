@@ -16,6 +16,7 @@ type Animator = {
 export function createBlobAnimator(element: HTMLDivElement | null): Animator {
   let mounted = true;
   let lastAnimation: Animation | null = null;
+  let timeoutId: number | null = null;
 
   const runSequence = () => {
     if (!mounted || !element || document.hidden) return;
@@ -24,8 +25,6 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
     const nextTY = `${randomBetween(10, 90)}%`;
     const nextScale = randomBetween(0.8, 1.3);
     const durationMs = Math.round(randomBetween(4000, 7000));
-
-    // Fast: read current value directly from the style object (avoiding getComputedStyle)
     const currentTranslate = element.style.translate || "50% 50%";
     const currentScale = element.style.scale || "1";
 
@@ -37,7 +36,7 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
       { 
         duration: durationMs, 
         easing: "cubic-bezier(.22,.9,.24,1)",
-        fill: "both" // Safe here because we only have ONE active animation
+        fill: "both"
       }
     );
 
@@ -45,12 +44,11 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
 
     anim.onfinish = () => {
       if (!mounted) return;
-      // Commit final values so the browser can stop tracking the animation object
       element.style.translate = `${nextTX} ${nextTY}`;
       element.style.scale = String(nextScale);
-      anim.cancel(); // Free up memory immediately
+      anim.cancel();
 
-      setTimeout(runSequence, Math.round(randomBetween(250, 1200)));
+      timeoutId = window.setTimeout(runSequence, Math.round(randomBetween(250, 1200)));
     };
   };
 
@@ -58,7 +56,14 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
     start: runSequence,
     pause: () => lastAnimation?.pause(),
     play: () => lastAnimation?.play(),
-    cancel: () => { mounted = false; lastAnimation?.cancel(); }
+    cancel: () => {
+      mounted = false;
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      lastAnimation?.cancel();
+    }
   };
 }
 

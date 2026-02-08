@@ -33,10 +33,6 @@ export function RandomColorBlobs() {
       <div
         ref={blob1Ref}
         className="absolute blob-container"
-        style={{
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
       >
         <div className="blob-shape blob-cyan mix-blend-multiply" />
       </div>
@@ -44,12 +40,6 @@ export function RandomColorBlobs() {
       <div
         ref={blob2Ref}
         className="absolute blob-container"
-        style={{
-          width: "360px",
-          height: "360px",
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
       >
         <div className="blob-shape blob-purple " />
       </div>
@@ -57,12 +47,6 @@ export function RandomColorBlobs() {
       <div
         ref={blob3Ref}
         className="absolute blob-container"
-        style={{
-          width: "360px",
-          height: "360px",
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
       >
         <div className="blob-shape blob-pink" />
       </div>

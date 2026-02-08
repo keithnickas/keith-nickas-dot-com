@@ -24,8 +24,7 @@
     width: 360px;
     height: 360px;
     pointer-events: none;
-    will-change: translate;
-    transform: translateZ(0); 
+    will-change: transform;
 }
 
 .blob-shape {
@@ -35,13 +34,24 @@
     background: var(--blob-gradient);
     filter: blur(20px);
     animation: blob-pulse 5s ease-in-out infinite;
-    will-change: transform;
     -webkit-animation: blob-pulse 5s ease-in-out infinite;
     -webkit-filter: blur(20px);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+    .blob-container {
+        width: 260px;
+        height: 260px;
+    }
+
+    .blob-shape {
+        filter: blur(14px);
+        -webkit-filter: blur(14px);
+    }
 }
 
 @keyframes blob-pulse {
