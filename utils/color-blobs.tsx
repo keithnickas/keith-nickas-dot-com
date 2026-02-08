@@ -32,41 +32,23 @@ export function RandomColorBlobs() {
     <div className="absolute inset-0 opacity-20 pointer-events-none">
       <div
         ref={blob1Ref}
-        className="absolute"
-        style={{
-          width: "360px",
-          height: "360px",
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
+        className="absolute blob-container"
       >
-        <div className="blob-shape bg-cyan-500 mix-blend-multiply filter blur-xl" />
+        <div className="blob-shape blob-cyan mix-blend-multiply" />
       </div>
 
       <div
         ref={blob2Ref}
-        className="absolute"
-        style={{
-          width: "360px",
-          height: "360px",
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
+        className="absolute blob-container"
       >
-        <div className="blob-shape bg-purple-500 filter blur-xl" />
+        <div className="blob-shape blob-purple " />
       </div>
 
       <div
         ref={blob3Ref}
-        className="absolute"
-        style={{
-          width: "360px",
-          height: "360px",
-          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
-          willChange: "transform",
-        } as React.CSSProperties}
+        className="absolute blob-container"
       >
-        <div className="blob-shape bg-pink-500 filter blur-xl" />
+        <div className="blob-shape blob-pink" />
       </div>
     </div>
   )

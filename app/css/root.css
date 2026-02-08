@@ -6,19 +6,59 @@
     @apply md:bottom-28;
 }
 
-/* Blob pulse animation for color blobs */
-@keyframes blob-pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(0.94); opacity: 0.9; }
+[id="hero"] {
+--cyan-500-gradient: radial-gradient(circle, rgba(6, 182, 212, var(--tw-bg-opacity, 1)) 0%, rgba(6, 182, 212, 0) 80%);
+--purple-500-gradient: radial-gradient(circle, rgba(141, 141, 255, var(--tw-bg-opacity, 1)) 0%, rgba(141, 141, 255, 0) 80%);
+--pink-500-gradient: radial-gradient(circle, rgba(236, 72, 153, var(--tw-bg-opacity, 1)) 0%, rgba(236, 72, 153, 0) 80%);
+--blob-gradient: "";
+}
+
+.blob-cyan { --blob-gradient: var(--cyan-500-gradient); }
+.blob-purple { --blob-gradient: var(--purple-500-gradient); }
+.blob-pink { --blob-gradient: var(--pink-500-gradient); }
+
+.blob-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 360px;
+    pointer-events: none;
+    will-change: transform;
 }
 
 .blob-shape {
     width: 100%;
     height: 100%;
-    border-radius: 9999px;
-    animation: blob-pulse var(--blob-pulse-duration, 5s) ease-in-out infinite;
-    will-change: transform, opacity;
+    border-radius: 50%;
+    background: var(--blob-gradient);
+    filter: blur(20px);
+    animation: blob-pulse 5s ease-in-out infinite;
+    -webkit-animation: blob-pulse 5s ease-in-out infinite;
+    -webkit-filter: blur(20px);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
+
+@media (max-width: 640px) {
+    .blob-container {
+        width: 260px;
+        height: 260px;
+    }
+
+    .blob-shape {
+        filter: blur(14px);
+        -webkit-filter: blur(14px);
+    }
+}
+
+@keyframes blob-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     .blob-shape { animation: none !important; }

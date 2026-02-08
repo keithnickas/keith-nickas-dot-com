@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+import Script from "next/script";
 import { Github, Book, Code2 } from "lucide-react"
 import Diagram from "@/components/diagram"
 import Modal from "@/components/modal"
@@ -8,6 +10,72 @@ import {
   vueSdkStoreCodeSnippet,
   vueSdkStoreFeatures,
 } from "@/data/wristband/vue-sdk"
+
+export const metadata: Metadata = {
+  title: 'Vue.js Client Auth SDK | Wristband Integration | Keith Nickas',
+  description: 'Open source Vue.js SDK for Wristband authentication. Built with Vue 3 Composition API, Pinia state management, and TypeScript. Features composable-first design, token caching, and CSRF protection.',
+  keywords: [
+    'Vue.js SDK',
+    'Wristband SDK',
+    'Vue Authentication',
+    'Vue 3 Composables',
+    'Pinia State Management',
+    'TypeScript Auth',
+    'CIAM SDK',
+    'OAuth Vue',
+    'Session Management',
+    'Token Caching'
+  ],
+  authors: [{ name: 'Keith Nickas', url: 'https://keithnickas.dev' }],
+  openGraph: {
+    type: 'article',
+    url: 'https://keithnickas.dev/case-study/wristband/vue-sdk',
+    title: 'Vue.js Client Auth SDK for Wristband',
+    description: 'Open source Vue.js SDK with composable-first API, type-safe authentication, and enterprise-grade security.',
+    images: [
+      {
+        url: 'https://keithnickas.dev/og-images/vue-sdk.png',
+        width: 1200,
+        height: 630,
+        alt: 'Wristband Vue.js SDK',
+      },
+    ],
+    publishedTime: '2025-12-01T00:00:00Z',
+    authors: ['Keith Nickas'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vue.js Client Auth SDK | Wristband',
+    description: 'Open source Vue.js SDK with composable-first API, type-safe authentication, and enterprise-grade security.',
+    images: ['https://keithnickas.dev/og-images/vue-sdk.png'],
+  },
+  alternates: {
+    canonical: 'https://keithnickas.dev/case-study/wristband/vue-sdk',
+  },
+};
+
+// JSON-LD structured data (add to component)
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'Wristband Vue.js Client Auth SDK',
+  description: 'Open source Vue.js SDK for integrating Wristband authentication and authorization features',
+  author: {
+    '@type': 'Person',
+    name: 'Keith Nickas',
+    url: 'https://keithnickas.dev'
+  },
+  programmingLanguage: 'TypeScript',
+  codeRepository: 'https://github.com/wristband-dev/vue-client-auth',
+  datePublished: '2025-12-01',
+  keywords: 'Vue.js, Authentication, SDK, Wristband, CIAM, Composables, Pinia',
+  license: 'https://opensource.org/licenses/MIT',
+  about: {
+    '@type': 'SoftwareApplication',
+    name: 'Wristband CIAM Platform',
+    applicationCategory: 'SecurityApplication'
+  }
+};
 
 const wristbandAuthFlowchart = `
 flowchart TB
@@ -83,6 +151,11 @@ const VueSDKOverview = () => {
 
   return (
     <main className="pt-24">
+      <Script
+        strategy="beforeInteractive"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="px-6 pb-12">
         <div className="max-w-4xl mx-auto">
