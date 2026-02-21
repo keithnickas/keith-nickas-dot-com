@@ -1,9 +1,14 @@
 import { LucideIcon } from "lucide-react";
+import React from "react";
 
 export interface CaseStudyMetric {
+  icon?: React.ComponentType<any>;
   label: string;
-  value: string;
-  description: string;
+  value?: string;
+  before?: string;
+  after?: string;
+  improvement?: string;
+  description?: string;
 }
 
 export interface CaseStudyApproachStep {
@@ -22,7 +27,7 @@ export interface CaseStudyChallenge {
 }
 
 export interface CaseStudyImpactArea {
-  icon: LucideIcon;
+  icon?: React.ComponentType<any>;
   title: string;
   description: string;
 }
@@ -33,7 +38,7 @@ export interface CaseStudySystemPillars {
 }
 
 export interface CaseStudySystemPillar {
-  icon: LucideIcon;
+  icon?: React.ComponentType<any>;
   title: string;
   description: string;
 }
@@ -73,23 +78,30 @@ export interface TechnicalHighlights {
   highlights: string[];
 }
 
-export interface CaseStudy {
+export interface Bottlenecks {
   title: string;
-  company?: string;
-  role?: string;
-  timeline?: string;
-  tags?: string[];
-  overview?: string;
-  challenge?: CaseStudyChallenge;
+  description: string;
+  severity: "Critical" | "High" | "Medium" | "Low";
+}
+
+export interface CaseStudy {
   approach?: CaseStudyApproach;
-  results?: CaseStudyResults;
-  technicalHighlights?: TechnicalHighlights;
-  learnings?: string[];
-  impact?: CaseStudyImpact;
-  userFlows?: CaseStudyUserFlow[];
-  keyFeatures?: CaseStudyKeyFeatures;
-  systemPillars?: CaseStudySystemPillars;
+  bottlenecks?: Bottlenecks[];
+  challenge?: CaseStudyChallenge;
+  company?: string;
   componentShowcase?: CaseStudyComponentShowcase[];
+  impact?: CaseStudyImpact;
+  keyFeatures?: CaseStudyKeyFeatures;
+  learnings?: string[];
+  overview?: string;
+  results?: CaseStudyResults;
+  role?: string;
+  systemPillars?: CaseStudySystemPillars;
+  tags?: string[];
+  technicalHighlights?: TechnicalHighlights;
+  timeline?: string;
+  title: string;
+  userFlows?: CaseStudyUserFlow[];
 }
 
 export interface DocumentMetaData {

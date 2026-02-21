@@ -1,6 +1,6 @@
 import { CaseStudy } from "../types/case-study-types"
 
-const CaseStudyApproach = ({ approach, stepClassName }: { approach: CaseStudy["approach"], stepClassName?: string }) => (
+const CaseStudyApproach = ({ approach, stepClassName, stepTitleClassName }: { approach: CaseStudy["approach"], stepClassName?: string, stepTitleClassName?: string }) => (
   <section className="px-6 py-12">
     <div className="max-w-4xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold mb-8">
@@ -20,7 +20,7 @@ const CaseStudyApproach = ({ approach, stepClassName }: { approach: CaseStudy["a
                 {idx + 1}
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                <h3 className={`text-xl font-bold mb-2 ${stepTitleClassName ? stepTitleClassName : ""}`}>{step.title}</h3>
                 <p className="dark:text-slate-400 text-gray-600">
                   {step.description}
                 </p>
