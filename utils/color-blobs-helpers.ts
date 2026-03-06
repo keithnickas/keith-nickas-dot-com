@@ -55,10 +55,11 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
     const to = `translate(${translateX}, ${translateY}) scale(${scaleFactor})`
 
     try {
-      const anim = element.animate(
-        [{ transform: from }, { transform: to }],
-        { duration: durationMs, easing: "cubic-bezier(.22,.9,.24,1)", fill: "forwards" }
-      )
+      const anim = element.animate([{ transform: from }, { transform: to }], {
+        duration: durationMs,
+        easing: "cubic-bezier(.22,.9,.24,1)",
+        fill: "forwards",
+      })
 
       lastAnimation = anim
       // schedule next when finished
@@ -84,27 +85,64 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
 
 /**
  * Install a scroll listener that pauses/plays provided animators during scroll.
+ * Also uses IntersectionObserver to pause animations when blobs are off-screen for better performance.
  * Returns a cleanup function.
  */
 export function scrollPauseAnimation(animators: Animator[]) {
   let rafRequestId = 0
   let isScrolling = false
+  let isVisible = true
+
+  const callback = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    if (typeof entries === "undefined")
+      throw new Error("Expected entries in IntersectionObserver callback")
+    try {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          rafRequestId = requestAnimationFrame(() => {
+            animators.forEach((a) => a.pause())
+            isVisible = false
+          })
+        } else {
+          observer.observe(entry.target)
+          cancelAnimationFrame(rafRequestId)
+          rafRequestId = requestAnimationFrame(() => {
+            animators.forEach((a) => a.play())
+          })
+          isVisible = true
+        }
+      })
+    } catch (error) {
+      console.error("Error in IntersectionObserver callback:", error)
+    }
+  }
+  const observer = new IntersectionObserver(callback, { threshold: 0.1 })
+  const blobs = document.querySelectorAll("[id^='blob']")
 
   const onScroll = () => {
+    
     if (!isScrolling) {
       isScrolling = true
       document.documentElement.classList.add("user-is-scrolling")
       animators.forEach((a) => a.pause())
     }
-    cancelAnimationFrame(rafRequestId)
-    rafRequestId = requestAnimationFrame(() => {
-      isScrolling = false
-      document.documentElement.classList.remove("user-is-scrolling")
-      animators.forEach((a) => a.play())
-    })
+    if (isVisible) {
+        cancelAnimationFrame(rafRequestId)
+        rafRequestId = requestAnimationFrame(() => {
+        isScrolling = false
+        document.documentElement.classList.remove("user-is-scrolling")
+        animators.forEach((a) => a.play())
+      })
+    }
   }
 
   window.addEventListener("scroll", onScroll, { passive: true })
+  blobs.forEach((frames) => {
+    observer.observe(frames as unknown as Element)
+  })
 
   return () => {
     window.removeEventListener("scroll", onScroll)

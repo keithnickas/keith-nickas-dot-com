@@ -1,4 +1,4 @@
-import { Calendar, Tag } from "lucide-react"
+import { Calendar, Github, Tag } from "lucide-react"
 import { CaseStudy, CaseStudyData } from "../types/case-study-types"
 
 const Hero = ({
@@ -71,6 +71,21 @@ const Hero = ({
             </span>
           ))}
         </div> : null}
+
+        {data?.projectLinks ? <div className="flex flex-wrap gap-4 mt-8">
+            {data.projectLinks.map((link, _) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${link?.className ? link.className : "from-blue-500 to-cyan-500"} rounded-lg font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105`}
+              >
+                {link?.icon ? <link.icon size={20} className={link?.iconClassName ? link.iconClassName : "text-cyan-400"} /> : null}
+                {link.title}
+              </a>
+            ))}
+          </div> : null}
       </div>
     </section>
   )

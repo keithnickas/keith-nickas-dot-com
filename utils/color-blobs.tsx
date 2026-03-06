@@ -32,6 +32,7 @@ export function RandomColorBlobs() {
     <div className="absolute inset-0 opacity-20 pointer-events-none">
       <div
         ref={blob1Ref}
+        id="blob1"
         className="absolute"
         style={{
           width: "360px",
@@ -45,6 +46,7 @@ export function RandomColorBlobs() {
 
       <div
         ref={blob2Ref}
+        id="blob2"
         className="absolute"
         style={{
           width: "360px",
@@ -58,6 +60,7 @@ export function RandomColorBlobs() {
 
       <div
         ref={blob3Ref}
+        id="blob3"
         className="absolute"
         style={{
           width: "360px",

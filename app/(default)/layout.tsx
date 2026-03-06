@@ -21,7 +21,6 @@ export default function DefaultPageLayout({ children }: PageLayoutProps) {
         <Navigation projects={projects} />
         {/* Page Content */}
         {children}
-        {/* Footer */}
         <Footer />
         <Calendly useWrapper />
       <Script

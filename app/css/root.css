@@ -1,3 +1,5 @@
+@import "./additional-styles/svg-animation.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

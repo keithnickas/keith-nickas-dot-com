@@ -2,6 +2,7 @@ import { ArrowRight, Mail, X } from "lucide-react";
 import { LinkedIn } from "./icons";
 import { type ProjectsData } from "@/data/projects";
 import { RandomColorBlobs } from "@/utils/color-blobs";
+import RoleFadeSwap from "./role-fade-swap";
 
 export function MobileNavigation({
   handleLinkClick,
@@ -9,12 +10,14 @@ export function MobileNavigation({
   setMenuOpen,
   navLinks,
   projects,
+  role,
 }: {
   handleLinkClick: () => void
   menuOpen: boolean
   navLinks: { label: string; href: string }[]
   projects: ProjectsData
   setMenuOpen: (open: boolean) => void
+  role: string
 }) {
   return (
     <div
@@ -25,7 +28,6 @@ export function MobileNavigation({
       aria-modal="true"
       aria-label="Main navigation menu"
     >
-      <RandomColorBlobs />
 
       {/* Close button - Fixed position, always visible */}
       <button
@@ -41,7 +43,7 @@ export function MobileNavigation({
         <div className="mb-12">
           {navLinks.map((link, idx) => (
             <a
-              key={idx}
+              key={`${link.label}-${link.href.replace(/[^a-z0-9]/gi, "")}`} // Unique key based on label and href
               href={link.href}
               onClick={handleLinkClick}
               className={`block text-4xl font-bold mb-6 hover:text-cyan-400 transition-all duration-300 ${
@@ -58,8 +60,7 @@ export function MobileNavigation({
             </a>
           ))}
         </div>
-
-        {/* Featured Projects - Bento Grid */}
+        {/* Featured Projects */}
         <div
           className={`mb-12 transition-all duration-500 ${
             menuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -73,7 +74,7 @@ export function MobileNavigation({
           <div className="space-y-4">
             {projects?.map((project, idx) => (
               <a
-                key={idx}
+                key={`${project.title}-${project.href.replace(/[^a-z0-9]/gi, "")}`} // Unique key based on title and href
                 href={project.href}
                 onClick={handleLinkClick}
                 className="group block relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] bg-gray-100 dark:bg-slate-900/50 backdrop-blur-sm border border-gray-200 dark:border-slate-800"
@@ -85,7 +86,7 @@ export function MobileNavigation({
               >
                 {/* Gradient overlay on hover */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-10 transition-opacity`}
+                  className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}
                 />
 
                 <div className="relative p-5">
@@ -111,7 +112,7 @@ export function MobileNavigation({
                   <div className="flex gap-2">
                     {project.tech.map((tech, i) => (
                       <span
-                        key={i}
+                        key={`${project.title}-${tech}`} // Unique key based on project title, tech, and index
                         className="px-2 py-1 rounded text-xs bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-slate-300"
                       >
                         {tech}

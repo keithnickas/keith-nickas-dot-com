@@ -110,7 +110,16 @@ export interface DocumentMetaData {
   author: string;
 }
 
+export interface ProjectLink {
+  title: string;
+  href: string;
+  className?: string;
+  icon?: React.ComponentType<any>;
+  iconClassName?: string;
+}
+
 export interface CaseStudyData extends CaseStudy {
   documentMetaData?: DocumentMetaData;
   documentType?: string;
+  projectLinks?: ProjectLink[];
 }
