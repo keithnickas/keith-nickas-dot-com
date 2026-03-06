@@ -13,9 +13,11 @@ const CaseStudySystemPillars = ({ systemPillars, pillarClassName, iconBgColor }:
                   key={pillar.title}
                   className={`p-6 rounded-xl bg-gradient-to-br border ${pillarClassName ? pillarClassName : "from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 border-cyan-200 dark:border-cyan-500/20"}`}
                 >
-                  <div className={`w-12 h-12 rounded-lg ${iconBgColor ? iconBgColor : "bg-cyan-500"} flex items-center justify-center mb-4`}>
-                    <IconComponent size={24} className="text-white" />
-                  </div>
+                  {IconComponent !== undefined ? (
+                    <div className={`w-12 h-12 rounded-lg ${iconBgColor ? iconBgColor : "bg-cyan-500"} flex items-center justify-center mb-4`}>
+                      <IconComponent size={24} className="text-white" />
+                    </div>
+                  ) : null}
                   <h3 className="text-lg font-bold mb-2">{pillar.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-slate-400">
                     {pillar.description}

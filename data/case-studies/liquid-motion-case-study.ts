@@ -1,6 +1,7 @@
+import { CaseStudyData } from "@/components/types/case-study-types"
 import { Activity, Cpu, Gauge, Zap } from "lucide-react"
 
-const caseStudy = {
+const caseStudy: CaseStudyData = {
   title: "Performance Engineering",
   company: "Internal",
   role: "Frontend Engineer",

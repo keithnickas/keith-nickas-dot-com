@@ -7,7 +7,6 @@ import CaseStudyResults from "@/components/case-study/case-study-results"
 import CaseStudyTechnicalHighlights from "@/components/case-study/case-study-technical-highlights"
 import CaseStudyLearnings from "@/components/case-study/case-study-learnings"
 import CaseStudyBottlenecks from "@/components/case-study/case-study-bottlenecks"
-import { type Metadata } from "next"
 
 const LiquidMotionCaseStudy = () => {
   return (
