@@ -100,7 +100,7 @@ export const pillarsByRole: Record<Role, PillarItem[]> = {
     {
       title: "Design Systems",
       icon: "🎨",
-      skills: ["Component Libraries", "Design Tokens", "Accessibility (WCAG)", "Documentation", "Style Guides"],
+      skills: ["Storybook", "Component Libraries", "Design Tokens", "Accessibility (WCAG)", "Documentation", "Style Guides"],
     },
     {
       title: "Growth & UX",
@@ -117,7 +117,7 @@ export const pillarsByRole: Record<Role, PillarItem[]> = {
     {
       title: "Data & Integration",
       icon: "🗄️",
-      skills: ["PostgreSQL", "MySQL", "Schema Design", "Redshift", "RBAC & Authorization"],
+      skills: ["PostgreSQL", "MySQL", "Schema Design", "Redshift", "RBAC & Authorization", "Codebase Audits", "Documentation/RFC", "Pair Training", "POC", "Analytics"],
     },
     {
       title: "Platform & Tooling",

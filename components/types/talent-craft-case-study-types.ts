@@ -16,11 +16,21 @@ export interface RecruiterCaseStudyLeadership {
   description: string;
 }
 
+export interface RecruiterCaseStudyModal {
+    component: React.ComponentType<any> | React.ReactNode;
+    title?: string;
+    linkText: string;
+    url?: string;
+    showOnMobile?: boolean;
+    size?: "sm" | "md" | "lg" | "xl" | "full";
+  }
 export interface RecruiterCaseStudy {
   title: string;
   company: string;
   role: string;
   timeline: string;
+  mainImage?: React.ReactNode | string;
+  modal?: RecruiterCaseStudyModal;
   tags: string[];
   
   // Executive Summary

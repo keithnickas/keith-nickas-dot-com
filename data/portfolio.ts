@@ -16,6 +16,8 @@ export const pillars = [
     title: "Design Systems",
     skills: [
       "Component Libraries",
+      "Storybook",
+      "Tailwind CSS",
       "Design Tokens",
       "Accessibility",
       "Documentation",

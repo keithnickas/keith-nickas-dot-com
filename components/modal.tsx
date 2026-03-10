@@ -8,36 +8,40 @@ import { Expand } from "lucide-react"
 interface ModalProps {
   isOpen?: boolean
   onClose?: () => void
+  buttonText?: string
   children: ReactNode
   initialFocus?: RefObject<HTMLElement>
   size?: "sm" | "md" | "lg" | "xl" | "full"
   showCloseButton?: boolean
   className?: string
+  dialogClassName?: string
 }
 
 export default function Modal({
   isOpen,
   onClose,
+  buttonText,
   children,
   initialFocus,
   size = "md",
   showCloseButton = true,
   className = "",
+  dialogClassName = "",
 }: ModalProps) {
   const defaultFocus = useRef<HTMLDivElement>(null)
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   const sizeMap: Record<string, string> = {
-    sm: "max-w-lg",
-    md: "max-w-2xl",
-    lg: "max-w-4xl",
-    xl: "max-w-6xl",
+    sm: "w-full max-w-lg",
+    md: "w-full max-w-2xl",
+    lg: "w-full max-w-4xl",
+    xl: "w-full max-w-6xl",
     full: "w-full h-full",
   }
 
   return (
     <>
-      <div>
+      <div className={`${className}`}>
         <div
           className="relative flex justify-center items-center"
           data-aos="fade-up"
@@ -50,7 +54,7 @@ export default function Modal({
             }}
             aria-label="Open modal"
           >
-            View Fullscreen
+            {buttonText ?? "View Fullscreen"}
             <Expand />
           </button>
         </div>
@@ -73,7 +77,7 @@ export default function Modal({
           />
           <div className="fixed inset-0 overflow-hidden flex items-center justify-center px-4 sm:px-6">
             <Transition.Child
-              className={`transform transition-all ${size === "full" ? "h-full" : "max-h-full"} w-full ${sizeMap[size]} mx-auto`}
+              className={`transform transition-all ${sizeMap[size]} max-h-svh mx-auto`}
               enter="transition ease-out duration-200"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"
@@ -82,14 +86,14 @@ export default function Modal({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`bg-white dark:bg-black rounded-md overflow-auto relative ${className}`}
+                className={`bg-white dark:bg-black rounded-md overflow-auto relative ${dialogClassName} border border-gray-300 dark:border-gray-700`}
                 ref={defaultFocus}
               >
                 {showCloseButton && (
                   <button
                     aria-label="Close modal"
                     onClick={() => setModalOpen(false)  }
-                    className="absolute top-3 right-3 text-purple-600 dark:text-purple-400"
+                    className="absolute top-3 right-3 text-purple-600 dark:text-purple-400 fixed top-6 right-6 z-[60] p-3 rounded-xl transition-all hover:scale-110 bg-white/80 dark:bg-slate-900/80 hover:bg-gray-100 dark:hover:bg-slate-800 backdrop-blur-lg border border-gray-200 dark:border-slate-700 shadow-lg"
                   >
                     <svg
                       className="w-6 h-6"

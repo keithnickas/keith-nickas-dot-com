@@ -2,10 +2,11 @@ import { Database, GitBranch, Search, Sparkles } from "lucide-react"
 import type { CaseStudy } from "@/components/types/case-study-types"
 
 const pingletCaseStudy: CaseStudy = {
-  title: "Job Search That Actually Works",
+  title: "Pinglet - Job Search That Actually Works",
   company: "Internal Project",
   role: "Solo Developer / Architect",
   timeline: "Personal Project, 2026",
+  mainImage: "/images/pinglet/pinglet-job-card.webp",
   tags: [
     "Python",
     "FastAPI",

@@ -103,8 +103,8 @@ export default function ImpactDonut({
           strokeLinecap="round"
           strokeDasharray={`${dash} ${circumference - dash}`}
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          style={{ strokeDasharray: 200, strokeDashoffset: 200 }}
-        ><animate attributeName="stroke-dashoffset" from="200" to="" dur="2s" /></circle>
+          style={{ strokeDasharray: 200, strokeDashoffset: circumference - dash }}
+        ><animate attributeName="stroke-dashoffset" from="200" to={circumference - dash} dur="2s" /></circle>
 
         <foreignObject
           x="12%"

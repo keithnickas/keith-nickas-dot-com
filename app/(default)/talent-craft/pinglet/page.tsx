@@ -42,7 +42,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Article",

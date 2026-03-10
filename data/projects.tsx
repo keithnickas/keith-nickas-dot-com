@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Deem, GapInc, Wristband } from "@/components/icons"
 import { Measurement } from "@/components/talent-craft/measurement"
 import deemCase from "@/data/talent-craft/deem-recruiter-case-study"
@@ -68,6 +69,15 @@ export const projects: ProjectsData = [
     gradient: "purple-pink",
     href: "/case-study/wristband",
     logo: { component: <Wristband /> },
+    media: {
+      component: (<Image
+        src="/images/wristband/wristband-dashboard-roles.webp"
+        alt="Wristband Authentication Roles Workflow"
+        width={2614}
+        height={1452}
+        style={{ aspectRatio: "1.80:1" }}
+      />)
+    }
   },
   {
     title: "Monolith to Modern SPA",
@@ -79,17 +89,17 @@ export const projects: ProjectsData = [
     impact: "Reduced costs, improved performance, mentored global teams",
     tech: ["React", "SPA", "TDD", "Accessibility", "Mentorship"],
     gradient: "orange-red",
-    href: "/case-study/deem",
+    href: "/talent-craft/deem",
     logo: { component: <Deem />, color: "#ffffff" },
     media: {
-      component: <iframe
-          className="h-96 mb-10"
-          title="Figma Prototype for Deem Flight Results"
-          width="100%"
-          height="100%"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FpI3hmMyRy36GTRTHXu9g9P%2FFlight-Redesign%3Fnode-id%3D0-1%26t%3DAqQ8WyFhGlA4Ae4g-1"
-          allowFullScreen
-        ></iframe>}
+      component: (<Image
+        src="/images/deem/flight-results.webp"
+        alt="Deem Flight Search Interface"
+        width={1474}
+        height={816}
+        style={{ aspectRatio: "1.80:1" }}
+      />)
+    }
   },
   {
     title: "Performance Engineering",
@@ -102,9 +112,18 @@ export const projects: ProjectsData = [
     tech: ["Performance", "Web Animation", "GPU", "CSS/JS", "Browser APIs"],
     gradient: "emerald-teal",
     href: "/case-study/liquid-motion",
+    media: {
+      component: (<Image
+        src="/images/internal/performance-color-blobs.webp"
+        alt="Browser Animation optimization for animated color blobs"
+        width={2347}
+        height={1304}
+        style={{ aspectRatio: "1.80:1" }}
+      />)
+    }
   },
   {
-    title: "Job Search That Works",
+    title: "Pinglet - Job Search That Actually Works",
     company: "Internal - Pinglet",
     description: "Job matching service",
     challenge: "Scattered listings, opaque matching, terrible signal-to-noise",
@@ -115,6 +134,14 @@ export const projects: ProjectsData = [
     tech: ["Python", "FastAPI", "SQLite", "Systems Design", "AI/ML"],
     gradient: "indigo-purple",
     href: "/case-study/pinglet",
+    media: {
+      component: (<Image
+        src="/images/pinglet/pinglet-job-card.webp"
+        alt="Pinglet Matching Algorithm Visualization"
+        width={400}
+        height={400}
+      />)
+    }
   },
 ]
 

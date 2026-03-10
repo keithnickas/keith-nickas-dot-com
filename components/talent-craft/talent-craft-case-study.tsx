@@ -1,6 +1,7 @@
 import { RecruiterCaseStudy } from "@/components/types/talent-craft-case-study-types"
 import { Badge } from "@/components/badge"
 import { CheckCircle2 } from "lucide-react"
+import { HeroImageOrModal } from "./HeroImageOrModal"
 
 interface RecruiterCaseStudyPageProps {
   data: RecruiterCaseStudy
@@ -12,19 +13,20 @@ export default function RecruiterCaseStudyPage({
   accentColor = "cyan",
 }: RecruiterCaseStudyPageProps) {
   const {
-    title,
-    company,
-    role,
-    timeline,
-    tags,
-    executiveSummary,
     businessContext,
-    roleResponsibilities,
     capabilities,
-    leadership,
+    company,
+    executiveSummary,
     impact,
+    leadership,
+    role,
+    roleResponsibilities,
     skillsHighlight,
+    tags,
+    timeline,
+    title,
   } = data
+  const ModalComponent = data.modal?.component
 
   return (
     <main className="pt-24 pb-20">
@@ -40,6 +42,8 @@ export default function RecruiterCaseStudyPage({
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
+          {/* Hero Image and/or Modal */}
+          <HeroImageOrModal mainImage={data.mainImage} modal={data.modal} />
 
           <div className="flex flex-wrap gap-4 mb-8 text-lg text-gray-600 dark:text-gray-400">
             <span className="font-semibold">{company}</span>

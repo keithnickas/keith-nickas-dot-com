@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { type ProjectsData } from "@/data/projects"
 import { MobileNavigation } from "./mobile-navigation"
 import { useRole } from "@/context/role-context"
-const excludedPaths = ["/case-study/", "/contact"]
+const excludedPaths = ["/case-study/", "/contact", "/talent-craft/"]
 
 const navLinks = [
   { label: "Home", href: "/#home" },

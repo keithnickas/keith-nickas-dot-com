@@ -102,6 +102,7 @@ export interface CaseStudy {
   timeline?: string;
   title: string;
   userFlows?: CaseStudyUserFlow[];
+  mainImage?: string | React.ReactNode;
 }
 
 export interface DocumentMetaData {
