@@ -31,8 +31,31 @@ export default function Testimonials() {
           <div className="md:min-h-[386px] rounded-2xl p-8 md:p-12 dark:bg-slate-800/50 bg-white backdrop-blur-sm border dark:border-slate-700 border-gray-200">
             <div className="inline-block px-4 py-1 rounded-full text-xs font-medium mb-6 dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20 bg-cyan-100 text-cyan-700 border border-cyan-200">
               {testimonials[currentTestimonial].theme}
+    <section
+      id="testimonials"
+      className="py-20 px-6"
+      role="slider"
+      aria-valuenow={currentTestimonial + 1}
+      aria-valuemin={1}
+      aria-valuemax={testimonials.length}
+      aria-label="Testimonials"
+    >
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+          What Colleagues Say
+        </h2>
+
+        <div className="relative">
+          <div className="md:min-h-[386px] rounded-2xl p-8 md:p-12 dark:bg-slate-800/50 bg-white backdrop-blur-sm border dark:border-slate-700 border-gray-200">
+            <div className="inline-block px-4 py-1 rounded-full text-xs font-medium mb-6 dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20 bg-cyan-100 text-cyan-700 border border-cyan-200">
+              {testimonials[currentTestimonial].theme}
             </div>
 
+            <blockquote className="text-xl md:text-2xl mb-8 leading-relaxed">
+              "{testimonials[currentTestimonial].quote}"
+            </blockquote>
+
+            <div className="flex items-center justify-between">
             <blockquote className="text-xl md:text-2xl mb-8 leading-relaxed">
               "{testimonials[currentTestimonial].quote}"
             </blockquote>
@@ -41,7 +64,11 @@ export default function Testimonials() {
               <div>
                 <div className="font-bold text-lg">
                   {testimonials[currentTestimonial].author}
+                <div className="font-bold text-lg">
+                  {testimonials[currentTestimonial].author}
                 </div>
+                <div className="text-sm dark:text-slate-400 text-gray-600">
+                  {testimonials[currentTestimonial].role}
                 <div className="text-sm dark:text-slate-400 text-gray-600">
                   {testimonials[currentTestimonial].role}
                 </div>

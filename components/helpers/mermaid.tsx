@@ -83,8 +83,6 @@ const Mermaid: React.FC<MermaidProps> = ({
           }
         }
 
-        console.log('Mermaid final config:', mergedConfig);
-
         // Initialize mermaid with ELK requested
         mermaid.initialize(mergedConfig);
 

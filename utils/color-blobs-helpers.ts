@@ -14,30 +14,12 @@ type Animator = {
 }
 
 export function createBlobAnimator(element: HTMLDivElement | null): Animator {
-  let mounted = true
-  let lastAnimation: Animation | null = null
-
-  const play = () => {
-    if (lastAnimation && lastAnimation.play) lastAnimation.play()
-  }
-
-  const pause = () => {
-    if (lastAnimation && lastAnimation.pause) lastAnimation.pause()
-  }
-
-  const cancel = () => {
-    mounted = false
-    if (lastAnimation) {
-      try {
-        lastAnimation.cancel()
-      } catch {}
-      lastAnimation = null
-    }
-  }
+  let mounted = true;
+  let lastAnimation: Animation | null = null;
+  let timeoutId: number | null = null;
 
   const runSequence = () => {
-    if (!mounted || !element) return
-    if (document.hidden) return
+    if (!mounted || !element || document.hidden) return;
 
     const translateX = `${randomBetween(10, 90)}%`
     const translateY = `${randomBetween(10, 90)}%`
@@ -77,10 +59,17 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
 
   return {
     start: runSequence,
-    pause,
-    play,
-    cancel,
-  }
+    pause: () => lastAnimation?.pause(),
+    play: () => lastAnimation?.play(),
+    cancel: () => {
+      mounted = false;
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      lastAnimation?.cancel();
+    }
+  };
 }
 
 /**

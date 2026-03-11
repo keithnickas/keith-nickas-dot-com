@@ -41,7 +41,7 @@ export function RandomColorBlobs() {
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-cyan-500 mix-blend-multiply filter blur-xl" />
+        <div className="blob-shape blob-cyan mix-blend-multiply" />
       </div>
 
       <div
@@ -55,7 +55,7 @@ export function RandomColorBlobs() {
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-purple-500 filter blur-xl" />
+        <div className="blob-shape blob-purple " />
       </div>
 
       <div
@@ -69,7 +69,7 @@ export function RandomColorBlobs() {
           willChange: "transform",
         } as React.CSSProperties}
       >
-        <div className="blob-shape bg-pink-500 filter blur-xl" />
+        <div className="blob-shape blob-pink" />
       </div>
     </div>
   )
