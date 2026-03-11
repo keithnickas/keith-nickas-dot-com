@@ -14,6 +14,7 @@ const Hero = ({
     <section className={`px-6 pb-12`}>
       <div className="max-w-4xl mx-auto">
         <div
+          aria-hidden
           className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 ${badgeClassName ? badgeClassName : "dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20 bg-cyan-100 text-cyan-700 border border-cyan-200"}`}
         >
           {data?.company || data?.documentType}
@@ -104,7 +105,7 @@ const Hero = ({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${link?.className ? link.className : "from-blue-500 to-cyan-500"} rounded-lg font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105`}
+                className={`flex items-center gap-2 p-6 min-h-[44px] bg-gradient-to-r ${link?.className ? link.className : "from-blue-500 to-cyan-500"} rounded-lg font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105`}
               >
                 {link?.icon ? (
                   <link.icon

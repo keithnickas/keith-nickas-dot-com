@@ -52,7 +52,7 @@ export default function Modal({
             onClick={() => {
               setModalOpen(true)
             }}
-            aria-label="Open modal"
+            aria-label={buttonText ? `Open modal to ${buttonText.toLowerCase()}` : "Open modal"}
           >
             {buttonText ?? "View Fullscreen"}
             <Expand />

@@ -11,7 +11,7 @@ export function ContactCTA() {
     <section id="contact" className="py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">{cta.heading}</h2>
-        <p className="text-xl mb-12 dark:text-slate-300 text-gray-600">
+        <p className="text-xl mb-12 dark:text-slate-300 text-gray-600 leading-normal">
           {cta.subtext}
         </p>
         <div className="flex flex-wrap justify-center gap-4">

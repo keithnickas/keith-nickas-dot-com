@@ -21,7 +21,7 @@ export function PortfolioHero() {
 
         {/* Role badge */}
         <div className="inline-block mb-5">
-          <span className={`px-4 py-2 rounded-full text-sm font-medium border ${roleConfig.badgeDark} ${roleConfig.badgeLight}`}>
+          <span className={`px-4 py-2 leading-normal rounded-full text-sm font-medium border ${roleConfig.badgeDark} ${roleConfig.badgeLight}`}>
             {roleConfig.badgeText}
           </span>
         </div>
@@ -74,9 +74,9 @@ export function PortfolioHero() {
                 }}
               >
                 {pillar.icon && <div className="text-3xl mb-3">{pillar.icon}</div>}
-                <h3 className={`text-xl font-bold mb-4 transition-colors group-hover:text-${roleConfig.textColor} dark:group-hover:text-${roleConfig.darkTextColor} group-hover:text-cyan-400`}>
+                <h2 className={`text-xl font-bold mb-4 transition-colors group-hover:text-${roleConfig.textColor} dark:group-hover:text-${roleConfig.darkTextColor} group-hover:text-cyan-400`}>
                   {pillar.title}
-                </h3>
+                </h2>
                 <div className="space-y-2">
                   {pillar.skills.map((skill) => (
                     <div key={skill} className="text-sm dark:text-slate-300 text-gray-600">

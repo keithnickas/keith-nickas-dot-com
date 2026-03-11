@@ -53,19 +53,20 @@ export default function Testimonials() {
                   rel="noopener noreferrer"
                   className="text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  <LinkedIn />
+                  <LinkedIn aria-label={`LinkedIn profile of ${testimonials[currentTestimonial].author}`} />
                 </a>
               )}
             </div>
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-8" role="tablist">
+          <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Testimonial navigation">
             {testimonials.map((_, idx) => (
-              <button
-                key={testimonials[idx].author}
+              <div
                 role="tab"
+                key={testimonials[idx].author}
                 aria-label={`View testimonial from ${testimonials[idx].author}`}
+                aria-expanded={false}
                 onClick={() => setCurrentTestimonial(idx)}
                 className={`w-4 h-4 rounded-full transition-all ${
                   idx === currentTestimonial

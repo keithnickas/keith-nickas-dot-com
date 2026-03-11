@@ -63,7 +63,7 @@ export default function Navigation({
                 title="Keith Nickas"
                 aria-label="return to homepage"
               >
-                KN
+                <span aria-hidden="true">KN</span>
               </a>
               <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
                 Software Engineer

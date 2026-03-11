@@ -21,7 +21,7 @@ export default function CalendlyPopup({
     />
   )
   return useWrapper ? (
-    <div id="calendly-popup">
+    <div id="calendly-popup" role="region" aria-label="Got 15 minutes? Schedule a chat with me.">
       {widget}
     </div>
   ) : (
