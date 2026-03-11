@@ -1,6 +1,6 @@
 import { CaseStudy } from "../types/case-study-types";
 
-const CaseStudyTechnicalHighlights = ({ technicalHighlights, highlightClassName, highlightDotClassName }: { technicalHighlights: CaseStudy["technicalHighlights"], highlightClassName?: string, highlightDotClassName?: string }) => (
+const CaseStudyTechnicalHighlights = ({ technicalHighlights, className, highlightClassName, highlightDotClassName }: { technicalHighlights: CaseStudy["technicalHighlights"], className?: string, highlightClassName?: string, highlightDotClassName?: string }) => (
   <section className="px-6 py-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">
@@ -8,7 +8,7 @@ const CaseStudyTechnicalHighlights = ({ technicalHighlights, highlightClassName,
           </h2>
 
           <div
-            className={`p-8 rounded-xl dark:bg-slate-800/50 dark:border-slate-700 bg-white border border-gray-200`}
+            className={`p-8 rounded-xl border ${className ? className : "dark:bg-slate-800/50 dark:border-slate-700 bg-white border-gray-200"}`}
           >
             <ul className="space-y-4">
               {technicalHighlights?.highlights.map((highlight, _) => (

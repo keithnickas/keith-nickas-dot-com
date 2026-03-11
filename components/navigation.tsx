@@ -4,14 +4,15 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { type ProjectsData } from "@/data/projects"
 import { MobileNavigation } from "./mobile-navigation"
-const excludedPaths = ["/case-study/", "/contact"]
+import { useRole } from "@/context/role-context"
+const excludedPaths = ["/case-study/", "/contact", "/talent-craft/"]
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Work", href: "/#work" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 export default function Navigation({
@@ -22,6 +23,7 @@ export default function Navigation({
   const pathname = usePathname()
   const showBackButton = excludedPaths.some((path) => pathname.includes(path))
   const [menuOpen, setMenuOpen] = useState(false)
+  const { role } = useRole()
   const handleLinkClick = () => {
     setMenuOpen(false)
   }
@@ -41,7 +43,8 @@ export default function Navigation({
     <>
       <nav
         className={`fixed w-full z-40 transition-all duration-300 dark:bg-slate-900/50 backdrop-blur-md bg-white dark:border-slate-800 border-gray-100`}
-      role="navigation">
+        role="navigation"
+      >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -58,11 +61,13 @@ export default function Navigation({
                 href="/"
                 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
                 title="Keith Nickas"
-                aria-label="Keith Nickas, return to homepage"
+                aria-label="return to homepage"
               >
-                KN
+                <span aria-hidden="true">KN</span>
               </a>
-              <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">Software Engineer</div>
+              <div className="text-2xl bg-gradient-to-r from-orange-400 to-purple-500 bg-clip-text text-transparent">
+                Software Engineer
+              </div>
             </div>
             <div className="flex items-center gap-3 md:hidden z-[200]">
               <button
@@ -83,6 +88,7 @@ export default function Navigation({
         setMenuOpen={setMenuOpen}
         navLinks={navLinks}
         projects={projects}
+        role={role}
       />
     </>
   )
