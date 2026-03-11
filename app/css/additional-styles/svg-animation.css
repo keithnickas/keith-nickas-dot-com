@@ -70,3 +70,42 @@ svg#animated-borders {
     stroke-dashoffset: -35%;
   }
 }
+
+@layer utilities {
+  @property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  @keyframes countUp {
+    from {
+      --num: 0;
+    }
+    to {
+      --num: var(--target-num, 100);
+    }
+  }
+  foreignObject div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  foreignObject .metric-value {
+    display: inline-block;
+    counter-reset: num var(--num);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* This class will be added by JavaScript */
+  foreignObject .metric-value.is-animated {
+    animation: countUp 1s ease-out forwards;
+  }
+
+  foreignObject .metric-value::before {
+    content: counter(num) "%";
+  }
+}

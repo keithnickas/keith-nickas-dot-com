@@ -21,36 +21,41 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
   const runSequence = () => {
     if (!mounted || !element || document.hidden) return;
 
-    const nextTX = `${randomBetween(10, 90)}%`;
-    const nextTY = `${randomBetween(10, 90)}%`;
-    const nextScale = randomBetween(0.8, 1.3);
-    const durationMs = Math.round(randomBetween(4000, 7000));
-    const currentTranslate = element.style.translate || "50% 50%";
-    const currentScale = element.style.scale || "1";
+    const translateX = `${randomBetween(10, 90)}%`
+    const translateY = `${randomBetween(10, 90)}%`
+    const scaleFactor = randomBetween(288, 480) / 360
+    const durationMs = Math.round(randomBetween(4000, 7000))
 
-    const anim = element.animate(
-      [
-        { translate: currentTranslate, scale: currentScale },
-        { translate: `${nextTX} ${nextTY}`, scale: String(nextScale) }
-      ],
-      { 
-        duration: durationMs, 
+    element.style.setProperty("--blob-tx", translateX)
+    element.style.setProperty("--blob-ty", translateY)
+    element.style.setProperty("--blob-scale", String(scaleFactor))
+    element.style.setProperty("--blob-duration", `${durationMs}ms`)
+    element.style.setProperty("--blob-pulse-duration", `${durationMs}ms`)
+
+    const computed = getComputedStyle(element).transform
+    const from = computed === "none" ? "translate(50%,50%) scale(1)" : computed
+    const to = `translate(${translateX}, ${translateY}) scale(${scaleFactor})`
+
+    try {
+      const anim = element.animate([{ transform: from }, { transform: to }], {
+        duration: durationMs,
         easing: "cubic-bezier(.22,.9,.24,1)",
-        fill: "both"
+        fill: "forwards",
+      })
+
+      lastAnimation = anim
+      // schedule next when finished
+      anim.onfinish = () => {
+        if (!mounted) return
+        const pauseMs = Math.round(randomBetween(250, 1200))
+        setTimeout(() => runSequence(), pauseMs)
       }
-    );
-
-    lastAnimation = anim;
-
-    anim.onfinish = () => {
-      if (!mounted) return;
-      element.style.translate = `${nextTX} ${nextTY}`;
-      element.style.scale = String(nextScale);
-      anim.cancel();
-
-      timeoutId = window.setTimeout(runSequence, Math.round(randomBetween(250, 1200)));
-    };
-  };
+    } catch {
+      // fallback: set CSS vars and re-run after duration
+      const pauseMs = Math.round(randomBetween(250, 1200)) + durationMs
+      setTimeout(() => runSequence(), pauseMs)
+    }
+  }
 
   return {
     start: runSequence,
@@ -69,27 +74,64 @@ export function createBlobAnimator(element: HTMLDivElement | null): Animator {
 
 /**
  * Install a scroll listener that pauses/plays provided animators during scroll.
+ * Also uses IntersectionObserver to pause animations when blobs are off-screen for better performance.
  * Returns a cleanup function.
  */
 export function scrollPauseAnimation(animators: Animator[]) {
   let rafRequestId = 0
   let isScrolling = false
+  let isVisible = true
+
+  const callback = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    if (typeof entries === "undefined")
+      throw new Error("Expected entries in IntersectionObserver callback")
+    try {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          rafRequestId = requestAnimationFrame(() => {
+            animators.forEach((a) => a.pause())
+            isVisible = false
+          })
+        } else {
+          observer.observe(entry.target)
+          cancelAnimationFrame(rafRequestId)
+          rafRequestId = requestAnimationFrame(() => {
+            animators.forEach((a) => a.play())
+          })
+          isVisible = true
+        }
+      })
+    } catch (error) {
+      console.error("Error in IntersectionObserver callback:", error)
+    }
+  }
+  const observer = new IntersectionObserver(callback, { threshold: 0.1 })
+  const blobs = document.querySelectorAll("[id^='blob']")
 
   const onScroll = () => {
+    
     if (!isScrolling) {
       isScrolling = true
       document.documentElement.classList.add("user-is-scrolling")
       animators.forEach((a) => a.pause())
     }
-    cancelAnimationFrame(rafRequestId)
-    rafRequestId = requestAnimationFrame(() => {
-      isScrolling = false
-      document.documentElement.classList.remove("user-is-scrolling")
-      animators.forEach((a) => a.play())
-    })
+    if (isVisible) {
+        cancelAnimationFrame(rafRequestId)
+        rafRequestId = requestAnimationFrame(() => {
+        isScrolling = false
+        document.documentElement.classList.remove("user-is-scrolling")
+        animators.forEach((a) => a.play())
+      })
+    }
   }
 
   window.addEventListener("scroll", onScroll, { passive: true })
+  blobs.forEach((frames) => {
+    observer.observe(frames as unknown as Element)
+  })
 
   return () => {
     window.removeEventListener("scroll", onScroll)

@@ -32,21 +32,42 @@ export function RandomColorBlobs() {
     <div className="absolute inset-0 opacity-20 pointer-events-none">
       <div
         ref={blob1Ref}
-        className="absolute blob-container"
+        id="blob1"
+        className="absolute"
+        style={{
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          willChange: "transform",
+        } as React.CSSProperties}
       >
         <div className="blob-shape blob-cyan mix-blend-multiply" />
       </div>
 
       <div
         ref={blob2Ref}
-        className="absolute blob-container"
+        id="blob2"
+        className="absolute"
+        style={{
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          willChange: "transform",
+        } as React.CSSProperties}
       >
         <div className="blob-shape blob-purple " />
       </div>
 
       <div
         ref={blob3Ref}
-        className="absolute blob-container"
+        id="blob3"
+        className="absolute"
+        style={{
+          width: "360px",
+          height: "360px",
+          transform: "translate(var(--blob-tx, 50%), var(--blob-ty, 50%)) scale(var(--blob-scale, 1))",
+          willChange: "transform",
+        } as React.CSSProperties}
       >
         <div className="blob-shape blob-pink" />
       </div>
