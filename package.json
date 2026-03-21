@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "npm run validate:redirects",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "validate:redirects": "node ./scripts/validate-redirects.js"
   },
   "type": "module",
   "dependencies": {
@@ -26,7 +28,7 @@
     "form-data": "^4.0.0",
     "lucide-react": "^0.562.0",
     "mermaid": "^11.12.2",
-    "next": "^15.5.11",
+    "next": "^15.5.12",
     "object-hash": "^3.0.0",
     "react": "^18.2.0",
     "react-calendly": "^4.3.1",

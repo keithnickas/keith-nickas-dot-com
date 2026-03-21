@@ -9,7 +9,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/talent-craft/:slug(\\gap\\|wristband\\|deem)",
+        source: "/talent-craft/:slug(gap|wristband|deem)",
         destination: "/talent-craft/:slug",
         basePath: false,
         permanent: true,
