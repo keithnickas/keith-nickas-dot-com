@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "npm run validate:redirects",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "validate:redirects": "node ./scripts/validate-redirects.js"
   },
   "type": "module",
   "dependencies": {
